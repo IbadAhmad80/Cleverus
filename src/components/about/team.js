@@ -69,7 +69,7 @@ export default function Team() {
                 </div>
               </div>
               <div class="team-item-content">
-                <h4 class="mt-3 mb-0 text-capitalize">Justin hammer</h4>
+                <h4 class="mt-3 mb-0 text-capitalize">Ibad Ahmad</h4>
                 <p>Digital Marketer</p>
               </div>
             </div>
@@ -126,7 +126,7 @@ export default function Team() {
                 </div>
               </div>
               <div class="team-item-content">
-                <h4 class="mt-3 mb-0 text-capitalize">Jason roy</h4>
+                <h4 class="mt-3 mb-0 text-capitalize">Haseeb Yaseen</h4>
                 <p>UI/UX Designer</p>
               </div>
             </div>
@@ -183,7 +183,7 @@ export default function Team() {
                 </div>
               </div>
               <div class="team-item-content">
-                <h4 class="mt-3 mb-0 text-capitalize">Henry oswald</h4>
+                <h4 class="mt-3 mb-0 text-capitalize">Wahaj Hafeez</h4>
                 <p>Developer</p>
               </div>
             </div>

@@ -24,9 +24,9 @@ export default function Intro() {
                   We are dynamic team of creative people
                 </h2>
                 <p class="mb-5">
-                  We provide consulting services in the area of IFRS and
-                  management reporting, helping companies to reach their highest
-                  level. We optimize business processes, making them easier.
+                  We are amazing group of 3 people who are willing to learn and
+                  understand new technologies which the goal of never being to
+                  stop. This project is also among of those efforts.
                 </p>
 
                 <button class="btn-main btn-round-full px-5 py-3 border-0">

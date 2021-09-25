@@ -16,7 +16,7 @@ export default function CallToAction() {
                 Have any bug to report? For immidiate support :
               </p>
               <h3>
-                <i className="mx-3 text-color"></i>+92 303 218 2370
+                <i className="text-color"></i>clever@gmail.com
               </h3>
             </div>
           </div>

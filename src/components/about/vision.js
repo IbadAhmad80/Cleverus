@@ -14,8 +14,8 @@ export default function Vision() {
               <p>
                 Our idea was to come up with a generic recommendation system
                 that would be able to recommend different businesses on the
-                basis of reviews. Moreover, use of Reinforcement Learning so
-                that this process becomes dynamic .
+                basis of reviews content. Moreover, use of Reinforcement
+                Learning so that this process becomes dynamic .
               </p>
             </div>
           </div>
@@ -25,28 +25,24 @@ export default function Vision() {
                 <span className="text-color mx-2 text-md">02.</span>Our Vision
               </h3>
               <p>
-                
+                To develop such intelligent recommendation system that performs
+                accurately and efficiently and help users to know about the
+                authentic, best, affordable places like nearest doctor,
+                restaurants, hotels etc, whom which they can trust or prefer.
               </p>
             </div>
           </div>
           <div className="col-lg-6 mt-sm-0 mt-md-5 col-md-6 col-sm-6">
             <div className="about-info-item mb-4 mb-lg-0">
-              <h3 className="mb-3">
-                <span className="text-color mr-2 text-md">03.</span>Our Approach
+              <h3 className="mb-3  ">
+                <span className="text-color mr-2 text-md">03.</span>
+                Our Goal
               </h3>
-              <p>
-               
-                    Overcome the drawbacks of traditional approaches for
-                    finding a thing by developing such recommendation system
-                    that will uses natural language processing and machine
-                    earning techniques to produce a recommendation list.  To
-                    develop such intelligent recommendation system that performs
-                    accurately and efficiently and help users to know about the
-                    authentic, best, affordable, nearest doctor, restaurants,
-                    hotels etc. whom which they can trust or prefer.
-                  
-                   
-                 
+              <p className="">
+                Overcome the drawbacks of traditional approaches for finding a
+                place by developing such recommendation system that will uses
+                natural language processing and machine earning techniques to
+                produce a recommendation list.
               </p>
             </div>
           </div>
