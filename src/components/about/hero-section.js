@@ -2,7 +2,7 @@ import React from "react";
 import "../../css/style.css";
 import { Link } from "react-router-dom";
 
-export default function HeroSection() {
+export default function HeroSection()  {
   return (
     <section className="page-title bg-3">
       <div>

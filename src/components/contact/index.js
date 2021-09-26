@@ -4,6 +4,7 @@ import HeroSection from "./hero-section";
 import NavBar from "../../components/navbar";
 import Footer from "../../components/footer";
 import Map from "./map";
+import AccordionCard from "./accordion";
 
 export default function Contact() {
   return (
@@ -11,7 +12,9 @@ export default function Contact() {
       <NavBar />
       <HeroSection />
       <Form />
+      <AccordionCard/>
       <Map />
+      
       <Footer />
     </div>
   );

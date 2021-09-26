@@ -105,7 +105,7 @@ export default function NavBar() {
                   </Link>
                 </Nav.Link>
               </Nav>
-              <Nav>
+              <Nav className="text-center mt-2 mt-lg-0 ">
                 <Link to="/sign-in">
                   <button className="text-white fs-6 px-4 py-2 btn-solid-border btn-round-full">
                     My Profile

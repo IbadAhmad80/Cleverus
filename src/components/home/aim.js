@@ -14,7 +14,7 @@ export default function Aim({ size }) {
   if (size[0] < 500 && dimensions.height !== 290) {
     setDimensions({ height: 290, width: 300 });
   } else if (size[0] >= 500 && dimensions.height !== 500) {
-    setDimensions({ height: 500, width: 450, execution: false });
+    setDimensions({ height: 500, width: 450, execution: false  });
   }
 
   const defaultOptions = {

@@ -10,7 +10,7 @@ import Footer from "../../components/footer";
 export default function Home() {
   const [size, setSize] = React.useState([0, 0]);
 
-  React.useLayoutEffect(() => {
+  React.useLayoutEffect(() =>  {
     function updateSize() {
       setSize([window.innerWidth, window.innerHeight]);
     }

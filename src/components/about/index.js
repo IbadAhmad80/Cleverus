@@ -19,7 +19,7 @@ export default function About() {
     return () => window.removeEventListener("resize", updateSize);
   }, []);
 
-  return (
+  return  (
     <div>
       <NavBar />
       <HeroSection />

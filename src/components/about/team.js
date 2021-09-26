@@ -22,63 +22,6 @@ export default function Team() {
             <div className="team-item-wrap mb-5">
               <div className="team-item position-relative">
                 <img
-                  src="/images/team/team-6.jpg"
-                  alt=""
-                  className="img-fluid w-100"
-                />
-                <div className="team-img-hover">
-                  <ul className="team-social list-inline">
-                    <li className="list-inline-item">
-                      <a
-                        href="https://www.facebook.com/"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="facebook"
-                      >
-                        <i className="fab fa-facebook-f" aria-hidden="true">
-                          <FiFacebook />
-                        </i>
-                      </a>
-                    </li>
-                    <li className="list-inline-item">
-                      <a
-                        href="https://twitter.com/"
-                        className="twitter"
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        <i className="fab fa-twitter" aria-hidden="true">
-                          <FiTwitter />
-                        </i>
-                      </a>
-                    </li>
-
-                    <li className="list-inline-item">
-                      <a
-                        href="https://www.linkedin.com/"
-                        className="linkedin"
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        <i className="fab fa-linkedin-in" aria-hidden="true">
-                          <FiLinkedin />
-                        </i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div className="team-item-content">
-                <h4 className="mt-3 mb-0 text-capitalize">Ibad Ahmad</h4>
-                <p>Digital Marketer</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-lg-4 col-md-6 col-sm-6">
-            <div className="team-item-wrap mb-5">
-              <div className="team-item position-relative w-100">
-                <img
                   src="/images/team/team-2.jpg"
                   alt=""
                   className="img-fluid w-100"
@@ -126,8 +69,65 @@ export default function Team() {
                 </div>
               </div>
               <div className="team-item-content">
+                <h4 className="mt-3 mb-0 text-capitalize">Ibad Ahmad</h4>
+                <p>Full Stack Developer</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-lg-4 col-md-6 col-sm-6">
+            <div className="team-item-wrap mb-5">
+              <div className="team-item position-relative w-100">
+                <img
+                  src="/images/team/team-4.jpg"
+                  alt=""
+                  className="img-fluid w-100"
+                />
+                <div className="team-img-hover">
+                  <ul className="team-social list-inline">
+                    <li className="list-inline-item">
+                      <a
+                        href="https://www.facebook.com/"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="facebook"
+                      >
+                        <i className="fab fa-facebook-f" aria-hidden="true">
+                          <FiFacebook />
+                        </i>
+                      </a>
+                    </li>
+                    <li className="list-inline-item">
+                      <a
+                        href="https://twitter.com/"
+                        className="twitter"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <i className="fab fa-twitter" aria-hidden="true">
+                          <FiTwitter />
+                        </i>
+                      </a>
+                    </li>
+
+                    <li className="list-inline-item">
+                      <a
+                        href="https://www.linkedin.com/"
+                        className="linkedin"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <i className="fab fa-linkedin-in" aria-hidden="true">
+                          <FiLinkedin />
+                        </i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div className="team-item-content">
                 <h4 className="mt-3 mb-0 text-capitalize">Haseeb Yaseen</h4>
-                <p>UI/UX Designer</p>
+                <p>Backend Developer</p>
               </div>
             </div>
           </div>
@@ -184,7 +184,7 @@ export default function Team() {
               </div>
               <div className="team-item-content">
                 <h4 className="mt-3 mb-0 text-capitalize">Wahaj Hafeez</h4>
-                <p>Developer</p>
+                <p>Data Scientist</p>
               </div>
             </div>
           </div>

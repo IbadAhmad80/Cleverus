@@ -2,7 +2,6 @@ import "./App.css";
 import Home from "./components/home";
 import Contact from "./components/contact";
 import { Switch, Route } from "react-router";
-import "mapbox-gl/dist/mapbox-gl.css";
 import About from "./components/about";
 import SignIn from "./components/accounts/sign-in";
 

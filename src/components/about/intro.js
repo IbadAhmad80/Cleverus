@@ -32,7 +32,7 @@ export default function Intro({ size }) {
           <div className="row">
             <div className="col-lg-6">
               <div className="about-item pr-3 mb-5 mb-lg-0">
-                <span className="h6 text-color">What we are</span>
+                <span className="h6 text-color ">What we are</span>
                 <h2 className="mt-3 mb-4 position-relative content-title">
                   We are dynamic team of creative people
                 </h2>
