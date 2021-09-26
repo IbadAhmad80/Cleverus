@@ -44,7 +44,7 @@ export default function NavBar() {
             <div className="col-lg-10 col-md-8 text-center">
               <div className="header-top-info my-md-0 mb-md-0 mb-2">
                 <a href="tel:+23-345-67890">
-                  Call Us : <span>+23-345-67890</span>
+                  Call Us : <span>+23-345-67890 </span>
                 </a>
                 <a href="mailto:support@gmail.com">
                   <i className="mx-2">
