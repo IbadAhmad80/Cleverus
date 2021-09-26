@@ -1,23 +1,15 @@
 import * as React from "react";
-import { useState } from "react";
-import ReactMapGL from "react-map-gl";
+import "./map-styles.css";
 
 export default function Map({ locations }) {
-  const [viewport, setViewport] = useState({
-    height: 500,
-    latitude: 31.582045,
-    longitude: 74.329376,
-    zoom: 8,
-  });
-
   return (
-    <ReactMapGL
-      {...viewport}
-      width="100%"
-      onViewportChange={(nextViewport) => setViewport(nextViewport)}
-      mapboxApiAccessToken={
-        "pk.eyJ1IjoiaWJhZGFobWFkIiwiYSI6ImNra3JzNWt2ajBsOXQyb282YTkzNHZic2cifQ.Axi1cRU6bZqpLkvlduR9Cg"
-      }
-    ></ReactMapGL>
+    <div className="mapBox">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3405.4138098080793!2d74.21044541465398!3d31.4027230600849!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3918ffd0bc7c5f71%3A0x879e9b82857bcd94!2sCOMSATS%20University%2C%20Lahore%20Campus!5e0!3m2!1sen!2s!4v1632636769167!5m2!1sen!2s"
+        allowFullScreen=""
+        loading="lazy"
+        title="comsats university"
+      ></iframe>
+    </div>
   );
 }

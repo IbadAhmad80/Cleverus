@@ -21,11 +21,11 @@ export default function HeroSection() {
                   <li className="list-inline-item">
                     <span className="text-white">/</span>
                   </li>
-                  <l className="list-inline-item">
+                  <li className="list-inline-item">
                     <button className="text-white-50 border-0 bg-transparent text-dark">
                       About Us
                     </button>
-                  </l>
+                  </li>
                 </ul>
               </div>
             </div>

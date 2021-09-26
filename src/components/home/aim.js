@@ -4,7 +4,19 @@ import { VscPaintcan } from "react-icons/vsc";
 import Lottie from "react-lottie";
 import animationData from "../../images/about_bg.json";
 
-export default function Aim() {
+export default function Aim({ size }) {
+  const [dimensions, setDimensions] = React.useState({
+    height: 500,
+    width: 450,
+    execution: false,
+  });
+
+  if (size[0] < 500 && dimensions.height !== 290) {
+    setDimensions({ height: 290, width: 300 });
+  } else if (size[0] >= 500 && dimensions.height !== 500) {
+    setDimensions({ height: 500, width: 450, execution: false });
+  }
+
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -21,8 +33,8 @@ export default function Aim() {
           <div className="col-lg-6 mb-5 mb-lg-0 lottie">
             <Lottie
               options={defaultOptions}
-              height={500}
-              width={400}
+              height={dimensions.height}
+              width={dimensions.width}
               //   height={290}
               //   width={300}
             />
