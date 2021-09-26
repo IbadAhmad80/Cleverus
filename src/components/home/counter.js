@@ -1,6 +1,6 @@
 import React from "react";
 import "../../css/style.css";
-import { FaShoppingBag } from "react-icons/fa";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 import { RiHotelLine, RiScissors2Line } from "react-icons/ri";
 import { GiKnifeFork } from "react-icons/gi";
 import CountUp from "react-countup";
@@ -16,7 +16,7 @@ export default function Counter() {
                 <i className="color-one text-md-1">
                   <RiHotelLine />
                 </i>
-                <h3 className="mt-4 mb-0 text-white">
+                <h3 className="mt-2 mb-0 text-white">
                   <span className="counter-stat font-weight-bold">
                     <CountUp end={200} duration={10} />
                   </span>{" "}
@@ -30,7 +30,7 @@ export default function Counter() {
                 <i className="ti-flag color-one text-md-1">
                   <RiScissors2Line />
                 </i>
-                <h3 className="mt-4 mb-0 text-white">
+                <h3 className="mt-2 mb-0 text-white">
                   <span className="counter-stat font-weight-bold">
                     {" "}
                     <CountUp end={100} duration={8} />{" "}
@@ -45,7 +45,7 @@ export default function Counter() {
                 <i className="ti-layers color-one text-md-1">
                   <GiKnifeFork />
                 </i>
-                <h3 className="mt-4 mb-0 text-white">
+                <h3 className="mt-2 mb-0 text-white">
                   <span className="counter-stat font-weight-bold">
                     {" "}
                     <CountUp end={200} duration={10} />{" "}
@@ -58,9 +58,9 @@ export default function Counter() {
             <div className="col-lg-3 col-md-6 col-sm-6">
               <div className="counter-item text-center">
                 <i className="ti-medall color-one text-md-1">
-                  <FaShoppingBag />
+                  <AiOutlineShoppingCart />
                 </i>
-                <h3 className="mt-4 mb-0 text-white">
+                <h3 className="mt-2 mb-0 text-white">
                   <span className="counter-stat font-weight-bold">
                     {" "}
                     <CountUp end={120} duration={10} />{" "}

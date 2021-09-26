@@ -300,7 +300,9 @@ input[type="tel"]:focus {
 }
 
 .text-md-1 {
-  font-size: 3rem;
+  font-size: 2.25rem;
+  display: block;
+  margin-left: -10px;
 }
 
 .text-lg {
@@ -489,7 +491,7 @@ a:focus {
 }
 
 .bg-2 {
-  background: url("../images/bg/home-5.jpg");
+  background: url("../images/bg/home-5.jpg") no-repeat 50% 50%;
   background-size: cover;
 }
 
@@ -516,7 +518,8 @@ a:focus {
   background: rgba(0, 0, 0, 0.5);
 }
 
-.bg-counter > div {
+.bg-counter > div,
+.bg-2 > div {
   padding: 100px 0;
   background: rgba(0, 0, 0, 0.8);
 }
@@ -581,7 +584,7 @@ a:focus {
 }
 
 .counter-item .counter-stat {
-  font-size: 50px;
+  font-size: 40px;
 }
 
 .counter-item p {
@@ -849,7 +852,6 @@ h3.quote::before {
 
 .latest-blog {
   position: relative;
-  padding-bottom: 150px;
 }
 
 .mt-70 {

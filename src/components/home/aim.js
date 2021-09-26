@@ -41,10 +41,18 @@ export default function Aim({ size }) {
           </div>
           <div className="col-lg-6 ">
             <div className="about-item ">
-              <span className="h6 text-color">What is our Aim</span>
+              {/* <span className="h6 text-color">What is our Aim</span>
               <h2 className="mt-3 mb-4 position-relative content-title">
-                Provide Cutting Edge solution to your searches
+              
+              </h2> */}
+              <div className="section-title">
+              <span className="h6 text-color ">
+              What is our Aim
+              </span>
+              <h2 className="mt-3 mb-4 content-title">
+              Provide Cutting Edge solution to your searches
               </h2>
+            </div>
               <div className="about-content">
                 <h4 className="mb-3 position-relative">
                   <span>
