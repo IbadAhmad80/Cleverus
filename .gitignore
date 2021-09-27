@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 megakit-premium
+assets_2
 
 # testing
 /coverage

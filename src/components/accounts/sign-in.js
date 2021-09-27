@@ -70,7 +70,13 @@ export default function SignIn() {
                 }
               />
             </div>
-            <input type="submit" value="Login" className="account-btn solid" />
+            <Link to="/dashboard">
+              <input
+                type="submit"
+                value="Login"
+                className="account-btn solid"
+              />
+            </Link>
             <p className="social-text">Or Sign in with social platforms</p>
             <div className="social-media">
               <a href="home" className="social-icon">
@@ -142,11 +148,13 @@ export default function SignIn() {
                 }
               />
             </div>
-            <input
-              type="submit"
-              className="account-btn solid"
-              value="Sign up"
-            />
+            <Link to="/dashboard">
+              <input
+                type="submit"
+                className="account-btn solid"
+                value="Sign up"
+              />
+            </Link>
             <p className="social-text">Or Sign up with social platforms</p>
             <div className="social-media">
               <a href="home" className="social-icon">
