@@ -77,7 +77,7 @@ export default function Form() {
                     <i className="mx-3 text-dark">
                       <AiFillHome />
                     </i>
-                    North Main Street,Brooklyn Australia
+                    North Main Street,Australia
                   </li>
                   <li>
                     <i className="mx-3 text-dark">
