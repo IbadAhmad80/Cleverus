@@ -3,18 +3,18 @@ import "./styles/index.css";
 
 export default function Dashboard() {
   return (
-    <div class="wrapper">
-      <nav class="nav">
-        <ul class="nav__list" role="menubar">
-          <li class="nav__item nav__item--isActive">
+    <div className="wrapper">
+      <nav className="nav">
+        <ul className="nav__list" role="menubar">
+          <li className="nav__item nav__item--isActive">
             <a
               href="#home"
-              class="nav__link focus--box-shadow"
+              className="nav__link focus--box-shadow"
               role="menuitem"
               aria-label="Home"
             >
               <svg
-                class="nav__icon"
+                className="nav__icon"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 role="presentation"
@@ -26,32 +26,16 @@ export default function Dashboard() {
               </svg>
             </a>
           </li>
-          <li class="nav__item">
+          
+          <li className="nav__item">
             <a
               href="#home"
-              class="nav__link focus--box-shadow"
-              role="menuitem"
-              aria-label="Favorite projects"
-            >
-              <svg
-                class="nav__icon"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                role="presentation"
-              >
-                <path d="M22,9.67A1,1,0,0,0,21.14,9l-5.69-.83L12.9,3a1,1,0,0,0-1.8,0L8.55,8.16,2.86,9a1,1,0,0,0-.81.68,1,1,0,0,0,.25,1l4.13,4-1,5.68A1,1,0,0,0,6.9,21.44L12,18.77l5.1,2.67a.93.93,0,0,0,.46.12,1,1,0,0,0,.59-.19,1,1,0,0,0,.4-1l-1-5.68,4.13-4A1,1,0,0,0,22,9.67Zm-6.15,4a1,1,0,0,0-.29.88l.72,4.2-3.76-2a1.06,1.06,0,0,0-.94,0l-3.76,2,.72-4.2a1,1,0,0,0-.29-.88l-3-3,4.21-.61a1,1,0,0,0,.76-.55L12,5.7l1.88,3.82a1,1,0,0,0,.76.55l4.21.61Z" />
-              </svg>
-            </a>
-          </li>
-          <li class="nav__item">
-            <a
-              href="#home"
-              class="nav__link focus--box-shadow"
+              className="nav__link focus--box-shadow"
               role="menuitem"
               aria-label="Informational messages"
             >
               <svg
-                class="nav__icon"
+                className="nav__icon"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 role="presentation"
@@ -60,15 +44,15 @@ export default function Dashboard() {
               </svg>
             </a>
           </li>
-          <li class="nav__item">
+          <li className="nav__item">
             <a
               href="#home"
-              class="nav__link focus--box-shadow"
+              className="nav__link focus--box-shadow"
               role="menuitem"
               aria-label="Collections"
             >
               <svg
-                class="nav__icon"
+                className="nav__icon"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 role="presentation"
@@ -77,15 +61,15 @@ export default function Dashboard() {
               </svg>
             </a>
           </li>
-          <li class="nav__item">
+          <li className="nav__item">
             <a
               href="#home"
-              class="nav__link focus--box-shadow"
+              className="nav__link focus--box-shadow"
               role="menuitem"
               aria-label="Analytics"
             >
               <svg
-                class="nav__icon"
+                className="nav__icon"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 role="presentation"
@@ -96,151 +80,104 @@ export default function Dashboard() {
           </li>
         </ul>
       </nav>
-      <main class="main">
-        <header class="header">
-          <div class="header__wrapper">
-            <div class="profile">
-              <button class="profile__button">
-                <span class="profile__name">Jessica</span>
+      <main className="main">
+        <header className="header">
+          <div className="header__wrapper">
+            <div className="profile">
+              <button className="profile__button">
+                <span className="profile__name">Jessica</span>
                 <img
-                  class="profile__img"
+                  className="profile__img"
                   src="/images/img/julian-wan-WNoLnJo7tS8-unsplash.jpg"
                   alt="Profile picture"
-                  loading="lazy"
+                  
                 />
               </button>
             </div>
           </div>
         </header>
-        <section class="section">
-          <header class="section__header">
-            <h2 class="section__title">Teams</h2>
-            <a href="#home" class="section__link">
-              View all
-            </a>
+        <section className="wrapper_section">
+          <header className="section__header">
+            <h2 className="section__title">Statistics</h2>
+           
           </header>
-          <ul class="team">
-            <li class="team__item">
-              <a class="team__link focus--box-shadow" href="#home">
-                <div class="team__header">
-                  <ul class="photo">
-                    <li class="photo__item">
-                      <span class="photo__substrate">+2</span>
+          <ul className="team">
+            <li className="team__item">
+              <a className="team__link focus--box-shadow" href="#home">
+                <div className="team__header">
+                  <ul className="photo">
+                    <li className="photo__item">
+                      <span className="photo__substrate">+2</span>
                     </li>
-                    <li class="photo__item">
+                    <li className="photo__item">
                       <img
                         src="/images/img/julian-wan-WNoLnJo7tS8-unsplash.jpg"
                         alt="Jack's photo"
                       />
                     </li>
-                    <li class="photo__item">
+                    <li className="photo__item">
                       <img
                         src="/images/img/seth-doyle-uJ8LNVCBjFQ-unsplash.jpg"
                         alt="Jessica's photo"
                       />
                     </li>
                   </ul>
-                  <button
-                    class="setting setting--absolute focus--box-shadow"
-                    type="button"
-                  >
-                    <svg
-                      enable-background="new 0 0 515.555 515.555"
-                      height="512"
-                      viewBox="0 0 515.555 515.555"
-                      width="512"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="m303.347 18.875c25.167 25.167 25.167 65.971 0 91.138s-65.971 25.167-91.138 0-25.167-65.971 0-91.138c25.166-25.167 65.97-25.167 91.138 0" />
-                      <path d="m303.347 212.209c25.167 25.167 25.167 65.971 0 91.138s-65.971 25.167-91.138 0-25.167-65.971 0-91.138c25.166-25.167 65.97-25.167 91.138 0" />
-                      <path d="m303.347 405.541c25.167 25.167 25.167 65.971 0 91.138s-65.971 25.167-91.138 0-25.167-65.971 0-91.138c25.166-25.167 65.97-25.167 91.138 0" />
-                    </svg>
-                  </button>
+                  
                 </div>
-                <div class="team__inform">
-                  <p class="team__name">Product presentation</p>
-                  <time class="date" datetime="2020-05-05T10:00:00">
-                    05 May, 2020
+                <div className="team__inform">
+                  <p className="team__name">No of Reviews Posted</p>
+                  <time className="date" datetime="2020-05-05T10:00:00">
+                    55
                   </time>
                 </div>
               </a>
             </li>
-            <li class="team__item">
-              <a class="team__link focus--box-shadow" href="#home">
-                <div class="team__header">
-                  <ul class="photo">
-                    <li class="photo__item">
-                      <span class="photo__substrate">+6</span>
+            <li className="team__item">
+              <a className="team__link focus--box-shadow" href="#home">
+                <div className="team__header">
+                  <ul className="photo">
+                    <li className="photo__item">
+                      <span className="photo__substrate">+6</span>
                     </li>
-                    <li class="photo__item">
+                    <li className="photo__item">
                       <img
                         src="/images/img/raychan-9UkAHVs5y7Y-unsplash.jpg"
                         alt="Yulia's photo"
                       />
                     </li>
-                    <li class="photo__item">
+                    <li className="photo__item">
                       <img
                         src="/images/img/seth-doyle-uJ8LNVCBjFQ-unsplash.jpg"
                         alt="Jessica's photo"
                       />
                     </li>
                   </ul>
-                  <button
-                    class="setting setting--absolute focus--box-shadow"
-                    type="button"
-                  >
-                    <svg
-                      enable-background="new 0 0 515.555 515.555"
-                      height="512"
-                      viewBox="0 0 515.555 515.555"
-                      width="512"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="m303.347 18.875c25.167 25.167 25.167 65.971 0 91.138s-65.971 25.167-91.138 0-25.167-65.971 0-91.138c25.166-25.167 65.97-25.167 91.138 0" />
-                      <path d="m303.347 212.209c25.167 25.167 25.167 65.971 0 91.138s-65.971 25.167-91.138 0-25.167-65.971 0-91.138c25.166-25.167 65.97-25.167 91.138 0" />
-                      <path d="m303.347 405.541c25.167 25.167 25.167 65.971 0 91.138s-65.971 25.167-91.138 0-25.167-65.971 0-91.138c25.166-25.167 65.97-25.167 91.138 0" />
-                    </svg>
-                  </button>
+                  
                 </div>
-                <div class="team__inform">
-                  <p class="team__name">New project</p>
-                  <time class="date" datetime="2020-05-01T10:00:00">
-                    01 May, 2020
+                <div className="team__inform">
+                  <p className="team__name">No of Favourite Places</p>
+                  <time className="date" datetime="2020-05-01T10:00:00">
+                    20
                   </time>
                 </div>
               </a>
             </li>
-            <li class="team__item">
-              <a class="team__link focus--box-shadow" href="#home">
-                <div class="team__header">
-                  <ul class="photo">
-                    <li class="photo__item">
+            <li className="team__item">
+              <a className="team__link focus--box-shadow" href="#home">
+                <div className="team__header">
+                  <ul className="photo">
+                    <li className="photo__item">
                       <img
                         src="/images/img/seth-doyle-uJ8LNVCBjFQ-unsplash.jpg"
                         alt="Jessica's photo"
                       />
                     </li>
                   </ul>
-                  <button
-                    class="setting setting--absolute focus--box-shadow"
-                    type="button"
-                  >
-                    <svg
-                      enable-background="new 0 0 515.555 515.555"
-                      height="512"
-                      viewBox="0 0 515.555 515.555"
-                      width="512"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="m303.347 18.875c25.167 25.167 25.167 65.971 0 91.138s-65.971 25.167-91.138 0-25.167-65.971 0-91.138c25.166-25.167 65.97-25.167 91.138 0" />
-                      <path d="m303.347 212.209c25.167 25.167 25.167 65.971 0 91.138s-65.971 25.167-91.138 0-25.167-65.971 0-91.138c25.166-25.167 65.97-25.167 91.138 0" />
-                      <path d="m303.347 405.541c25.167 25.167 25.167 65.971 0 91.138s-65.971 25.167-91.138 0-25.167-65.971 0-91.138c25.166-25.167 65.97-25.167 91.138 0" />
-                    </svg>
-                  </button>
+                  
                 </div>
-                <div class="team__inform">
-                  <p class="team__name">Design development</p>
-                  <time class="date" datetime="2020-01-10T10:00:00">
+                <div className="team__inform">
+                  <p className="team__name">Design development</p>
+                  <time className="date" datetime="2020-01-10T10:00:00">
                     10 January, 2020
                   </time>
                 </div>
@@ -248,12 +185,12 @@ export default function Dashboard() {
             </li>
           </ul>
         </section>
-        <section class="section">
-          <header class="section__header">
-            <h2 class="section__title">Projects</h2>
-            <div class="section__control">
+        <section className="wrapper_section">
+          <header className="section__header">
+            <h2 className="section__title">Favourite Places</h2>
+            <div className="section__control">
               <button
-                class="section__button focus--box-shadow"
+                className="section__button focus--box-shadow"
                 type="button"
                 aria-label="Filter projects"
               >
@@ -266,7 +203,7 @@ export default function Dashboard() {
                 </svg>
               </button>
               <button
-                class="section__button section__button--painted focus--box-shadow"
+                className="section__button section__button--painted focus--box-shadow"
                 type="button"
                 aria-label="Add New project"
               >
@@ -280,13 +217,13 @@ export default function Dashboard() {
               </button>
             </div>
           </header>
-          <ul class="project">
-            <li class="project__item">
-              <a href="#home" class="project__link focus--box-shadow">
-                <div class="project__wrapper">
-                  <div class="project__element project__icon">
+          <ul className="project">
+            <li className="project__item">
+              <a href="#home" className="project__link focus--box-shadow">
+                <div className="project__wrapper">
+                  <div className="project__element project__icon">
                     <div
-                      class="icon icon--viking"
+                      className="icon icon--viking"
                       aria-label="Icon of the 'Showcase Design' project"
                     >
                       <svg
@@ -298,65 +235,32 @@ export default function Dashboard() {
                       </svg>
                     </div>
                   </div>
-                  <div class="project__element project__inform">
-                    <span class="project__inform-name">
-                      Product presentation
-                    </span>
+                  <div className="project__element project__inform">
+                  <h6 className="project__inform-name">
+                   Location Name
+                  </h6>
+                </div>
+                  <div className="project__element project__photo">
+                    <h6 style={{fontSize:'1rem',paddingTop:'.5rem'}}>Rating </h6>
                   </div>
-                  <div class="project__element project__photo">
-                    <ul class="photo">
-                      <li class="photo__item">
-                        <span class="photo__substrate">+2</span>
-                      </li>
-                      <li class="photo__item">
-                        <img
-                          src="/images/img/julian-wan-WNoLnJo7tS8-unsplash.jpg"
-                          alt="Jack's photo"
-                        />
-                      </li>
-                      <li class="photo__item">
-                        <img
-                          src="/images/img/seth-doyle-uJ8LNVCBjFQ-unsplash.jpg"
-                          alt="Jessica's pic"
-                        />
-                      </li>
-                    </ul>
+                  <div className="project__element project__date">
+                    Location
                   </div>
-                  <div class="project__element project__date">
-                    <time class="date" datetime="2020-05-05T10:00:00">
-                      05 May, 2020
-                    </time>
+                  <div className="project__element project__status">
+                    <span className="status status--published">View Details</span>
                   </div>
-                  <div class="project__element project__status">
-                    <span class="status status--published">Published</span>
-                  </div>
-                  <div class="project__element project__setting">
-                    <button
-                      class="setting setting--rotate focus--box-shadow"
-                      type="button"
-                    >
-                      <svg
-                        enable-background="new 0 0 515.555 515.555"
-                        height="512"
-                        viewBox="0 0 515.555 515.555"
-                        width="512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="m303.347 18.875c25.167 25.167 25.167 65.971 0 91.138s-65.971 25.167-91.138 0-25.167-65.971 0-91.138c25.166-25.167 65.97-25.167 91.138 0" />
-                        <path d="m303.347 212.209c25.167 25.167 25.167 65.971 0 91.138s-65.971 25.167-91.138 0-25.167-65.971 0-91.138c25.166-25.167 65.97-25.167 91.138 0" />
-                        <path d="m303.347 405.541c25.167 25.167 25.167 65.971 0 91.138s-65.971 25.167-91.138 0-25.167-65.971 0-91.138c25.166-25.167 65.97-25.167 91.138 0" />
-                      </svg>
-                    </button>
+                  <div className="project__element project__setting">
+                   
                   </div>
                 </div>
               </a>
             </li>
-            <li class="project__item">
-              <a href="#home" class="project__link focus--box-shadow">
-                <div class="project__wrapper">
-                  <div class="project__element project__icon">
+            <li className="project__item">
+              <a href="#home" className="project__link focus--box-shadow">
+                <div className="project__wrapper">
+                  <div className="project__element project__icon">
                     <div
-                      class="icon icon--rajah"
+                      className="icon icon--rajah"
                       aria-label="Icon for the project 'Book cover design'"
                     >
                       <svg
@@ -368,54 +272,32 @@ export default function Dashboard() {
                       </svg>
                     </div>
                   </div>
-                  <div class="project__element project__inform">
-                    <span class="project__inform-name">Book cover design</span>
+                  <div className="project__element project__inform">
+                    <h6 className="project__inform-name">
+                     Location Name
+                    </h6>
                   </div>
-                  <div class="project__element project__photo">
-                    <ul class="photo">
-                      <li class="photo__item">
-                        <img
-                          src="/images/img/seth-doyle-uJ8LNVCBjFQ-unsplash.jpg"
-                          alt="Jessica's photo"
-                        />
-                      </li>
-                    </ul>
+                  <div className="project__element project__photo">
+                    <h6 style={{fontSize:'1rem',paddingTop:'.5rem'}}>Rating </h6>
                   </div>
-                  <div class="project__element project__date">
-                    <time class="date" datetime="2020-05-05T10:00:00">
-                      13 February, 2020
-                    </time>
+                  <div className="project__element project__date">
+                    Location
                   </div>
-                  <div class="project__element project__status">
-                    <span class="status status--published">Published</span>
+                  <div className="project__element project__status">
+                    <span className="status status--published">View Details</span>
                   </div>
-                  <div class="project__element project__setting">
-                    <button
-                      class="setting setting--rotate focus--box-shadow"
-                      type="button"
-                    >
-                      <svg
-                        enable-background="new 0 0 515.555 515.555"
-                        height="512"
-                        viewBox="0 0 515.555 515.555"
-                        width="512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="m303.347 18.875c25.167 25.167 25.167 65.971 0 91.138s-65.971 25.167-91.138 0-25.167-65.971 0-91.138c25.166-25.167 65.97-25.167 91.138 0" />
-                        <path d="m303.347 212.209c25.167 25.167 25.167 65.971 0 91.138s-65.971 25.167-91.138 0-25.167-65.971 0-91.138c25.166-25.167 65.97-25.167 91.138 0" />
-                        <path d="m303.347 405.541c25.167 25.167 25.167 65.971 0 91.138s-65.971 25.167-91.138 0-25.167-65.971 0-91.138c25.166-25.167 65.97-25.167 91.138 0" />
-                      </svg>
-                    </button>
+                  <div className="project__element project__setting">
+                   
                   </div>
                 </div>
               </a>
             </li>
-            <li class="project__item">
-              <a href="#home" class="project__link focus--box-shadow">
-                <div class="project__wrapper">
-                  <div class="project__element project__icon">
+            <li className="project__item">
+              <a href="#home" className="project__link focus--box-shadow">
+                <div className="project__wrapper">
+                  <div className="project__element project__icon">
                     <div
-                      class="icon icon--viking"
+                      className="icon icon--viking"
                       aria-label="Icon for the project 'Book cover design'"
                     >
                       <svg
@@ -427,46 +309,22 @@ export default function Dashboard() {
                       </svg>
                     </div>
                   </div>
-                  <div class="project__element project__inform">
-                    <span class="project__inform-name">
-                      Logo redesign for eyeglass store
-                    </span>
+                  <div className="project__element project__inform">
+                    <h6 className="project__inform-name">
+                     Location Name
+                    </h6>
                   </div>
-                  <div class="project__element project__photo">
-                    <ul class="photo">
-                      <li class="photo__item">
-                        <img
-                          src="/images/img/seth-doyle-uJ8LNVCBjFQ-unsplash.jpg"
-                          alt="Jessica's photo"
-                        />
-                      </li>
-                    </ul>
+                  <div className="project__element project__photo">
+                    <h6 style={{fontSize:'1rem',paddingTop:'.5rem'}}>Rating </h6>
                   </div>
-                  <div class="project__element project__date">
-                    <time class="date" datetime="2020-05-05T10:00:00">
-                      01 February, 2020
-                    </time>
+                  <div className="project__element project__date">
+                    Location
                   </div>
-                  <div class="project__element project__status">
-                    <span class="status status--in-work">In work</span>
+                  <div className="project__element project__status">
+                    <span className="status status--published">View Details</span>
                   </div>
-                  <div class="project__element project__setting">
-                    <button
-                      class="setting setting--rotate focus--box-shadow"
-                      type="button"
-                    >
-                      <svg
-                        enable-background="new 0 0 515.555 515.555"
-                        height="512"
-                        viewBox="0 0 515.555 515.555"
-                        width="512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="m303.347 18.875c25.167 25.167 25.167 65.971 0 91.138s-65.971 25.167-91.138 0-25.167-65.971 0-91.138c25.166-25.167 65.97-25.167 91.138 0" />
-                        <path d="m303.347 212.209c25.167 25.167 25.167 65.971 0 91.138s-65.971 25.167-91.138 0-25.167-65.971 0-91.138c25.166-25.167 65.97-25.167 91.138 0" />
-                        <path d="m303.347 405.541c25.167 25.167 25.167 65.971 0 91.138s-65.971 25.167-91.138 0-25.167-65.971 0-91.138c25.166-25.167 65.97-25.167 91.138 0" />
-                      </svg>
-                    </button>
+                  <div className="project__element project__setting">
+                   
                   </div>
                 </div>
               </a>
@@ -474,11 +332,11 @@ export default function Dashboard() {
           </ul>
         </section>
       </main>
-      <aside class="aside">
-        <section class="section">
-          <div class="aside__control">
+      <aside className="aside">
+        <section className="wrapper_section">
+          <div className="aside__control">
             <button
-              class="aside__button focus--box-shadow"
+              className="aside__button focus--box-shadow"
               type="button"
               aria-label="Close profile settings"
             >
@@ -491,7 +349,7 @@ export default function Dashboard() {
               </svg>
             </button>
             <button
-              class="aside__button aside__button--notification focus--box-shadow"
+              className="aside__button aside__button--notification focus--box-shadow"
               type="button"
               aria-label="You have new feedback"
             >
@@ -504,44 +362,46 @@ export default function Dashboard() {
               </svg>
             </button>
           </div>
-          <div class="profile-main">
+          <div className="profile-main">
             <button
-              class="profile-main__setting focus--box-shadow"
+              className="profile-main__setting focus--box-shadow"
               type="button"
             >
               <img
-                class="profile-main__photo"
+                className="profile-main__photo"
                 src="/images/img/seth-doyle-uJ8LNVCBjFQ-unsplash.jpg"
                 alt="Profile pic"
               />
             </button>
-            <h1 class="profile-main__name">Jessica</h1>
+            <h1 className="profile-main__name">Jessica</h1>
           </div>
-          <ul class="statistics">
-            <li class="statistics__entry">
-              <a class="statistics__entry-description" href="#home">
-                Teams
-              </a>
-              <span class="statistics__entry-quantity">5</span>
+          <ul className="statistics">
+            <li className="statistics__entry">
+              <h6 className="statistics__entry-description" href="#home">
+                Username
+              </h6>
+              <span className="statistics__entry-quantity">Ibad Ahmad</span>
             </li>
-            <li class="statistics__entry">
-              <a class="statistics__entry-description" href="#home">
-                Projects
-              </a>
-              <span class="statistics__entry-quantity">3</span>
+            <li className="statistics__entry">
+              <h6 className="statistics__entry-description" href="#home">
+              Email
+              </h6>
+              <span className="statistics__entry-quantity"> ibad@gmail.com</span>
             </li>
-            <li class="statistics__entry">
-              <a class="statistics__entry-description" href="#home">
-                Feedback
-              </a>
-              <span class="statistics__entry-quantity">48</span>
+            <li className="statistics__entry">
+              <h6 className="statistics__entry-description" href="#home">
+                Created At
+              </h6>
+              <span className="statistics__entry-quantity"> <time className="date" datetime="2020-05-05T10:00:00">
+              05 May, 2020
+            </time></span>
             </li>
           </ul>
-          <div class="banner">
-            <h3 class="banner__title">Premium access</h3>
-            <p class="banner__description">Create teams without limits</p>
-            <button class="banner__button" type="button">
-              Get Premium Access
+          <div className="banner">
+            <h3 className="banner__title">Premium access</h3>
+            <p className="banner__description">Search places without limits</p>
+            <button className="banner__button" type="button">
+              Start Doing Now
             </button>
           </div>
         </section>

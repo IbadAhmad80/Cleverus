@@ -24,9 +24,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-
-html,
-body {
+.wrapper{
   min-width: 320px;
   background-color: var(--athens-gray);
   font-family: var(--font-roboto);
@@ -62,9 +60,11 @@ body {
   max-width: 100% !important;
   max-height: 100% !important;
 }
-
+.wrapper .profile-main__name{
+  padding-top: 10px !important;
+}
 .wrapper svg path {
-  fill: var(--dune) !important;
+  
   transition: fill 0.3s ease !important;
 }
 
@@ -173,30 +173,36 @@ body {
 .wrapper .nav {
   display: flex;
   width: 5.6rem;
-  height: calc(100vh - 19.25rem);
-  min-height: 40rem;
+  height: calc(100vh - 15.25rem);
+  min-height: 30rem;
   max-height: 50rem;
   margin: 11.53rem 2.45rem;
-  padding: 7.5rem 0.825rem;
+  padding: 5.5rem 0.825rem;
   background-color: var(--alabaster);
   border-radius: 20px;
+  
+ 
 }
 
 .wrapper .nav__list {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center !important;
   flex-wrap: wrap;
   width: 100%;
 }
 
+
 .wrapper .nav__link {
+  margin-left: -2rem;
   display: block;
+  border:2px solid black;
   padding: 10px;
   font-size: 0;
+  width: 50px;
+  height: 50px;
   border-radius: 10px;
   background-color: var(--alabaster);
-  text-align: center;
   transition: background-color 0.3s ease;
 }
 
@@ -259,13 +265,16 @@ body {
     padding: 0.5rem 5rem;
     border-radius: 10px 10px 0 0;
     box-shadow: 0px 3px 10px 4px var(--dune-rgba-2);
+   
   }
 
   .wrapper .nav__list {
-    justify-content: space-around;
+    justify-content: space-around !important;
+
   }
 
   .wrapper .nav__item {
+    margin-right: -1rem;
     width: 3.3rem;
     height: 3.3rem;
   }
@@ -290,38 +299,39 @@ body {
 
 /* Main */
 
-.wrapper .main {
+.main {
   width: calc(100% - 46.125rem);
   margin: 0 3.75rem 6rem 1.875rem;
 }
 
 @media (max-width: 1800px) {
-  .wrapper .main {
+  .main {
     width: calc(100% - 38.8125rem);
     margin: 0 3rem 6rem 1.5rem;
   }
 }
 
 @media (max-width: 1400px) {
-  .wrapper .main {
+  .main {
     width: calc(100% - 33.8125rem);
     margin: 0 2rem 6rem 1rem;
   }
 }
 
 @media (max-width: 1200px) {
-  .wrapper .main {
+  .main {
     width: calc(100% - 27.125rem);
   }
 }
 
 @media (max-width: 992px) {
-  .wrapper .main {
+  .main {
     width: 100%;
     order: 2;
     margin: 0 1rem 6rem 1rem;
   }
 }
+
 
 /* Header */
 
@@ -409,6 +419,7 @@ body {
 
 .wrapper .profile__button:focus .profile__name {
   color: var(--blue-violet);
+
 }
 
 @media (hover: hover) {
@@ -487,7 +498,7 @@ body {
 
 /* Section */
 
-.wrapper .section:not(:last-child) {
+.wrapper .wrapper_section:not(:last-child) {
   margin-bottom: 4rem;
 }
 
@@ -580,10 +591,22 @@ body {
 
 /* Team */
 
-.wrapper .team {
+.wrapper .team{
   display: flex;
   justify-content: start;
-  margin: 0 -0.6rem;
+  width:100% !important;
+  margin: 0 -.25rem !important;
+  padding: 0 !important;
+  /* margin: 0 0 0 -2.3rem; */
+}
+
+.wrapper .project,.wrapper .statistics{
+ 
+  
+  width:100% !important;
+  margin: 0 -.1rem !important;
+  padding: 0 .2rem !important;
+  /* margin: 0 0 0 -2.3rem; */
 }
 
 .wrapper .team__header {
@@ -674,12 +697,20 @@ body {
 }
 
 @media (max-width: 768px) {
+
+.wrapper .team{
+  flex-direction: column;
+  row-gap: 2rem;
+  margin: 0 -.2rem !important
+  
+}
+
   .wrapper .team__item {
-    width: 100%;
+    width: 100% !important;
   }
 
-  .wrapper .team__item:nth-child(2n) {
-    display: none;
+  .wrapper .team__item  {
+    margin: 0 0 0 0 !important
   }
 }
 
@@ -1148,15 +1179,18 @@ body {
     padding: 1rem 0.5rem;
   }
 
-  .wrapper .statistics__entry-description,
+  .wrapper .statistics__entry-description{
+  font-size: 1.1rem;
+}
+
   .wrapper .statistics__entry-quantity {
-    font-size: 1.3rem;
+    font-size: .9rem;
   }
 }
 
 @media (max-width: 992px) {
   .wrapper .statistics {
-    max-width: 480px;
+   
     margin: 0 auto 3rem;
   }
 
@@ -1164,16 +1198,14 @@ body {
     padding: 0.75rem 0.35rem;
   }
 
-  .wrapper .statistics__entry-description,
-  .wrapper .statistics__entry-quantity {
-    font-size: 1.1rem;
-  }
+  
 }
 
 /* Banner */
 
 .wrapper .banner {
-  padding: 3rem;
+  margin-top: 5rem !important;
+  padding: 3rem 1rem ;
   text-align: center;
   background-image: url("../img/81744.jpg");
   background-size: cover;
@@ -1192,11 +1224,11 @@ body {
 }
 
 .wrapper .banner__button {
-  width: 100%;
-  padding: 1.25rem 2rem;
+  width: 70%;
+  padding: 1.25rem 1.25rem;
   margin: 0;
   color: var(--alabaster);
-  font-size: 1.2rem;
+  font-size: 1rem;
   border-radius: 10px;
   background-color: var(--dune);
 }
