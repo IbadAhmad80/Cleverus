@@ -1,5 +1,6 @@
 import React from "react";
 import "./styles/index.css";
+import { Link } from "react-router-dom";
 
 export default function Dashboard() {
   return (
@@ -7,8 +8,8 @@ export default function Dashboard() {
       <nav className="nav">
         <ul className="nav__list" role="menubar">
           <li className="nav__item nav__item--isActive">
-            <a
-              href="#home"
+            <Link
+              to="/"
               className="nav__link focus--box-shadow"
               role="menuitem"
               aria-label="Home"
@@ -24,12 +25,12 @@ export default function Dashboard() {
                   d="M20,8h0L14,2.74a3,3,0,0,0-4,0L4,8a3,3,0,0,0-1,2.26V19a3,3,0,0,0,3,3H18a3,3,0,0,0,3-3V10.25A3,3,0,0,0,20,8ZM14,20H10V15a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1Zm5-1a1,1,0,0,1-1,1H16V15a3,3,0,0,0-3-3H11a3,3,0,0,0-3,3v5H6a1,1,0,0,1-1-1V10.25a1,1,0,0,1,.34-.75l6-5.25a1,1,0,0,1,1.32,0l6,5.25a1,1,0,0,1,.34.75Z"
                 />
               </svg>
-            </a>
+            </Link>
           </li>
-          
+
           <li className="nav__item">
-            <a
-              href="#home"
+            <Link
+              to="/about"
               className="nav__link focus--box-shadow"
               role="menuitem"
               aria-label="Informational messages"
@@ -40,13 +41,13 @@ export default function Dashboard() {
                 viewBox="0 0 24 24"
                 role="presentation"
               >
-                <path d="M12,11a1,1,0,0,0-1,1v3a1,1,0,0,0,2,0V12A1,1,0,0,0,12,11Zm0-3a1,1,0,1,0,1,1A1,1,0,0,0,12,8Zm0-6A10,10,0,0,0,2,12a9.89,9.89,0,0,0,2.26,6.33l-2,2a1,1,0,0,0-.21,1.09A1,1,0,0,0,3,22h9A10,10,0,0,0,12,2Zm0,18H5.41l.93-.93a1,1,0,0,0,.3-.71,1,1,0,0,0-.3-.7A8,8,0,1,1,12,20Z" />
+                <path d="M7,10H9A1,1,0,0,0,9,8H7a1,1,0,0,0,0,2ZM21,4H13V3a1,1,0,0,0-2,0V4H3A1,1,0,0,0,2,5V15a3,3,0,0,0,3,3H9.59l-2.3,2.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0L11,19.41V21a1,1,0,0,0,2,0V19.41l2.29,2.3a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42L14.41,18H19a3,3,0,0,0,3-3V5A1,1,0,0,0,21,4ZM20,15a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V6H20ZM7,14h6a1,1,0,0,0,0-2H7a1,1,0,0,0,0,2Z" />
               </svg>
-            </a>
+            </Link>
           </li>
           <li className="nav__item">
-            <a
-              href="#home"
+            <Link
+              to="/places"
               className="nav__link focus--box-shadow"
               role="menuitem"
               aria-label="Collections"
@@ -57,13 +58,13 @@ export default function Dashboard() {
                 viewBox="0 0 24 24"
                 role="presentation"
               >
-                <path d="M2.5,10.56l9,5.2a1,1,0,0,0,1,0l9-5.2a1,1,0,0,0,0-1.73l-9-5.2a1,1,0,0,0-1,0l-9,5.2a1,1,0,0,0,0,1.73ZM12,5.65l7,4-7,4.05L5,9.69Zm8.5,7.79L12,18.35,3.5,13.44a1,1,0,0,0-1.37.36,1,1,0,0,0,.37,1.37l9,5.2a1,1,0,0,0,1,0l9-5.2a1,1,0,0,0,.37-1.37A1,1,0,0,0,20.5,13.44Z" />
+                <path d="M21.71,20.29,18,16.61A9,9,0,1,0,16.61,18l3.68,3.68a1,1,0,0,0,1.42,0A1,1,0,0,0,21.71,20.29ZM11,18a7,7,0,1,1,7-7A7,7,0,0,1,11,18Z" />
               </svg>
-            </a>
+            </Link>
           </li>
           <li className="nav__item">
-            <a
-              href="#home"
+            <Link
+              to="/contact"
               className="nav__link focus--box-shadow"
               role="menuitem"
               aria-label="Analytics"
@@ -71,12 +72,12 @@ export default function Dashboard() {
               <svg
                 className="nav__icon"
                 xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
+                viewBox="new 0 0 24 24"
                 role="presentation"
               >
-                <path d="M6,13H2a1,1,0,0,0-1,1v8a1,1,0,0,0,1,1H6a1,1,0,0,0,1-1V14A1,1,0,0,0,6,13ZM5,21H3V15H5ZM22,9H18a1,1,0,0,0-1,1V22a1,1,0,0,0,1,1h4a1,1,0,0,0,1-1V10A1,1,0,0,0,22,9ZM21,21H19V11h2ZM14,1H10A1,1,0,0,0,9,2V22a1,1,0,0,0,1,1h4a1,1,0,0,0,1-1V2A1,1,0,0,0,14,1ZM13,21H11V3h2Z" />
+                <path d="M12,11a1,1,0,0,0-1,1v3a1,1,0,0,0,2,0V12A1,1,0,0,0,12,11Zm0-3a1,1,0,1,0,1,1A1,1,0,0,0,12,8Zm0-6A10,10,0,0,0,2,12a9.89,9.89,0,0,0,2.26,6.33l-2,2a1,1,0,0,0-.21,1.09A1,1,0,0,0,3,22h9A10,10,0,0,0,12,2Zm0,18H5.41l.93-.93a1,1,0,0,0,.3-.71,1,1,0,0,0-.3-.7A8,8,0,1,1,12,20Z" />
               </svg>
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
@@ -90,7 +91,6 @@ export default function Dashboard() {
                   className="profile__img"
                   src="/images/img/julian-wan-WNoLnJo7tS8-unsplash.jpg"
                   alt="Profile picture"
-                  
                 />
               </button>
             </div>
@@ -99,7 +99,6 @@ export default function Dashboard() {
         <section className="wrapper_section">
           <header className="section__header">
             <h2 className="section__title">Statistics</h2>
-           
           </header>
           <ul className="team">
             <li className="team__item">
@@ -122,7 +121,6 @@ export default function Dashboard() {
                       />
                     </li>
                   </ul>
-                  
                 </div>
                 <div className="team__inform">
                   <p className="team__name">No of Reviews Posted</p>
@@ -152,7 +150,6 @@ export default function Dashboard() {
                       />
                     </li>
                   </ul>
-                  
                 </div>
                 <div className="team__inform">
                   <p className="team__name">No of Favourite Places</p>
@@ -173,7 +170,6 @@ export default function Dashboard() {
                       />
                     </li>
                   </ul>
-                  
                 </div>
                 <div className="team__inform">
                   <p className="team__name">Design development</p>
@@ -236,22 +232,20 @@ export default function Dashboard() {
                     </div>
                   </div>
                   <div className="project__element project__inform">
-                  <h6 className="project__inform-name">
-                   Location Name
-                  </h6>
-                </div>
+                    <h6 className="project__inform-name">Location Name</h6>
+                  </div>
                   <div className="project__element project__photo">
-                    <h6 style={{fontSize:'1rem',paddingTop:'.5rem'}}>Rating </h6>
+                    <h6 style={{ fontSize: "1rem", paddingTop: ".5rem" }}>
+                      Rating{" "}
+                    </h6>
                   </div>
-                  <div className="project__element project__date">
-                    Location
-                  </div>
+                  <div className="project__element project__date">Location</div>
                   <div className="project__element project__status">
-                    <span className="status status--published">View Details</span>
+                    <span className="status status--published">
+                      View Details
+                    </span>
                   </div>
-                  <div className="project__element project__setting">
-                   
-                  </div>
+                  <div className="project__element project__setting"></div>
                 </div>
               </a>
             </li>
@@ -273,22 +267,20 @@ export default function Dashboard() {
                     </div>
                   </div>
                   <div className="project__element project__inform">
-                    <h6 className="project__inform-name">
-                     Location Name
-                    </h6>
+                    <h6 className="project__inform-name">Location Name</h6>
                   </div>
                   <div className="project__element project__photo">
-                    <h6 style={{fontSize:'1rem',paddingTop:'.5rem'}}>Rating </h6>
+                    <h6 style={{ fontSize: "1rem", paddingTop: ".5rem" }}>
+                      Rating{" "}
+                    </h6>
                   </div>
-                  <div className="project__element project__date">
-                    Location
-                  </div>
+                  <div className="project__element project__date">Location</div>
                   <div className="project__element project__status">
-                    <span className="status status--published">View Details</span>
+                    <span className="status status--published">
+                      View Details
+                    </span>
                   </div>
-                  <div className="project__element project__setting">
-                   
-                  </div>
+                  <div className="project__element project__setting"></div>
                 </div>
               </a>
             </li>
@@ -310,22 +302,20 @@ export default function Dashboard() {
                     </div>
                   </div>
                   <div className="project__element project__inform">
-                    <h6 className="project__inform-name">
-                     Location Name
-                    </h6>
+                    <h6 className="project__inform-name">Location Name</h6>
                   </div>
                   <div className="project__element project__photo">
-                    <h6 style={{fontSize:'1rem',paddingTop:'.5rem'}}>Rating </h6>
+                    <h6 style={{ fontSize: "1rem", paddingTop: ".5rem" }}>
+                      Rating{" "}
+                    </h6>
                   </div>
-                  <div className="project__element project__date">
-                    Location
-                  </div>
+                  <div className="project__element project__date">Location</div>
                   <div className="project__element project__status">
-                    <span className="status status--published">View Details</span>
+                    <span className="status status--published">
+                      View Details
+                    </span>
                   </div>
-                  <div className="project__element project__setting">
-                   
-                  </div>
+                  <div className="project__element project__setting"></div>
                 </div>
               </a>
             </li>
@@ -384,17 +374,23 @@ export default function Dashboard() {
             </li>
             <li className="statistics__entry">
               <h6 className="statistics__entry-description" href="#home">
-              Email
+                Email
               </h6>
-              <span className="statistics__entry-quantity"> ibad@gmail.com</span>
+              <span className="statistics__entry-quantity">
+                {" "}
+                ibad@gmail.com
+              </span>
             </li>
             <li className="statistics__entry">
               <h6 className="statistics__entry-description" href="#home">
                 Created At
               </h6>
-              <span className="statistics__entry-quantity"> <time className="date" datetime="2020-05-05T10:00:00">
-              05 May, 2020
-            </time></span>
+              <span className="statistics__entry-quantity">
+                {" "}
+                <time className="date" datetime="2020-05-05T10:00:00">
+                  05 May, 2020
+                </time>
+              </span>
             </li>
           </ul>
           <div className="banner">

@@ -155,29 +155,6 @@ export default function SignIn() {
                 value="Sign up"
               />
             </Link>
-            <p className="social-text">Or Sign up with social platforms</p>
-            <div className="social-media">
-              <a href="home" className="social-icon">
-                <i className="fab fa-facebook-f">
-                  <FaFacebook />
-                </i>
-              </a>
-              <a href="home" className="social-icon">
-                <i className="fab fa-twitter">
-                  <FaTwitter />
-                </i>
-              </a>
-              <a href="home" className="social-icon">
-                <i className="fab fa-google">
-                  <FaGoogle />
-                </i>
-              </a>
-              <a href="home" className="social-icon">
-                <i className="fab fa-linkedin-in">
-                  <FaLinkedin />
-                </i>
-              </a>
-            </div>
 
             <Link to="/">
               <button to="/" className="account-btn-2">

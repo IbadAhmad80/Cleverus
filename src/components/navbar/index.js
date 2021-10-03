@@ -68,12 +68,11 @@ export default function NavBar() {
           // fixed="top"
         >
           <Container>
-            <Navbar.Brand
-              href="#home"
-              className="fs-2 text-capitalize fw-bolder py-2"
-            >
-              Clever<span style={{ color: "#f75757" }}>Us.</span>
-            </Navbar.Brand>
+            <Link to="/">
+              <Navbar.Brand className="fs-2 text-capitalize fw-bolder py-2">
+                Clever<span style={{ color: "#f75757" }}>Us.</span>
+              </Navbar.Brand>
+            </Link>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="m-auto text-center">
