@@ -21,7 +21,7 @@ export default function FamousPlaces() {
             <div className="col-lg-4 col-md-6 mb-5">
               <div className="card bg-transparent border-0">
                 <img
-                  src="/images/blog/1.jpg"
+                  src="https://bootstrapmade.com/demo/templates/Presento/assets/img/portfolio/portfolio-2.jpg"
                   alt=""
                   className="img-fluid rounded"
                 />
@@ -52,7 +52,7 @@ export default function FamousPlaces() {
             <div className="col-lg-4 col-md-6 mb-5">
               <div className="card border-0 bg-transparent">
                 <img
-                  src="/images/blog/2.jpg"
+                  src="https://bootstrapmade.com/demo/templates/Presento/assets/img/portfolio/portfolio-1.jpg"
                   alt=""
                   className="img-fluid rounded"
                 />
@@ -83,7 +83,7 @@ export default function FamousPlaces() {
             <div className="col-lg-4 col-md-6 mb-5">
               <div className="card border-0 bg-transparent">
                 <img
-                  src="/images/blog/3.jpg"
+                  src="https://bootstrapmade.com/demo/templates/Presento/assets/img/portfolio/portfolio-3.jpg"
                   alt=""
                   className="img-fluid rounded"
                 />

@@ -22,7 +22,7 @@ export default function Team() {
             <div className="team-item-wrap mb-5">
               <div className="team-item position-relative">
                 <img
-                  src="/images/team/team-2.jpg"
+                  src="https://bootstrapmade.com/demo/templates/Presento/assets/img/testimonials/testimonials-4.jpg"
                   alt=""
                   className="img-fluid w-100"
                 />
@@ -79,7 +79,7 @@ export default function Team() {
             <div className="team-item-wrap mb-5">
               <div className="team-item position-relative w-100">
                 <img
-                  src="/images/team/team-4.jpg"
+                  src="https://bootstrapmade.com/demo/templates/Presento/assets/img/testimonials/testimonials-1.jpg"
                   alt=""
                   className="img-fluid w-100"
                 />
@@ -136,7 +136,7 @@ export default function Team() {
             <div className="team-item-wrap mb-5">
               <div className="team-item position-relative">
                 <img
-                  src="/images/team/team-3.jpg"
+                  src="https://bootstrapmade.com/demo/templates/Presento/assets/img/testimonials/testimonials-5.jpg"
                   alt=""
                   className="img-fluid w-100"
                 />

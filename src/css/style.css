@@ -592,7 +592,8 @@ a:focus {
 }
 
 .bg-counter {
-  background: url("../images/bg/counter.jpg") no-repeat;
+  background: url("https://bootstrapmade.com/demo/templates/Presento/assets/img/portfolio/portfolio-8.jpg")
+    no-repeat;
   background-size: cover;
 }
 

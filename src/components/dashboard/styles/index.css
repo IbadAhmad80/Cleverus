@@ -9,7 +9,7 @@
   --dune-rgba-2: rgba(36, 34, 33, 0.2);
   --dune-rgba-5: rgba(36, 34, 33, 0.5);
   --alabaster: #f8f8f8;
-  --true-v: #9174d8;
+  --true-v: #f75757;
   --true-v-rgba-5: rgba(145, 116, 216, 0.5);
   --silver: #c7c7c7;
   --blue-violet: #7a61b7;
@@ -286,7 +286,7 @@
 
 @media (max-width: 768px) {
   .wrapper .nav {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.5rem 0.5rem 2rem;
   }
 }
 
@@ -625,7 +625,7 @@
 
 @media (hover: hover) {
   .wrapper .team__link:hover {
-    background-color: var(--true-v);
+    background-color: #f75757;
   }
 
   .wrapper .team__link:hover .team__name,

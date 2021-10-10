@@ -2,7 +2,7 @@ import React from "react";
 import "./style.css";
 import { AiOutlineUser, AiOutlineKey } from "react-icons/ai";
 import { BiEnvelopeOpen } from "react-icons/bi";
-import { FaTwitter, FaGoogle, FaFacebook, FaLinkedin } from "react-icons/fa";
+import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export default function SignIn() {
@@ -79,26 +79,14 @@ export default function SignIn() {
             </Link>
             <p className="social-text">Or Sign in with social platforms</p>
             <div className="social-media">
-              <a href="home" className="social-icon">
-                <i className="fab fa-facebook-f">
-                  <FaFacebook />
-                </i>
-              </a>
-              <a href="home" className="social-icon">
-                <i className="fab fa-twitter">
-                  <FaTwitter />
-                </i>
-              </a>
+              
               <a href="home" className="social-icon">
                 <i className="fab fa-google">
-                  <FaGoogle />
+                  <FaGoogle /> 
                 </i>
+                Sign in with Google
               </a>
-              <a href="home" className="social-icon">
-                <i className="fab fa-linkedin-in">
-                  <FaLinkedin />
-                </i>
-              </a>
+            
             </div>
             <Link to="/">
               <button to="/" className="account-btn solid">

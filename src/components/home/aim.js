@@ -49,7 +49,7 @@ export default function Aim({ size }) {
               <span className="h6 text-color ">
               What is our Aim
               </span>
-              <h2 className="mt-3 mb-4 content-title">
+              <h2 className="mt-3 mb-1 content-title">
               Provide Cutting Edge solution to your searches
               </h2>
             </div>
