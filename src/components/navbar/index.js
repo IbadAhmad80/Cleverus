@@ -13,7 +13,7 @@ export default function NavBar() {
             <div className="col-lg-2 col-md-4">
               <div className="header-top-socials text-center text-lg-left text-md-left">
                 <a
-                  href="https://www.facebook.com/themefisher"
+                  href="#"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -22,7 +22,7 @@ export default function NavBar() {
                   </i>
                 </a>
                 <a
-                  href="https://twitter.com/themefisher"
+                  href="#"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -31,7 +31,7 @@ export default function NavBar() {
                   </i>
                 </a>
                 <a
-                  href="https://github.com/themefisher/"
+                  href="#"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -43,14 +43,14 @@ export default function NavBar() {
             </div>
             <div className="col-lg-10 col-md-8 text-center">
               <div className="header-top-info my-md-0 mb-md-0 mb-2">
-                <a href="tel:+23-345-67890">
-                  Call Us : <span>+23-345-67890 </span>
+                <a href="tel:+23-3032182370">
+                  Call Us : <span>+92-3032182370</span>
                 </a>
-                <a href="mailto:support@gmail.com">
+                <a href="mailto:clever@gmail.com">
                   <i className="mx-2">
                     <FaEnvelope />
                   </i>
-                  <span>support@gmail.com</span>
+                  <span>clever@gmail.com</span>
                 </a>
               </div>
             </div>

@@ -87,9 +87,9 @@ export default function Footer() {
                 </h3>
               </div>
               <h6>
-                <a href="tel:+23-345-67890">clever@gmail.com</a>
+                <a href="mailto:clever@gmail.com">clever@gmail.com</a>
               </h6>
-              <a href="mailto:support@gmail.com">
+              <a href="tel:+92-3032182370">
                 <span className="text-color h6">+92-3032182370</span>
               </a>
             </div>
@@ -101,21 +101,15 @@ export default function Footer() {
             <div className="col-lg-6">
               <div className="copyright">
                 &copy; Copyright Reserved to{" "}
-                <span className="text-color">Megakit.</span> by{" "}
-                <a
-                  href="https://themefisher.com/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Themefisher
-                </a>
+                <span className="text-color">CleverUs.</span>
+               
               </div>
             </div>
             <div className="col-lg-6 text-left text-lg-right">
               <ul className="list-inline footer-socials">
                 <li className="list-inline-item">
                   <a
-                    href="https://www.facebook.com/themefisher"
+                    href="#"
                     className="text-black"
                   >
                     <i className="mx-2 fs-5  ">
@@ -126,7 +120,7 @@ export default function Footer() {
                 </li>
                 <li className="list-inline-item">
                   <a
-                    href="https://twitter.com/themefisher"
+                    href="#"
                     className="text-black"
                   >
                     <i className="mx-2 fs-5  ">
@@ -137,7 +131,7 @@ export default function Footer() {
                 </li>
                 <li className="list-inline-item">
                   <a
-                    href="https://www.pinterest.com/themefisher/"
+                    href="#"
                     className="text-black"
                   >
                     <i className="mx-2 fs-5  ">
