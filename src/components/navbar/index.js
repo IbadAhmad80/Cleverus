@@ -12,29 +12,17 @@ export default function NavBar() {
           <div className="row justify-content-between align-items-center">
             <div className="col-lg-2 col-md-4">
               <div className="header-top-socials text-center text-lg-left text-md-left">
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noreferrer"
-                >
+                <a href="#" target="_blank" rel="noreferrer">
                   <i className="ti-facebook">
                     <FaFacebook />
                   </i>
                 </a>
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noreferrer"
-                >
+                <a href="#" target="_blank" rel="noreferrer">
                   <i className="ti-twitter">
                     <FaTwitter />
                   </i>
                 </a>
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noreferrer"
-                >
+                <a href="#" target="_blank" rel="noreferrer">
                   <i className="ti-github">
                     <FaGithubAlt />
                   </i>
@@ -80,7 +68,7 @@ export default function NavBar() {
                   className="px-2 nav-links text-uppercase nav-link"
                   href="#home"
                 >
-                  <Link to="/" className="nav-link">
+                  <Link to="/home" className="nav-link">
                     Home
                   </Link>
                 </Nav.Link>
@@ -88,7 +76,7 @@ export default function NavBar() {
                   className="px-3 nav-links text-uppercase nav-link"
                   href="#contact"
                 >
-                  <Link to="/places" className="nav-link">
+                  <Link to="/" className="nav-link">
                     Find Place
                   </Link>
                 </Nav.Link>

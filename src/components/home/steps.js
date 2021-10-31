@@ -4,6 +4,11 @@ import { AiOutlineFileSearch, AiOutlineMergeCells } from "react-icons/ai";
 import { VscServerProcess } from "react-icons/vsc";
 import { SiZapier, SiFirebase } from "react-icons/si";
 import { FaLaptopCode } from "react-icons/fa";
+import axios from "axios";
+
+// axios.defaults.headers.common = {
+//   Authorization: `BEARER ${process.env.REACT_APP_API_KEY}`,
+// };
 
 export default function Steps() {
   return (

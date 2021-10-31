@@ -3,7 +3,14 @@ import "./style.css";
 import { AiOutlineUser, AiOutlineKey } from "react-icons/ai";
 import { BiEnvelopeOpen } from "react-icons/bi";
 import { FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import {
+  auth,
+  signInWithEmailAndPassword,
+  signInWithGoogle,
+  registerWithEmailAndPassword,
+} from "../../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 export default function SignIn() {
   const [signInData, setSignInData] = React.useState({
@@ -15,6 +22,20 @@ export default function SignIn() {
     email: null,
     password: null,
   });
+  const [user, loading, error] = useAuthState(auth);
+  const history = useHistory();
+
+  React.useEffect(() => {
+    if (loading) {
+      // maybe trigger a loading screen
+      return;
+    }
+    if (user) {
+      setSignInData({ email: null, password: null });
+      setSignUpData({ username: null, email: null, password: null });
+      history.replace("/dashboard");
+    }
+  }, [user, loading]);
 
   const handleSignInTransition = (e) => {
     const container = document.querySelector(".account-container");
@@ -28,14 +49,16 @@ export default function SignIn() {
 
   const handleSignIn = (e) => {
     e.preventDefault();
-    console.log(signInData);
-    setSignInData({ email: null, password: null });
+    signInWithEmailAndPassword(signInData.email, signInData.password);
   };
 
   const handleSignUp = (e) => {
     e.preventDefault();
-    console.log(signUpData);
-    setSignUpData({ username: null, email: null, password: null });
+    registerWithEmailAndPassword(
+      signUpData.username,
+      signUpData.email,
+      signUpData.password
+    );
   };
 
   return (
@@ -70,28 +93,20 @@ export default function SignIn() {
                 }
               />
             </div>
-            <Link to="/dashboard">
-              <input
-                type="submit"
-                value="Login"
-                className="account-btn solid"
-              />
-            </Link>
+
+            <input type="submit" value="Login" className="account-btn solid" />
+
             <p className="social-text">Or Sign in with social platforms</p>
             <div className="social-media">
-              
-              <a href="home" className="social-icon">
+              <button className="social-icon" onClick={signInWithGoogle}>
                 <i className="fab fa-google">
-                  <FaGoogle /> 
+                  <FaGoogle />
                 </i>
                 Sign in with Google
-              </a>
-            
-            </div>
-            <Link to="/">
-              <button to="/" className="account-btn solid">
-                Maybe Later
               </button>
+            </div>
+            <Link to="/home">
+              <button className="account-btn solid">Maybe Later</button>
             </Link>
           </form>
 
@@ -108,6 +123,7 @@ export default function SignIn() {
                 onChange={(e) =>
                   setSignUpData({ ...signUpData, username: e.target.value })
                 }
+                required
               />
             </div>
             <div className="input-field">
@@ -134,18 +150,18 @@ export default function SignIn() {
                 onChange={(e) =>
                   setSignUpData({ ...signUpData, password: e.target.value })
                 }
+                required
               />
             </div>
-            <Link to="/dashboard">
-              <input
-                type="submit"
-                className="account-btn solid"
-                value="Sign up"
-              />
-            </Link>
+
+            <input
+              type="submit"
+              className="account-btn solid"
+              value="Sign up"
+            />
 
             <Link to="/">
-              <button to="/" className="account-btn-2">
+              <button to="/home" className="account-btn-2">
                 Maybe Later
               </button>
             </Link>

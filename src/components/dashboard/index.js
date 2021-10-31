@@ -1,15 +1,54 @@
 import React from "react";
 import "./styles/index.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth, db, logout } from "../../firebase";
+import cogoToast from "cogo-toast";
 
 export default function Dashboard() {
+  const [user, loading, error] = useAuthState(auth);
+  const [currentUser, setCurrentUser] = React.useState(null);
+  const history = useHistory();
+
+  const fetchUserName = async () => {
+    try {
+      console.log("in dashboard user", user);
+      const query = await db
+        .collection("users")
+        .where("uid", "==", user?.uid)
+        .get();
+
+      console.log("in dashboard user again", query);
+
+      const data = await query.docs[0]?.data();
+
+      console.log("in dashboard user again again", data);
+
+      setCurrentUser(data);
+    } catch (err) {
+      console.error(err);
+      alert("An error occured while fetching user data");
+    }
+  };
+
+  React.useEffect(() => {
+    if (loading) return;
+    if (!user) {
+      cogoToast.error("Please Log in / Sign Up First!");
+      return history.replace("/sign-in");
+    }
+
+    fetchUserName();
+    cogoToast.success(`Welcome ${currentUser?.name || ""}!`);
+  }, [user, loading]);
+
   return (
     <div className="wrapper">
       <nav className="nav">
         <ul className="nav__list" role="menubar">
           <li className="nav__item nav__item--isActive">
             <Link
-              to="/"
+              to="/home"
               className="nav__link focus--box-shadow"
               role="menuitem"
               aria-label="Home"
@@ -47,7 +86,7 @@ export default function Dashboard() {
           </li>
           <li className="nav__item">
             <Link
-              to="/places"
+              to="/"
               className="nav__link focus--box-shadow"
               role="menuitem"
               aria-label="Collections"
@@ -86,7 +125,7 @@ export default function Dashboard() {
           <div className="header__wrapper">
             <div className="profile">
               <button className="profile__button">
-                <span className="profile__name">Jessica</span>
+                <span className="profile__name">{currentUser?.name}</span>
                 <img
                   className="profile__img"
                   src="/images/img/julian-wan-WNoLnJo7tS8-unsplash.jpg"
@@ -326,29 +365,24 @@ export default function Dashboard() {
         <section className="wrapper_section">
           <div className="aside__control">
             <button
-              className="aside__button focus--box-shadow"
-              type="button"
-              aria-label="Close profile settings"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                role="presentation"
-              >
-                <path d="M17,11H9.41l3.3-3.29a1,1,0,1,0-1.42-1.42l-5,5a1,1,0,0,0-.21.33,1,1,0,0,0,0,.76,1,1,0,0,0,.21.33l5,5a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42L9.41,13H17a1,1,0,0,0,0-2Z" />
-              </svg>
-            </button>
-            <button
               className="aside__button aside__button--notification focus--box-shadow"
               type="button"
               aria-label="You have new feedback"
+              onClick={logout}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                role="presentation"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 27 27"
+                stroke="currentColor"
               >
-                <path d="M18,13.18V10a6,6,0,0,0-5-5.91V3a1,1,0,0,0-2,0V4.09A6,6,0,0,0,6,10v3.18A3,3,0,0,0,4,16v2a1,1,0,0,0,1,1H8.14a4,4,0,0,0,7.72,0H19a1,1,0,0,0,1-1V16A3,3,0,0,0,18,13.18ZM8,10a4,4,0,0,1,8,0v3H8Zm4,10a2,2,0,0,1-1.72-1h3.44A2,2,0,0,1,12,20Zm6-3H6V16a1,1,0,0,1,1-1H17a1,1,0,0,1,1,1Z" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                />
               </svg>
             </button>
           </div>
@@ -363,14 +397,18 @@ export default function Dashboard() {
                 alt="Profile pic"
               />
             </button>
-            <h1 className="profile-main__name">Jessica</h1>
+            <h1 className="profile-main__name">
+              {currentUser?.name?.split(" ")[0]}
+            </h1>
           </div>
           <ul className="statistics">
             <li className="statistics__entry">
               <h6 className="statistics__entry-description" href="#home">
                 Username
               </h6>
-              <span className="statistics__entry-quantity">Ibad Ahmad</span>
+              <span className="statistics__entry-quantity">
+                {currentUser?.name}
+              </span>
             </li>
             <li className="statistics__entry">
               <h6 className="statistics__entry-description" href="#home">
@@ -378,7 +416,7 @@ export default function Dashboard() {
               </h6>
               <span className="statistics__entry-quantity">
                 {" "}
-                ibad@gmail.com
+                {currentUser?.email}
               </span>
             </li>
             <li className="statistics__entry">
@@ -386,10 +424,8 @@ export default function Dashboard() {
                 Created At
               </h6>
               <span className="statistics__entry-quantity">
-                {" "}
-                <time className="date" datetime="2020-05-05T10:00:00">
-                  05 May, 2020
-                </time>
+                {currentUser &&
+                  new Date(currentUser.createdAt).toISOString().slice(0, 10)}
               </span>
             </li>
           </ul>
