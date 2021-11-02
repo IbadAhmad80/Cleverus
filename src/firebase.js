@@ -19,25 +19,21 @@ const db = app.firestore();
 
 const googleProvider = new firebase.auth.GoogleAuthProvider();
 
-console.log("google auth provider", googleProvider);
-
 const signInWithGoogle = async () => {
   try {
     const res = await auth.signInWithPopup(googleProvider);
     const user = res.user;
-    const query = await db
-      .collection("users")
-      .where("uid", "==", user.uid)
-      .get();
-    if (query.docs.length === 0) {
-      await db.collection("users").add({
+
+    db.collection("users").doc(user.uid).set(
+      {
         uid: user.uid,
         name: user.displayName,
         authProvider: "google",
         email: user.email,
         createdAt: Date.now(),
-      });
-    }
+      },
+      { merge: true }
+    );
   } catch (err) {
     console.error("sign in with google", err);
 

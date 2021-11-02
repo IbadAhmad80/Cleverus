@@ -6,23 +6,22 @@ import { auth, db, logout } from "../../firebase";
 import cogoToast from "cogo-toast";
 
 export default function Dashboard() {
-  const [user, loading, error] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
   const [currentUser, setCurrentUser] = React.useState(null);
   const history = useHistory();
 
   const fetchUserName = async () => {
     try {
-      console.log("in dashboard user", user);
       const query = await db
         .collection("users")
         .where("uid", "==", user?.uid)
         .get();
 
-      console.log("in dashboard user again", query);
+      // console.log("in dashboard user again", query);
 
       const data = await query.docs[0]?.data();
 
-      console.log("in dashboard user again again", data);
+      // console.log("in dashboard user again again", data);
 
       setCurrentUser(data);
     } catch (err) {

@@ -1,14 +1,10 @@
 import React from "react";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
+import SinglePlace from "./singlePlace";
 
 const PlacesModal = ({ setOpen, open }) => {
-  const styles = {
-    modal: {
-      maxWidth: "150% !important",
-      width: "1500px",
-    },
-  };
+  const styles = {};
   const lorem = (
     <p>
       Mauris ac arcu sit amet dui interdum bibendum a sed diam. Praesent rhoncus
@@ -28,7 +24,7 @@ const PlacesModal = ({ setOpen, open }) => {
     <>
       <Modal open={open} onClose={() => setOpen(false)} styles={styles}>
         <h2>Big modal</h2>
-        {lorem}
+        <SinglePlace />
         {lorem}
         {lorem}
         {lorem}

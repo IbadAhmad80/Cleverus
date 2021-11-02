@@ -32,28 +32,9 @@ const Places = () => {
       businesses[index].reviews = placesDetails[index].data.reviews;
     });
     setPlaces(businesses);
-    const bus = await shapePlacesObject(businesses);
-    console.log(businesses, bus);
-    // const res = await axios.post("/reviews", { data: businesses });
-    // console.log("flask response", res);
-  };
-
-  // turning places objects into desired shape for backend
-  const shapePlacesObject = (places) => {
-    let businesses = [];
-    let businsis = { name: null, google_ratings: null, reviews: [] };
-    places.map((place) => {
-      businsis.name = place.name;
-      businsis.google_ratings = place.rating;
-      businsis.reviews = [];
-      place?.reviews.map((review) => {
-        businsis.reviews.push(review.text);
-      });
-      // console.log("hhh", businsis);
-      // console.log("seebled", businesses);
-      businesses.push(businsis);
-    });
-    return businesses;
+    console.log(businesses);
+    const res = await axios.post("/reviews", { data: businesses });
+    console.log("flask response", res.data);
   };
 
   return (
