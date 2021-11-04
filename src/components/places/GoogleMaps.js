@@ -58,14 +58,14 @@ function GoogleMaps(props) {
 
   React.useEffect(() => {
     setLoading(true);
-    // getData();
+    getData();
   }, [marker]);
 
   const getData = async () => {
     let {
       data: { businesses },
     } = await axios.get(
-      `/v3/businesses/search?term=delis&limit=10&latitude=${marker.lat}&longitude=${marker.lng}`
+      `/v3/businesses/search?term=delis&limit=7&latitude=${marker.lat}&longitude=${marker.lng}`
     );
 
     const placesDetails = await Promise.all(
@@ -80,7 +80,8 @@ function GoogleMaps(props) {
 
     setPlaces(businesses);
     const { data } = await axios.post("/reviews", { data: businesses });
-    console.log(data);
+    props.setOpen(true);
+    props.setPlaces(data);
     setLoading(false);
   };
 
@@ -421,7 +422,7 @@ function GoogleMaps(props) {
     <div className="map-desktop">
       {loading && (
         <div className="spinner">
-          <ClipLoader color="#000" loading size={35} />
+          <ClipLoader color="#000" loading size={105} />
         </div>
       )}
       <Fragment>
@@ -433,7 +434,7 @@ function GoogleMaps(props) {
         <div
           onClick={() => locateMe()}
           style={{
-            top: "20%",
+            marginTop: "10%",
             bottom: "unset",
           }}
           className="locate-me"

@@ -13,16 +13,17 @@ axios.defaults.headers.common = {
 const Places = () => {
   const [places, setPlaces] = React.useState([]);
 
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
 
   // console.log("this is API Format", placesData);
 
   return (
     <div>
-      <PlacesModal open={open} setOpen={setOpen} />
-      <NavBar />
-      <GoogleMaps />
-      <Footer />
+      <PlacesModal open={open} setOpen={setOpen} places={places} />
+      {/* <NavBar /> */}
+      <div style={{ marginTop: "0px" }}>
+        <GoogleMaps setOpen={setOpen} setPlaces={setPlaces} />
+      </div>
     </div>
   );
 };

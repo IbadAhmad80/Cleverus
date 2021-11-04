@@ -1,16 +1,26 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap");
 
 .main-content {
-  background: #f9f9f9;
-  font-family: "roboto", sans-serif;
-  padding-bottom: 30px;
+  margin-top: 10px;
+  padding-top: 15px;
+  font-family: "Nunito", sans-serif;
+  padding-bottom: 15px;
+  border: 1px solid rgb(248, 244, 244);
 }
 
 .main-content:first-child {
-  margin-top: 100px;
+  margin-top: 50px;
 }
 .small-text {
   font-size: 12px !important;
+  font-weight: bolder;
+}
+
+.place-img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  object-position: bottom;
 }
 
 .text-striked {
@@ -70,4 +80,14 @@
 
 .review {
   font-size: 11px;
+  letter-spacing: 0.01cm;
+  font-weight: bold;
+}
+
+.quote-icon {
+  font-size: 12px;
+  vertical-align: middle;
+  position: relative;
+  font-weight: bolder;
+  margin-top: -5px;
 }
