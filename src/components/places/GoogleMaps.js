@@ -35,7 +35,7 @@ const mapStyles = {
   height: "100%",
 };
 
-Geocode.setApiKey("AIzaSyD2d-znOMcFJpf5dPNcYhjeRA27CtJbCQ4");
+Geocode.setApiKey("");
 Geocode.setLocationType("APPROXIMATE");
 
 function GoogleMaps(props) {
@@ -595,5 +595,5 @@ const Search = forwardRef((props, ref) => {
 // };
 
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyD2d-znOMcFJpf5dPNcYhjeRA27CtJbCQ4",
+  apiKey: "",
 })(GoogleMaps);
