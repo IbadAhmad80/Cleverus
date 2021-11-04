@@ -29,17 +29,20 @@ import "@reach/combobox/styles.css";
 import { useRef } from "react";
 import { forwardRef } from "react";
 import { useTranslation } from "react-i18next";
+import Loader from "./loader";
+import PlaceDetails from "./placeDetails";
+import cogoToast from "cogo-toast";
 
 const mapStyles = {
   width: "100%",
   height: "100%",
 };
 
-Geocode.setApiKey("");
+Geocode.setApiKey(process.env.REACT_APP_GOOGLE_MAPS_API_KEY);
 Geocode.setLocationType("APPROXIMATE");
 
 function GoogleMaps(props) {
-  const { t } = useTranslation();
+  const [initialCheck, setInitialCheck] = React.useState(false);
   const [marker, setMarker] = useState({ lat: 51.5072178, lng: -0.1275862 });
   const [address, setAddress] = useState("Dubai");
   const [showingInfoWindow, setShowingInfoWindow] = useState(false);
@@ -57,8 +60,12 @@ function GoogleMaps(props) {
   let city = "";
 
   React.useEffect(() => {
-    setLoading(true);
-    getData();
+    if (initialCheck) {
+      setLoading(true);
+      getData();
+    } else {
+      setInitialCheck(true);
+    }
   }, [marker]);
 
   const getData = async () => {
@@ -74,8 +81,13 @@ function GoogleMaps(props) {
       })
     );
 
+    // placesDetails.then().catch((error) => {
+    //   setLoading(false);
+    //   cogoToast.error("Cant You Try Again :( ?. We are having some issues ");
+    // });
+
     businesses?.map((place, index) => {
-      businesses[index].reviews = placesDetails[index].data.reviews;
+      return (businesses[index].reviews = placesDetails[index].data.reviews);
     });
 
     setPlaces(businesses);
@@ -420,11 +432,7 @@ function GoogleMaps(props) {
   );
   return (
     <div className="map-desktop">
-      {loading && (
-        <div className="spinner">
-          <ClipLoader color="#000" loading size={105} />
-        </div>
-      )}
+      {loading && <Loader />}
       <Fragment>
         <Search
           ref={selectAddress}
@@ -596,5 +604,5 @@ const Search = forwardRef((props, ref) => {
 // };
 
 export default GoogleApiWrapper({
-  apiKey: "",
+  apiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
 })(GoogleMaps);

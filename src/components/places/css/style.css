@@ -5,7 +5,7 @@
   padding-top: 15px;
   font-family: "Nunito", sans-serif;
   padding-bottom: 15px;
-  border: 1px solid rgb(248, 244, 244);
+  /* border: 1px solid rgb(248, 244, 244); */
 }
 
 .main-content:first-child {

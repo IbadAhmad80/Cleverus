@@ -12,7 +12,13 @@ const PlacesModal = ({ setOpen, open, places }) => {
 
   return (
     <>
-      <Modal open={open} onClose={() => setOpen(false)} styles={styles}>
+      <Modal
+        open={open}
+        onClose={() => setOpen(false)}
+        styles={styles}
+        closeOnEsc={false}
+        closeOnOverlayClick={false}
+      >
         {places?.data?.map((place) => {
           return <SinglePlace place={place} key={place.id} />;
         })}

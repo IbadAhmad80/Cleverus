@@ -6,7 +6,6 @@ import { FaQuoteRight } from "react-icons/fa";
 import { BsArrowUpRight } from "react-icons/bs";
 
 function SinglePlace({ place }) {
-  console.log(place && place.price && place.price + place.price[0]);
   return (
     <section class="main-content">
       <div class="container">
