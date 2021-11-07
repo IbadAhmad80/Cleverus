@@ -16,11 +16,23 @@
   font-weight: bolder;
 }
 
+.location-name {
+  cursor: pointer;
+}
+
 .place-img {
   width: 100%;
   height: 240px;
   object-fit: cover;
   object-position: bottom;
+}
+
+.similar-place-img {
+  width: 100%;
+  margin: 0 auto;
+  height: 150px;
+  object-fit: cover;
+  object-position: center;
 }
 
 .text-striked {

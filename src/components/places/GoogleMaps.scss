@@ -47,6 +47,29 @@
       padding-bottom: 12px;
       padding-inline: 30px;
     }
+
+    .module-search-box {
+      padding: 5px 10px;
+      background-color: white;
+      border-left: 2px solid rgb(207, 195, 195);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+
+      span {
+        cursor: pointer;
+        padding: 5px 15px;
+        font-size: 15px;
+        border-radius: 50px;
+        border: 0.03rem solid rgb(214, 208, 208);
+        box-shadow: 4px black;
+      }
+      .active {
+        background-color: salmon;
+        color: white;
+        border: none;
+      }
+    }
   }
   .locate-me {
     @include for-mob-screen {

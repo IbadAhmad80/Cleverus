@@ -30,8 +30,8 @@ import { useRef } from "react";
 import { forwardRef } from "react";
 import { useTranslation } from "react-i18next";
 import Loader from "./loader";
-import PlaceDetails from "./placeDetails";
 import cogoToast from "cogo-toast";
+import PlaceDetails from "./PlaceDetail/placeDetails";
 
 const mapStyles = {
   width: "100%",
@@ -69,32 +69,19 @@ function GoogleMaps(props) {
   }, [marker]);
 
   const getData = async () => {
-    let {
-      data: { businesses },
-    } = await axios.get(
-      `/v3/businesses/search?term=delis&limit=7&latitude=${marker.lat}&longitude=${marker.lng}`
-    );
-
-    const placesDetails = await Promise.all(
-      businesses?.map(async (place) => {
-        return await axios.get(`/v3/businesses/${place.id}/reviews`);
-      })
-    );
-
-    // placesDetails.then().catch((error) => {
-    //   setLoading(false);
-    //   cogoToast.error("Cant You Try Again :( ?. We are having some issues ");
-    // });
-
-    businesses?.map((place, index) => {
-      return (businesses[index].reviews = placesDetails[index].data.reviews);
-    });
-
-    setPlaces(businesses);
-    const { data } = await axios.post("/reviews", { data: businesses });
-    props.setOpen(true);
-    props.setPlaces(data);
-    setLoading(false);
+    try {
+      const { data } = await axios.post("/reviews/predictions", {
+        longitude: marker.lng,
+        latituide: marker.lat,
+      });
+      console.log(data);
+      props.setOpen(true);
+      props.setPlaces(data);
+      data && setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      cogoToast.error("Cant You Try Again :(", error);
+    }
   };
 
   const saveCoords = (mapProps, map, clickEven) => {
@@ -523,6 +510,14 @@ const Search = forwardRef((props, ref) => {
     // debounce: 300,
   });
 
+  const [selectedCategory, setSelectedCategory] = React.useState("restaurants");
+
+  React.useEffect(() => {
+    //getting the active category
+    document.querySelector(".active").classList.remove("active");
+    //removing the active category
+    document.querySelector(`.${selectedCategory}`).classList.add("active");
+  }, [selectedCategory]);
   const handleSelect = (address) => {
     searchAddress(address);
   };
@@ -556,9 +551,13 @@ const Search = forwardRef((props, ref) => {
   return (
     <div
       style={{ top: props.width === "sm" ? "30px" : "10px" }}
-      className="search-box"
+      className="search-box d-flex"
     >
-      <Combobox className="w-100" onSelect={(address) => handleSelect(address)}>
+      <Combobox
+        className="w-50"
+        onSelect={(address) => handleSelect(address)}
+        style={{ flex: "30%" }}
+      >
         <ComboboxInput
           value={value}
           onChange={(e) => handleInput(e)}
@@ -566,6 +565,7 @@ const Search = forwardRef((props, ref) => {
           placeholder={"Search"}
           className="w-100 pl-3 search-input"
         />
+
         {!parentAddress && (
           <ComboboxPopover
             className="pl-3"
@@ -594,6 +594,37 @@ const Search = forwardRef((props, ref) => {
             </ComboboxList>
           </ComboboxPopover>
         )}
+      </Combobox>
+      <Combobox className="w-50 module-search-box">
+        <div className="module-wrapper">
+          <span
+            className="restaurants active"
+            onClick={(e) => setSelectedCategory("restaurants")}
+          >
+            Resturants
+          </span>
+          <span
+            className="hospitals"
+            onClick={(e) => setSelectedCategory("hospitals")}
+          >
+            Hospitals
+          </span>
+          <span
+            className="hotels"
+            onClick={(e) => setSelectedCategory("hotels")}
+          >
+            Hotels
+          </span>
+          <span className="parks" onClick={(e) => setSelectedCategory("parks")}>
+            Parks
+          </span>
+          <span className="pumps" onClick={(e) => setSelectedCategory("pumps")}>
+            Fuel Pumps
+          </span>
+          <span className="malls" onClick={(e) => setSelectedCategory("malls")}>
+            Malls
+          </span>
+        </div>
       </Combobox>
     </div>
   );

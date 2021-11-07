@@ -4,8 +4,10 @@ import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { FiMapPin } from "react-icons/fi";
 import { FaQuoteRight } from "react-icons/fa";
 import { BsArrowUpRight } from "react-icons/bs";
+import { useHistory } from "react-router";
 
 function SinglePlace({ place }) {
+  const history = useHistory();
   return (
     <section class="main-content">
       <div class="container">
@@ -27,7 +29,17 @@ function SinglePlace({ place }) {
               </div>
               <div class="hotel-card_info p-4">
                 <div class="d-flex align-items-center mb-2">
-                  <h5 class="mb-0">{place?.name}</h5>
+                  <h5
+                    class="mb-0 location-name"
+                    onClick={() =>
+                      history.push({
+                        pathname: "/places-details",
+                        state: { place },
+                      })
+                    }
+                  >
+                    {place?.name}
+                  </h5>
                   <div class=" mx-2">
                     <i class="fa fa-star text-warning">
                       <AiFillStar />

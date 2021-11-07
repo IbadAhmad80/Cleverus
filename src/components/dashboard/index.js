@@ -4,6 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db, logout } from "../../firebase";
 import cogoToast from "cogo-toast";
+import { AiOutlineStar } from "react-icons/ai";
 
 export default function Dashboard() {
   const [user, loading] = useAuthState(auth);
@@ -270,20 +271,23 @@ export default function Dashboard() {
                     </div>
                   </div>
                   <div className="project__element project__inform">
-                    <h6 className="project__inform-name">Location Name</h6>
-                  </div>
-                  <div className="project__element project__photo">
-                    <h6 style={{ fontSize: "1rem", paddingTop: ".5rem" }}>
-                      Rating{" "}
+                    <h6 className="project__inform-name">
+                      Holins Mashroom Hut
                     </h6>
-                  </div>
-                  <div className="project__element project__date">Location</div>
-                  <div className="project__element project__status">
-                    <span className="status status--published">
-                      View Details
+                    <h6
+                      className="project__inform-name"
+                      style={{ lineHeight: "1.2" }}
+                    >
+                      83-89 Fieldgate Street , London E1 1JU , United Kingdom{" "}
+                    </h6>
+
+                    <span>
+                      <AiOutlineStar />
+                      <AiOutlineStar />
+                      <AiOutlineStar />
+                      <AiOutlineStar />
                     </span>
                   </div>
-                  <div className="project__element project__setting"></div>
                 </div>
               </a>
             </li>
@@ -305,20 +309,22 @@ export default function Dashboard() {
                     </div>
                   </div>
                   <div className="project__element project__inform">
-                    <h6 className="project__inform-name">Location Name</h6>
-                  </div>
-                  <div className="project__element project__photo">
-                    <h6 style={{ fontSize: "1rem", paddingTop: ".5rem" }}>
-                      Rating{" "}
+                    <h6 className="project__inform-name">
+                      Holins Mashroom Hut
                     </h6>
-                  </div>
-                  <div className="project__element project__date">Location</div>
-                  <div className="project__element project__status">
-                    <span className="status status--published">
-                      View Details
+                    <h6
+                      className="project__inform-name"
+                      style={{ lineHeight: "1.2" }}
+                    >
+                      83-89 Fieldgate Street , London E1 1JU , United Kingdom
+                    </h6>
+                    <span>
+                      <AiOutlineStar />
+                      <AiOutlineStar />
+                      <AiOutlineStar />
+                      <AiOutlineStar />
                     </span>
                   </div>
-                  <div className="project__element project__setting"></div>
                 </div>
               </a>
             </li>
@@ -340,20 +346,22 @@ export default function Dashboard() {
                     </div>
                   </div>
                   <div className="project__element project__inform">
-                    <h6 className="project__inform-name">Location Name</h6>
-                  </div>
-                  <div className="project__element project__photo">
-                    <h6 style={{ fontSize: "1rem", paddingTop: ".5rem" }}>
-                      Rating{" "}
+                    <h6 className="project__inform-name">
+                      Holins Mashroom Hut
                     </h6>
-                  </div>
-                  <div className="project__element project__date">Location</div>
-                  <div className="project__element project__status">
-                    <span className="status status--published">
-                      View Details
+                    <h6
+                      className="project__inform-name"
+                      style={{ lineHeight: "1.2" }}
+                    >
+                      83-89 Fieldgate Street , London E1 1JU , United Kingdom{" "}
+                    </h6>
+                    <span>
+                      <AiOutlineStar />
+                      <AiOutlineStar />
+                      <AiOutlineStar />
+                      <AiOutlineStar />
                     </span>
                   </div>
-                  <div className="project__element project__setting"></div>
                 </div>
               </a>
             </li>

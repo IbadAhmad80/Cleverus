@@ -770,12 +770,6 @@
   transition: background-color 0.3s ease;
 }
 
-@media (hover: hover) {
-  .wrapper .project__link:hover .project__inform-name {
-    color: var(--blue-violet);
-  }
-}
-
 .wrapper .project__wrapper {
   display: flex;
   align-items: center;
@@ -815,14 +809,14 @@
 }
 
 .wrapper .project__inform-name {
-  font-size: 1.2rem;
-  line-height: 1.5;
+  font-size: 1rem;
+  line-height: 0.7;
   color: var(--dune);
 }
 
 @media (max-width: 1800px) {
   .wrapper .project__link {
-    padding: 1.2rem 0.7rem;
+    padding: 1.2rem 0.7rem 0rem 0.7rem;
   }
 
   .wrapper .project__element {
@@ -835,7 +829,7 @@
   }
 
   .wrapper .project__inform-name {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 }
 
