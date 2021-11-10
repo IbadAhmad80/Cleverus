@@ -8,23 +8,22 @@ const Info = ({ place }) => {
   return (
     <div className={styles.info_wrapper}>
       <div className={styles.single_info}>
-        <h5>Visit Website</h5>
+        <p>Visit Website</p>
         <i>
           <BsBoxArrowUpRight />
         </i>
       </div>
       <div className={styles.single_info}>
-        <h5>{place?.display_phone}</h5>
+        <p>{place?.display_phone}</p>
         <i>
           <FiPhoneCall />
         </i>
       </div>
       <div className={styles.single_info}>
-        <h5>
-          {place?.location?.display_address[0]} , &nbsp;
-          {place?.location?.display_address[1]} , &nbsp;
-          {place?.location?.display_address[2]}
-        </h5>
+        <p>
+          {place?.location?.display_address[2] ||
+            place?.location?.display_address[1]}
+        </p>
         <i>
           <GoLocation />
         </i>

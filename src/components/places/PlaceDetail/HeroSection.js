@@ -57,7 +57,9 @@ const PlaceHeroSection = ({ place }) => {
             </div>
 
             <div className={styles.open_close_flex}>
-              <div className={styles.status}>Opened .</div>
+              <div className={styles.status}>
+                {place?.is_closed ? "Close" : "Open"} .
+              </div>
               <div className={styles.hours_updated}>Hours Updated Recently</div>
             </div>
           </div>

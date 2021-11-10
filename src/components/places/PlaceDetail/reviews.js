@@ -27,9 +27,9 @@ const Reviews = ({ place }) => {
                 <img src={image_url} className={styles.review_img} />
               </div>
 
-              <div>
+              <div className={styles.review_content}>
                 <h6>{name}</h6>
-                <p style={{ margin: "1em 0 0 0" }}>{text.slice(0, 300)}</p>
+                <p style={{ margin: "1em 0 0 0" }}>{text.slice(0, 500)}</p>
               </div>
             </div>
           </div>

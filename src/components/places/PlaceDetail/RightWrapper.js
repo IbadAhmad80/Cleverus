@@ -7,7 +7,7 @@ const RightWrapper = ({ place }) => {
   return (
     <div className={styles.right_wrapper}>
       <Info place={place} />
-      <h5 className="my-5">You Might Also Consider</h5>
+      <h5 className="my-5 pt-5">You Might Also Consider</h5>
       <div className="mt-5">
         <SimilarPlaces />
         <SimilarPlaces />

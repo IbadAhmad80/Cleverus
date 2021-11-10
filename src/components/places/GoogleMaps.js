@@ -43,7 +43,7 @@ Geocode.setLocationType("APPROXIMATE");
 
 function GoogleMaps(props) {
   const [initialCheck, setInitialCheck] = React.useState(false);
-  const [marker, setMarker] = useState({ lat: 51.5072178, lng: -0.1275862 });
+  const [marker, setMarker] = useState({ lng: 0.1276, lat: 51.5072 });
   const [address, setAddress] = useState("Dubai");
   const [showingInfoWindow, setShowingInfoWindow] = useState(false);
   const [activeMarker, setActiveMarker] = useState(null);
@@ -74,13 +74,32 @@ function GoogleMaps(props) {
         longitude: marker.lng,
         latituide: marker.lat,
       });
-      console.log(data);
+
       props.setOpen(true);
+
       props.setPlaces(data);
       data && setLoading(false);
+      storeData(data);
     } catch (error) {
       setLoading(false);
       cogoToast.error("Cant You Try Again :(", error);
+    }
+  };
+
+  const storeData = async (data) => {
+    const locations = {
+      longitude: marker.lng,
+      latitude: marker.lat,
+      resturants: null,
+      hotels: null,
+      barbers: data.data,
+      hospitals: null,
+    };
+    try {
+      const res = await axios.post("/reviews/store", locations);
+      res && cogoToast.success("Data is been stored Successfully");
+    } catch (error) {
+      cogoToast.error("Looks like data might not be backed up successfully :(");
     }
   };
 
