@@ -54,6 +54,7 @@ function GoogleMaps(props) {
   const [noService, setNoService] = useState(false);
   const [loading, setLoading] = useState(false);
   const [places, setPlaces] = useState();
+  const [selectedCategory, setSelectedCategory] = useState("restaurants");
   const selectAddress = useRef();
   let country = "";
   let state = "";
@@ -73,6 +74,7 @@ function GoogleMaps(props) {
       const { data } = await axios.post("/reviews/predictions", {
         longitude: marker.lng,
         latituide: marker.lat,
+        category: selectedCategory,
       });
 
       props.setOpen(true);
@@ -90,11 +92,20 @@ function GoogleMaps(props) {
     const locations = {
       longitude: marker.lng,
       latitude: marker.lat,
-      resturants: null,
-      hotels: null,
-      barbers: data.data,
-      hospitals: null,
+      [selectedCategory]: data.data,
     };
+    const unselectedCategories = [
+      "restaurants",
+      "hotels",
+      "barbers",
+      "hospitals",
+    ].filter((category) => {
+      return category !== selectedCategory;
+    });
+    locations[unselectedCategories[0]] =
+      locations[unselectedCategories[1]] =
+      locations[unselectedCategories[2]] =
+        null;
     try {
       const res = await axios.post("/reviews/store", locations);
       res && cogoToast.success("Data is been stored Successfully");
@@ -147,26 +158,12 @@ function GoogleMaps(props) {
         setLoadingAddress(false);
         const resAddress = response.results[0].formatted_address;
 
-        // props.Address &&
-        //   props.Address({
-        //     address: resAddress,
-        //     country,
-        //     state,
-        //     city,
-        //     lat: clickEven.latLng.lat(),
-        //     lng: clickEven.latLng.lng(),
-        //   });
         selectAddress.current.handleAddress(resAddress);
         // props.setAddress && props.setAddress(resAddress);
         setAddress(resAddress);
         // props.active(true);
       },
-      (error) => {
-        // props.active(false);
-        // setLoading(false);
-        // setLoadingAddress(false);
-        // setNoService(true);
-      }
+      (error) => {}
     );
   };
 
@@ -216,16 +213,6 @@ function GoogleMaps(props) {
           marker: { lat: parseFloat(lat), lng: parseFloat(lng) },
         });
         const resAddress = response.results[0].formatted_address;
-        // props.Address &&
-        //   props.Address({
-        //     address: resAddress,
-        //     country,
-        //     state,
-        //     city,
-        //     lat,
-        //     lng,
-        //   });
-        // props.setAddress && props.setAddress(resAddress);
         setAddress(resAddress);
         setLoadingAddress(false);
         const timer = setTimeout(() => {
@@ -285,16 +272,6 @@ function GoogleMaps(props) {
           lng: parseFloat(map.center.lng()),
         });
         const resAddress = response.results[0].formatted_address;
-        // props.Address &&
-        //   props.Address({
-        //     address: resAddress,
-        //     country,
-        //     state,
-        //     city,
-        //     lat: map.center.lat(),
-        //     lng: map.center.lng(),
-        //   });
-        // props.setAddress && props.setAddress(resAddress);
         selectAddress.current.handleAddress(resAddress);
         setAddress(resAddress);
         setLoadingAddress(false);
@@ -365,17 +342,6 @@ function GoogleMaps(props) {
           marker: { lat: parseFloat(userLat), lng: parseFloat(userLng) },
         });
         const resAddress = response.results[0].formatted_address;
-        // props.Address &&
-        //   props.Address({
-        //     address: resAddress,
-        //     country,
-        //     state,
-        //     city,
-        //     lat: userLat,
-        //     lng: userLng,
-        //   });
-        // props.setAddress && props.setAddress(resAddress);
-
         selectAddress.current.handleAddress(resAddress);
         setAddress(resAddress);
         setLoadingAddress(false);
@@ -444,39 +410,10 @@ function GoogleMaps(props) {
           ref={selectAddress}
           {...props}
           saveSearchedCoords={saveSearchedCoords}
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
         />
-        <div
-          onClick={() => locateMe()}
-          style={{
-            marginTop: "10%",
-            bottom: "unset",
-          }}
-          className="locate-me"
-        >
-          {" "}
-          <MdLocationOn size="22" color="#00000" />
-          <span className="">Locate Me</span>
-        </div>
-        {/* {noService && (
-          <div
-            style={{
-              top: props.width === "sm" ? "70%" : "80%",
-              height: props.width === "sm" ? "" : "33px",
-            }}
-            className="d-flex flex-direction-row justify-content-between align-items-center pl-2 pr-2 error-message"
-          >
-            <div className="mt-auto mb-auto d-flex align-items-center ">
-              <ImSad2 />
-              <span className="ml-2">{t("google-maps.outside-location")}</span>
-            </div>
-            <div
-              style={{ cursor: "pointer" }}
-              onClick={() => setNoService(false)}
-            >
-              <AiOutlineClose color="grey" size={20} />
-            </div>
-          </div>
-        )} */}
+
         <Map {...googleProps}>
           <Marker
             // icon={{
@@ -515,28 +452,16 @@ const Search = forwardRef((props, ref) => {
     suggestions: { status, data },
     setValue,
     clearSuggestions,
-  } = usePlacesAutocomplete({
-    // requestOptions: {
-    //   componentRestrictions: {
-    //     country:
-    //       props.country.toLowerCase() === "saudi arabia"
-    //         ? "sa"
-    //         : props.country.toLowerCase() === "united arab emirates"
-    //         ? "ae"
-    //         : "eg",
-    //   },
-    // },
-    // debounce: 300,
-  });
-
-  const [selectedCategory, setSelectedCategory] = React.useState("restaurants");
+  } = usePlacesAutocomplete({});
 
   React.useEffect(() => {
     //getting the active category
     document.querySelector(".active").classList.remove("active");
     //removing the active category
-    document.querySelector(`.${selectedCategory}`).classList.add("active");
-  }, [selectedCategory]);
+    document
+      .querySelector(`.${props.selectedCategory}`)
+      .classList.add("active");
+  }, [props.selectedCategory]);
   const handleSelect = (address) => {
     searchAddress(address);
   };
@@ -618,30 +543,27 @@ const Search = forwardRef((props, ref) => {
         <div className="module-wrapper">
           <span
             className="restaurants active"
-            onClick={(e) => setSelectedCategory("restaurants")}
+            onClick={(e) => props.setSelectedCategory("restaurants")}
           >
             Resturants
           </span>
           <span
             className="hospitals"
-            onClick={(e) => setSelectedCategory("hospitals")}
+            onClick={(e) => props.setSelectedCategory("hospitals")}
           >
             Hospitals
           </span>
           <span
             className="hotels"
-            onClick={(e) => setSelectedCategory("hotels")}
+            onClick={(e) => props.setSelectedCategory("hotels")}
           >
             Hotels
           </span>
-          <span className="parks" onClick={(e) => setSelectedCategory("parks")}>
-            Parks
-          </span>
-          <span className="pumps" onClick={(e) => setSelectedCategory("pumps")}>
-            Fuel Pumps
-          </span>
-          <span className="malls" onClick={(e) => setSelectedCategory("malls")}>
-            Malls
+          <span
+            className="barbers"
+            onClick={(e) => props.setSelectedCategory("barbers")}
+          >
+            Barbers
           </span>
         </div>
       </Combobox>
@@ -649,10 +571,29 @@ const Search = forwardRef((props, ref) => {
   );
 });
 
-// const mapStateToProps = (state) => {
-//   return { country: state.language.country, width: state.layout.screenWidth };
-// };
-
 export default GoogleApiWrapper({
   apiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
 })(GoogleMaps);
+
+// <span className="parks" onClick={(e) => setSelectedCategory("parks")}>
+//   Parks
+// </span>
+// <span className="pumps" onClick={(e) => setSelectedCategory("pumps")}>
+//   Fuel Pumps
+// </span>
+// <span className="malls" onClick={(e) => setSelectedCategory("malls")}>
+//   Malls
+// </span>
+
+// <div
+// onClick={() => locateMe()}
+// style={{
+//   marginTop: "10%",
+//   bottom: "unset",
+// }}
+// className="locate-me"
+// >
+// {" "}
+// <MdLocationOn size="22" color="#00000" />
+// <span className="">Locate Me</span>
+// </div>
