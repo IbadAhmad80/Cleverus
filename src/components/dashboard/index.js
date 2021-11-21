@@ -2,14 +2,64 @@ import React from "react";
 import "./styles/index.css";
 import { Link, useHistory } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth, db, logout } from "../../firebase";
+import { auth, db, logout, storage } from "../../firebase";
 import cogoToast from "cogo-toast";
-import { AiOutlineStar } from "react-icons/ai";
+import { AiOutlineStar, AiOutlineCloudUpload } from "react-icons/ai";
+import firebase from "firebase/compat/app";
+import StarRatings from "react-star-ratings";
 
 export default function Dashboard() {
   const [user, loading] = useAuthState(auth);
   const [currentUser, setCurrentUser] = React.useState(null);
   const history = useHistory();
+  const [file, setFile] = React.useState(null);
+  const [error, setError] = React.useState(null);
+  const types = ["image/png", "image/jpeg", "image/jpg", "image/webp"];
+  const [userImage, setUserImage] = React.useState(null);
+
+  const handleChange = (e) => {
+    let selected = e.target.files[0];
+    if (selected && types.includes(selected.type)) {
+      setFile(selected);
+      setError("");
+      const storageRef = storage.ref(selected.name);
+
+      storageRef.put(file).on(
+        "state_changed",
+        (snap) => {},
+        (err) => {
+          setError(err);
+        },
+        async () => {
+          const url = await storageRef.getDownloadURL();
+          db.collection("users")
+            .get()
+            .then((snapshot) => {
+              snapshot.docs.forEach((doc) => {
+                if (doc.data().email === currentUser?.email) {
+                  firebase
+                    .firestore()
+                    .collection("users")
+                    .doc(doc.id)
+                    .update({
+                      photoURL: url,
+                    })
+                    .then(() => {
+                      console.log("in here", url);
+                      cogoToast.info("Image has been updated successfully");
+                      setUserImage(url);
+                    });
+                }
+              });
+            });
+        }
+      );
+
+      // setTimeout(() => console.log(selected), 1000);
+    } else {
+      setFile(null);
+    }
+  };
 
   const fetchUserName = async () => {
     try {
@@ -25,6 +75,8 @@ export default function Dashboard() {
       // console.log("in dashboard user again again", data);
 
       setCurrentUser(data);
+      console.log(data?.photoURL);
+      setUserImage(data?.photoURL);
     } catch (err) {
       console.error(err);
       alert("An error occured while fetching user data");
@@ -37,7 +89,6 @@ export default function Dashboard() {
       cogoToast.error("Please Log in / Sign Up First!");
       return history.replace("/sign-in");
     }
-
     fetchUserName();
     cogoToast.success(`Welcome ${currentUser?.name || ""}!`);
   }, [user, loading]);
@@ -48,7 +99,7 @@ export default function Dashboard() {
         <ul className="nav__list" role="menubar">
           <li className="nav__item nav__item--isActive">
             <Link
-              to="/home"
+              to="/"
               className="nav__link focus--box-shadow"
               role="menuitem"
               aria-label="Home"
@@ -86,7 +137,7 @@ export default function Dashboard() {
           </li>
           <li className="nav__item">
             <Link
-              to="/"
+              to="/search"
               className="nav__link focus--box-shadow"
               role="menuitem"
               aria-label="Collections"
@@ -282,10 +333,13 @@ export default function Dashboard() {
                     </h6>
 
                     <span>
-                      <AiOutlineStar />
-                      <AiOutlineStar />
-                      <AiOutlineStar />
-                      <AiOutlineStar />
+                      <StarRatings
+                        rating={3.5}
+                        starDimension="18px"
+                        starSpacing="0px"
+                        starRatedColor={"#F77575"}
+                        emptyRatedColor={"white"}
+                      />
                     </span>
                   </div>
                 </div>
@@ -319,10 +373,13 @@ export default function Dashboard() {
                       83-89 Fieldgate Street , London E1 1JU , United Kingdom
                     </h6>
                     <span>
-                      <AiOutlineStar />
-                      <AiOutlineStar />
-                      <AiOutlineStar />
-                      <AiOutlineStar />
+                      <StarRatings
+                        rating={4.7}
+                        starDimension="18px"
+                        starSpacing="0px"
+                        starRatedColor={"#F77575"}
+                        emptyRatedColor={"white"}
+                      />
                     </span>
                   </div>
                 </div>
@@ -356,10 +413,13 @@ export default function Dashboard() {
                       83-89 Fieldgate Street , London E1 1JU , United Kingdom{" "}
                     </h6>
                     <span>
-                      <AiOutlineStar />
-                      <AiOutlineStar />
-                      <AiOutlineStar />
-                      <AiOutlineStar />
+                      <StarRatings
+                        rating={2.403}
+                        starDimension="18px"
+                        starSpacing="0px"
+                        starRatedColor={"#F77575"}
+                        emptyRatedColor={"white"}
+                      />
                     </span>
                   </div>
                 </div>
@@ -394,15 +454,29 @@ export default function Dashboard() {
             </button>
           </div>
           <div className="profile-main">
-            <button
-              className="profile-main__setting focus--box-shadow"
-              type="button"
-            >
-              <img
-                className="profile-main__photo"
-                src="/images/img/seth-doyle-uJ8LNVCBjFQ-unsplash.jpg"
-                alt="Profile pic"
-              />
+            <button className="profile-main__setting" type="button">
+              {userImage ? (
+                <img
+                  className="profile-main__photo"
+                  src={userImage}
+                  alt="Profile pic"
+                />
+              ) : (
+                <p className="generated_photo">
+                  {currentUser?.name.slice(0, 1).toUpperCase()}
+                </p>
+              )}
+              <div className="image-overlay">
+                <label for="image-input" classsName="image-upload-icon">
+                  <AiOutlineCloudUpload />
+                  <input
+                    type="file"
+                    id="image-input"
+                    onChange={handleChange}
+                    style={{ display: "none" }}
+                  />
+                </label>
+              </div>
             </button>
             <h1 className="profile-main__name">
               {currentUser?.name?.split(" ")[0]}
@@ -436,13 +510,6 @@ export default function Dashboard() {
               </span>
             </li>
           </ul>
-          <div className="banner">
-            <h3 className="banner__title">Premium access</h3>
-            <p className="banner__description">Search places without limits</p>
-            <button className="banner__button" type="button">
-              Start Doing Now
-            </button>
-          </div>
         </section>
       </aside>
     </div>

@@ -120,14 +120,16 @@ input {
   justify-content: center;
   align-items: center;
   margin: 0 0.45rem 1.2rem 0.45rem;
-  color: #333;
+  color: white;
+  outline: none;
+  border: none;
   border-radius: 49px;
-  border: 1px solid #333;
   text-decoration: none;
   font-size: 1.2rem;
   transition: 0.3s;
   transition: 0.3s all linear;
   font-weight: bolder !important;
+  background-color: #2ca9ec;
 }
 
 .social-icon .fab {

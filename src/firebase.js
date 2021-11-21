@@ -1,6 +1,7 @@
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
+import "firebase/compat/storage";
 import cogoToast from "cogo-toast";
 
 const firebaseConfig = {
@@ -16,6 +17,8 @@ const firebaseConfig = {
 const app = firebase.initializeApp(firebaseConfig);
 const auth = app.auth();
 const db = app.firestore();
+const storage = app.storage();
+const timestamp = app.firestore?.FieldValue?.serverTimestamp || null;
 
 const googleProvider = new firebase.auth.GoogleAuthProvider();
 
@@ -31,13 +34,12 @@ const signInWithGoogle = async () => {
         authProvider: "google",
         email: user.email,
         createdAt: Date.now(),
+        photoURL: user.photoURL,
       },
       { merge: true }
     );
   } catch (err) {
-    console.error("sign in with google", err);
-
-    cogoToast.error(err.message);
+    console.log(err.message);
   }
 };
 
@@ -84,9 +86,11 @@ const logout = () => {
 export {
   auth,
   db,
+  storage,
   signInWithGoogle,
   signInWithEmailAndPassword,
   registerWithEmailAndPassword,
   sendPasswordResetEmail,
   logout,
+  timestamp,
 };

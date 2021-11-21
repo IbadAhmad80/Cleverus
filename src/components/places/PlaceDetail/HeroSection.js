@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./placeDetails.module.scss";
-import { AiFillStar } from "react-icons/ai";
 import { TiTick } from "react-icons/ti";
 import { BiArrowBack } from "react-icons/bi";
+import StarRatings from "react-star-ratings";
 import { Link } from "react-router-dom";
 
 const PlaceHeroSection = ({ place }) => {
@@ -14,29 +14,21 @@ const PlaceHeroSection = ({ place }) => {
 
         <div className={styles.image_content}>
           <div style={{ paddingTop: "38vh" }}>
-            <Link to="/">
+            <Link to="/search">
               <i className={styles.back_icon}>
                 <BiArrowBack />
               </i>
             </Link>
             <h2>{place?.name}</h2>
             <div className={styles.rating_flex}>
-              <div className="" style={{ marginTop: "-10px" }}>
-                <i className=" fs-4 fa fa-star text-warning">
-                  <AiFillStar />
-                </i>
-                <i className="fs-4 fa fa-star text-warning">
-                  <AiFillStar />
-                </i>
-                <i className="fs-4 fa fa-star text-warning">
-                  <AiFillStar />
-                </i>
-                <i className="fs-4 fa fa-star text-warning">
-                  <AiFillStar />
-                </i>
-                <i className="fs-4 fa fa-star text-warning">
-                  <AiFillStar />
-                </i>
+              <div style={{ margin: "-4px 0 0 0" }}>
+                <StarRatings
+                  rating={place?.rating}
+                  starDimension="18px"
+                  starSpacing="0px"
+                  starRatedColor={"#31B4BD"}
+                  emptyRatedColor={"white"}
+                />
               </div>
               <div className={styles.total_reviews}>
                 {place?.review_count} reviews

@@ -1101,12 +1101,66 @@
   max-width: 300px;
   margin: 0 auto;
   padding: 0;
+  height: 180px;
   border-radius: 50%;
   overflow: hidden;
 }
 
 .wrapper .profile-main__photo {
-  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 180px;
+  font-size: 50px;
+  min-width: 100px;
+  max-width: 250px;
+  width: 200px;
+  border-radius: 50%;
+  color: white;
+  object-fit: cover;
+  object-position: center;
+  background-color: maroon;
+  box-shadow: 2px 2px 2px black;
+}
+
+.wrapper .profile-main .generated_photo {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 180px;
+  font-size: 50px;
+  min-width: 100px;
+  max-width: 250px;
+  width: 200px;
+  border-radius: 50%;
+  color: white;
+  object-fit: cover;
+  object-position: center;
+  background-color: maroon;
+  box-shadow: 2px 2px 2px black;
+}
+
+.wrapper .profile-main .image-overlay {
+  display: none;
+}
+
+.wrapper .profile-main__setting:hover .image-overlay {
+  position: absolute;
+  transition: 0.5s linear all;
+  display: flex;
+  align-items: center;
+  outline: none;
+  border: none;
+  inset: 0;
+  background-color: gray;
+}
+
+.wrapper .profile-main__setting:hover .image-overlay label {
+  color: white;
+  font-size: 50px;
+  margin: 0 auto;
 }
 
 @media (max-width: 1800px) {

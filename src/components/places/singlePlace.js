@@ -5,6 +5,7 @@ import { FiMapPin } from "react-icons/fi";
 import { FaQuoteRight } from "react-icons/fa";
 import { BsArrowUpRight } from "react-icons/bs";
 import { useHistory } from "react-router";
+import StarRatings from "react-star-ratings";
 
 function SinglePlace({ place }) {
   const history = useHistory();
@@ -30,7 +31,7 @@ function SinglePlace({ place }) {
               <div class="hotel-card_info p-4">
                 <div class="d-flex align-items-center mb-2">
                   <h5
-                    class="mb-0 location-name"
+                    class="m-0 location-name"
                     onClick={() =>
                       history.push({
                         pathname: "/places-details",
@@ -40,22 +41,14 @@ function SinglePlace({ place }) {
                   >
                     {place?.name}
                   </h5>
-                  <div class=" mx-2">
-                    <i class="fa fa-star text-warning">
-                      <AiFillStar />
-                    </i>
-                    <i class="fa fa-star text-warning">
-                      <AiFillStar />
-                    </i>
-                    <i class="fa fa-star text-warning">
-                      <AiFillStar />
-                    </i>
-                    <i class="fa fa-star text-warning">
-                      <AiFillStar />
-                    </i>
-                    <i class="fa fa-star text-warning">
-                      <AiFillStar />
-                    </i>
+                  <div class="mx-4" style={{ margin: "-5px 0 0 0" }}>
+                    <StarRatings
+                      rating={place?.rating}
+                      starDimension="18px"
+                      starSpacing="0px"
+                      starRatedColor={"red"}
+                      emptyRatedColor={"white"}
+                    />
                   </div>
                   <a href="#!" class="text-dark ml-auto">
                     <i class="far fa-heart fa-lg"></i>

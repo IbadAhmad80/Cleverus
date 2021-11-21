@@ -38,6 +38,7 @@
 
     .search-input {
       border: none;
+      border-radius: 0px !important;
       outline: none;
       box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
       border-radius: 4px;
@@ -49,49 +50,31 @@
     }
 
     .module-search-box {
-      padding: 5px 10px;
       background-color: white;
-      border-left: 2px solid rgb(207, 195, 195);
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
 
-      span {
-        cursor: pointer;
-        padding: 5px 15px;
-        font-size: 15px;
-        border-radius: 50px;
-        border: 0.03rem solid rgb(214, 208, 208);
-        box-shadow: 4px black;
+      .module-wrapper {
+        margin: 8px 0;
+        padding: 0px 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-left: 2px solid rgb(207, 195, 195);
+
+        span {
+          cursor: pointer;
+          padding: 2px 15px;
+          font-size: 15px;
+          border-radius: 50px;
+          border: 0.03rem solid rgb(61, 56, 56);
+          box-shadow: 4px black;
+        }
+        .active {
+          background-color: salmon;
+          color: white;
+          border: none;
+        }
       }
-      .active {
-        background-color: salmon;
-        color: white;
-        border: none;
-      }
     }
-  }
-  .locate-me {
-    @include for-mob-screen {
-      position: fixed;
-    }
-    @include for-desktop-screen {
-      position: absolute;
-    }
-    z-index: 1;
-    right: 2%;
-    background: white;
-    border: 1px solid black;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-    border-radius: 20px;
-    display: flex;
-    height: 38px;
-    width: 120px;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 14px;
-    cursor: pointer;
   }
 
   .error-message {

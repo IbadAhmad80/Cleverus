@@ -14,15 +14,15 @@ function App() {
   const hisotry = useHistory();
   const [indexRouteCheck, setIndexRouteCheck] = React.useState(true);
 
-  React.useEffect(() => {
-    indexRouteCheck === true && hisotry.replace("/home");
-    setIndexRouteCheck(false);
-  }, []);
+  // React.useEffect(() => {
+  //   indexRouteCheck === true && hisotry.replace("/home");
+  //   setIndexRouteCheck(false);
+  // }, []);
   return (
     <div className="App">
       <Switch>
-        <Route path="/home" component={Home} exact />
-        <Route path="/" component={Places} exact />
+        <Route path="/" component={Home} exact />
+        <Route path="/search" component={Places} exact />
         <Route path="/places-details" component={PlaceDetails} exact />
         <Route path="/about" component={About} exact />
         <Route path="/contact" component={Contact} exact />

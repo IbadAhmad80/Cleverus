@@ -247,6 +247,21 @@ $primary-color: #28b4ca;
 
       box-shadow: 2px 2px 2px black;
     }
+    .review_generated_img {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50px !important;
+      min-width: 50px !important;
+      max-width: 50px;
+      width: 40px !important;
+      border-radius: 50% !important;
+      color: white;
+      object-fit: cover;
+      object-position: center;
+      background-color: maroon;
+      box-shadow: 2px 2px 2px black;
+    }
     .review_content {
       background-color: rgb(246, 246, 246);
       padding: 2em 2em 2em 2em;

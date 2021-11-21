@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200&display=swap");
 
 .main_wrapper {
-  font-family: "Manrope", sans-serif;
+  font-family: "Poppins", sans-serif;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -32,7 +32,7 @@
 
 .comment-area textarea {
   resize: none;
-  border: 1px solid #ad9f9f;
+  border: 1px solid #272525;
 }
 
 .form-control:focus {
@@ -46,6 +46,23 @@
   flex-direction: row-reverse;
   margin-left: -4px;
   float: left;
+}
+
+.user_image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  font-size: 20px;
+  min-width: 30px;
+  max-width: 70px;
+  width: 60px;
+  border-radius: 50%;
+  color: white;
+  object-fit: cover;
+  object-position: center;
+  background-color: maroon;
+  box-shadow: 2px 2px 2px black;
 }
 
 textarea {

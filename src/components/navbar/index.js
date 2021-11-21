@@ -68,7 +68,7 @@ export default function NavBar() {
                   className="px-2 nav-links text-uppercase nav-link"
                   href="#home"
                 >
-                  <Link to="/home" className="nav-link">
+                  <Link to="/" className="nav-link">
                     Home
                   </Link>
                 </Nav.Link>
@@ -76,7 +76,7 @@ export default function NavBar() {
                   className="px-3 nav-links text-uppercase nav-link"
                   href="#contact"
                 >
-                  <Link to="/" className="nav-link">
+                  <Link to="/search" className="nav-link">
                     Find Place
                   </Link>
                 </Nav.Link>

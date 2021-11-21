@@ -7,9 +7,6 @@ import React, {
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from "google-maps-react";
 import ClipLoader from "react-spinners/ClipLoader";
 import "./GoogleMaps.scss";
-import { MdLocationOn } from "react-icons/md";
-import { AiOutlineClose } from "react-icons/ai";
-import { ImSad2 } from "react-icons/im";
 import axios from "axios";
 import Geocode from "react-geocode";
 import usePlacesAutocomplete, {
@@ -494,7 +491,11 @@ const Search = forwardRef((props, ref) => {
   };
   return (
     <div
-      style={{ top: props.width === "sm" ? "30px" : "10px" }}
+      style={{
+        top: props.width === "sm" ? "30px" : "10px",
+        // width: "90%",
+        // margin: "0 auto",
+      }}
       className="search-box d-flex"
     >
       <Combobox

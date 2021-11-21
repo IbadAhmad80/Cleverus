@@ -49,7 +49,7 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/places" className="text-black">
+                  <Link to="/search" className="text-black">
                     Find Places
                   </Link>
                 </li>
@@ -102,16 +102,12 @@ export default function Footer() {
               <div className="copyright">
                 &copy; Copyright Reserved to{" "}
                 <span className="text-color">CleverUs.</span>
-               
               </div>
             </div>
             <div className="col-lg-6 text-left text-lg-right">
               <ul className="list-inline footer-socials">
                 <li className="list-inline-item">
-                  <a
-                    href="#"
-                    className="text-black"
-                  >
+                  <a href="#" className="text-black">
                     <i className="mx-2 fs-5  ">
                       <FaFacebook />
                     </i>
@@ -119,10 +115,7 @@ export default function Footer() {
                   </a>
                 </li>
                 <li className="list-inline-item">
-                  <a
-                    href="#"
-                    className="text-black"
-                  >
+                  <a href="#" className="text-black">
                     <i className="mx-2 fs-5  ">
                       <FaTwitter />
                     </i>
@@ -130,10 +123,7 @@ export default function Footer() {
                   </a>
                 </li>
                 <li className="list-inline-item">
-                  <a
-                    href="#"
-                    className="text-black"
-                  >
+                  <a href="#" className="text-black">
                     <i className="mx-2 fs-5  ">
                       <FaLinkedin />
                     </i>
