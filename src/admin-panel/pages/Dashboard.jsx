@@ -211,51 +211,53 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-      <div
-        className="row d-flex justify-content-center"
-        style={{ height: "350px" }}
-      >
-        <div className="col-5 card full-height">
+      <div className="row px-2 d-flex justify-content-center">
+        <div className="col-6 ">
           {/* chart */}
-          <Chart
-            options={
-              themeReducer === "theme-mode-dark"
-                ? {
-                    ...chartOptions.options,
-                    theme: { mode: "dark" },
-                  }
-                : {
-                    ...chartOptions.options,
-                    theme: { mode: "light" },
-                  }
-            }
-            series={chartOptions.series}
-            type="line"
-            height="100%"
-          />
+          <div className="card" style={{ height: "320px" }}>
+            {" "}
+            <Chart
+              options={
+                themeReducer === "theme-mode-dark"
+                  ? {
+                      ...chartOptions.options,
+                      theme: { mode: "dark" },
+                    }
+                  : {
+                      ...chartOptions.options,
+                      theme: { mode: "light" },
+                    }
+              }
+              series={chartOptions.series}
+              type="line"
+              height="100%"
+            />
+          </div>
         </div>
 
-        <div className="col-5 offset-1 card full-height">
-          {/* chart */}
-          <Chart
-            options={
-              themeReducer === "theme-mode-dark"
-                ? {
-                    ...chartOptions1.options,
-                    theme: { mode: "dark" },
-                  }
-                : {
-                    ...chartOptions1.options,
-                    theme: { mode: "light" },
-                  }
-            }
-            series={chartOptions1.series}
-            type="line"
-            height="100%"
-          />
+        <div className="col-6  ">
+          <div className="card" style={{ height: "320px" }}>
+            {" "}
+            <Chart
+              options={
+                themeReducer === "theme-mode-dark"
+                  ? {
+                      ...chartOptions1.options,
+                      theme: { mode: "dark" },
+                    }
+                  : {
+                      ...chartOptions1.options,
+                      theme: { mode: "light" },
+                    }
+              }
+              series={chartOptions1.series}
+              type="line"
+              height="100%"
+            />
+          </div>
         </div>
       </div>
-      <div className="row">
+      <div className="row px-2">
         <div className="col-4">
           <div className="card">
             <div className="card__header">
