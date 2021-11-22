@@ -12,7 +12,8 @@ import {
 } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-export default function SignIn() {
+export default function SignIn({ history: routeHistory }) {
+  const history = useHistory();
   const [signInData, setSignInData] = React.useState({
     email: null,
     password: null,
@@ -23,7 +24,6 @@ export default function SignIn() {
     password: null,
   });
   const [user, loading, error] = useAuthState(auth);
-  const history = useHistory();
 
   React.useEffect(() => {
     if (loading) {
@@ -33,7 +33,14 @@ export default function SignIn() {
     if (user) {
       setSignInData({ email: null, password: null });
       setSignUpData({ username: null, email: null, password: null });
-      history.replace("/dashboard");
+      if (!routeHistory?.location?.state?.place) {
+        true ? history.replace("/admin-panel") : history.replace("/dashboard");
+      } else {
+        history.replace({
+          pathname: "/places-details",
+          state: { place: routeHistory?.location?.state?.place },
+        });
+      }
     }
   }, [user, loading]);
 
@@ -105,7 +112,7 @@ export default function SignIn() {
                 Sign in with Google
               </button>
             </div>
-            <Link to="/home">
+            <Link to="">
               <button className="account-btn solid">Maybe Later</button>
             </Link>
           </form>
@@ -161,7 +168,7 @@ export default function SignIn() {
             />
 
             <Link to="/">
-              <button to="/home" className="account-btn-2">
+              <button to="/" className="account-btn-2">
                 Maybe Later
               </button>
             </Link>

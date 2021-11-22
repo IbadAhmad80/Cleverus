@@ -7,17 +7,10 @@ import About from "./components/about";
 import SignIn from "./components/accounts/sign-in";
 import Dashboard from "./components/dashboard";
 import Places from "./components/places/index";
-import { useHistory } from "react-router";
 import PlaceDetails from "./components/places/PlaceDetail/placeDetails";
+import AdminPanel from "./admin-panel/index";
 
 function App() {
-  const hisotry = useHistory();
-  const [indexRouteCheck, setIndexRouteCheck] = React.useState(true);
-
-  // React.useEffect(() => {
-  //   indexRouteCheck === true && hisotry.replace("/home");
-  //   setIndexRouteCheck(false);
-  // }, []);
   return (
     <div className="App">
       <Switch>
@@ -28,6 +21,7 @@ function App() {
         <Route path="/contact" component={Contact} exact />
         <Route path="/sign-in" component={SignIn} exact />
         <Route path="/dashboard" component={Dashboard} exact />
+        <Route path="/admin-panel" component={AdminPanel} exact />
       </Switch>
     </div>
   );

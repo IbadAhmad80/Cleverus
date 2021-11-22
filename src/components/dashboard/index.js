@@ -68,11 +68,7 @@ export default function Dashboard() {
         .where("uid", "==", user?.uid)
         .get();
 
-      // console.log("in dashboard user again", query);
-
       const data = await query.docs[0]?.data();
-
-      // console.log("in dashboard user again again", data);
 
       setCurrentUser(data);
       console.log(data?.photoURL);

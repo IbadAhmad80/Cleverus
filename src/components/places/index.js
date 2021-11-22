@@ -15,8 +15,6 @@ const Places = () => {
 
   const [open, setOpen] = React.useState(false);
 
-  // console.log("this is API Format", placesData);
-
   return (
     <div>
       <PlacesModal open={open} setOpen={setOpen} places={places} />

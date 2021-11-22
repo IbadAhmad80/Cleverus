@@ -1,0 +1,15 @@
+[
+  {
+    "icon": "bx bx-home",
+    "content": "Home"
+  },
+  {
+    "icon": "bx bx-search",
+    "content": "Search"
+  },
+
+  {
+    "icon": "bx bx-log-out-circle bx-rotate-180",
+    "content": "Logout"
+  }
+]

@@ -6,7 +6,6 @@ import StarRatings from "react-star-ratings";
 import { Link } from "react-router-dom";
 
 const PlaceHeroSection = ({ place }) => {
-  console.log(place);
   return (
     <div>
       <div className={styles.image_overlay}>

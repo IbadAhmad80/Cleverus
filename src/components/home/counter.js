@@ -1,6 +1,6 @@
 import React from "react";
 import "../../css/style.css";
-import { AiOutlineShoppingCart } from "react-icons/ai";
+import { RiHospitalFill } from "react-icons/ri";
 import { RiHotelLine, RiScissors2Line } from "react-icons/ri";
 import { GiKnifeFork } from "react-icons/gi";
 import CountUp from "react-countup";
@@ -58,7 +58,7 @@ export default function Counter() {
             <div className="col-lg-3 col-md-6 col-sm-6">
               <div className="counter-item text-center">
                 <i className="ti-medall color-one text-md-1">
-                  <AiOutlineShoppingCart />
+                  <RiHospitalFill />
                 </i>
                 <h3 className="mt-2 mb-0 text-white">
                   <span className="counter-stat font-weight-bold">
@@ -67,7 +67,7 @@ export default function Counter() {
                   </span>
                   +
                 </h3>
-                <p className="text-white-50">Shopping Malls</p>
+                <p className="text-white-50">Hospitals</p>
               </div>
             </div>
           </div>
