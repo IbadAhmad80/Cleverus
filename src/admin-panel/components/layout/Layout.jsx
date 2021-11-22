@@ -27,20 +27,14 @@ const Layout = () => {
   }, [dispatch]);
 
   return (
-    <BrowserRouter>
-      <Route
-        render={(props) => (
-          <div className={`layout ${themeReducer.mode} ${themeReducer.color}`}>
-            <div className="layout__content">
-              <TopNav />
-              <div className="layout__content-main">
-                <Routes />
-              </div>
-            </div>
-          </div>
-        )}
-      />
-    </BrowserRouter>
+    <div className={`layout`}>
+      <div className="layout__content">
+        <TopNav />
+        <div className="layout__content-main">
+          <Routes />
+        </div>
+      </div>
+    </div>
   );
 };
 

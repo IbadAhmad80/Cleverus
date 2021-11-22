@@ -14,8 +14,6 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 
 import user_menu from "../../assets/JsonData/user_menus.json";
 
-import { useHistory } from "react-router";
-
 const curr_user = {
   display_name: "Ibad A.",
   image: user_image,
@@ -45,13 +43,12 @@ const renderUserMenu = (item, index) => (
 );
 
 const Topnav = () => {
-  const history = useHistory();
   return (
     <div className="topnav">
       <div className="topnav__go_back">
-        <div onClick={(e) => history.replace("/")}>
+        <Link to="/">
           <IoMdArrowRoundBack />
-        </div>
+        </Link>
       </div>
       <div className="topnav__right">
         <div className="topnav__right-item">
@@ -61,10 +58,6 @@ const Topnav = () => {
             contentData={user_menu}
             renderItems={(item, index) => renderUserMenu(item, index)}
           />
-        </div>
-
-        <div className="topnav__right-item">
-          <ThemeMenu />
         </div>
       </div>
     </div>
