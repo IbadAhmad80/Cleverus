@@ -12,15 +12,25 @@ axios.defaults.headers.common = {
 
 const Places = () => {
   const [places, setPlaces] = React.useState([]);
+  const [category, setCategory] = React.useState(null);
 
   const [open, setOpen] = React.useState(false);
 
   return (
     <div>
-      <PlacesModal open={open} setOpen={setOpen} places={places} />
+      <PlacesModal
+        open={open}
+        setOpen={setOpen}
+        places={places}
+        category={category}
+      />
       {/* <NavBar /> */}
       <div style={{ marginTop: "0px" }}>
-        <GoogleMaps setOpen={setOpen} setPlaces={setPlaces} />
+        <GoogleMaps
+          setOpen={setOpen}
+          setPlaces={setPlaces}
+          setCategory={setCategory}
+        />
       </div>
     </div>
   );

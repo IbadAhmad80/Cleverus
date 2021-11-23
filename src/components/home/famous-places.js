@@ -1,7 +1,19 @@
 import React from "react";
 import "../../css/style.css";
+import axios from "axios";
+import { useHistory } from "react-router";
 
 export default function FamousPlaces() {
+  const [places, setPlaces] = React.useState(null);
+  const history = useHistory();
+  React.useEffect(() => {
+    const getFamousPlaces = async () => {
+      const { data } = await axios.get("/reviews/Random");
+      setPlaces(data);
+    };
+    getFamousPlaces();
+  }, []);
+
   return (
     <section className="latest-blog bg-2">
       <div>
@@ -18,98 +30,104 @@ export default function FamousPlaces() {
           </div>
 
           <div className="row justify-content-center">
-            <div className="col-lg-4 col-md-6 mb-5">
-              <div className="card bg-transparent border-0">
-                <img
-                  src="https://bootstrapmade.com/demo/templates/Presento/assets/img/portfolio/portfolio-2.jpg"
-                  alt=""
-                  className="img-fluid rounded"
-                />
+            {places &&
+              places.resturants.map((place) => {
+                return (
+                  <div className="col-lg-4 col-md-6 mb-5">
+                    <div className="card bg-transparent border-0">
+                      <img
+                        src={place?.image_url}
+                        alt=""
+                        className="img-fluid hotel_images rounded"
+                      />
 
-                <div className="card-body mt-2">
-                  <div className="blog-item-meta">
-                    <a href="#home" className="text-white-50">
-                      Category / Resturant
-                    </a>
+                      <div className="card-body mt-2">
+                        <div className="blog-item-meta">
+                          <a
+                            href="#home"
+                            className="text-white-50 text-capitalize"
+                          >
+                            Category / {place?.type}
+                          </a>
+                        </div>
+
+                        <h3 className="mt-3 mb-4">
+                          <a
+                            href="#home"
+                            className="text-white place_name fs-4"
+                          >
+                            {place?.name.slice(0, 15)}
+                          </a>
+                        </h3>
+
+                        <button
+                          href="blog-single.html"
+                          className="btn-small btn-solid-border btn-round-full text-white"
+                          onClick={() =>
+                            history.push({
+                              pathname: "places-details",
+                              state: {
+                                place: place,
+                              },
+                            })
+                          }
+                        >
+                          View Details
+                        </button>
+                      </div>
+                    </div>
                   </div>
+                );
+              })}
+            {places &&
+              places.hotels.map((place) => {
+                return (
+                  <div className="col-lg-4 col-md-6 mb-5">
+                    <div className="card bg-transparent border-0">
+                      <img
+                        src={place?.image_url}
+                        alt=""
+                        className="img-fluid hotel_images rounded"
+                      />
 
-                  <h3 className="mt-3 mb-4">
-                    <a href="#home" className="text-white fs-4">
-                      Middle East Deli
-                    </a>
-                  </h3>
+                      <div className="card-body mt-2">
+                        <div className="blog-item-meta">
+                          <a
+                            href="#home"
+                            className="text-white-50 text-capitalize"
+                          >
+                            Category / {place?.type}
+                          </a>
+                        </div>
 
-                  <button
-                    href="blog-single.html"
-                    className="btn-small btn-solid-border btn-round-full text-white"
-                  >
-                    View Details
-                  </button>
-                </div>
-              </div>
-            </div>
+                        <h3 className="mt-3 mb-4">
+                          <a
+                            href="#home"
+                            className="text-white place_name fs-4"
+                          >
+                            {place?.name.slice(0, 15)}
+                          </a>
+                        </h3>
 
-            <div className="col-lg-4 col-md-6 mb-5">
-              <div className="card border-0 bg-transparent">
-                <img
-                  src="https://bootstrapmade.com/demo/templates/Presento/assets/img/portfolio/portfolio-1.jpg"
-                  alt=""
-                  className="img-fluid rounded"
-                />
-
-                <div className="card-body mt-2">
-                  <div className="blog-item-meta">
-                    <a href="#home" className="text-white-50">
-                      Category / Hotels
-                    </a>
+                        <button
+                          href="blog-single.html"
+                          className="btn-small btn-solid-border btn-round-full text-white"
+                          onClick={() =>
+                            history.push({
+                              pathname: "places-details",
+                              state: {
+                                place: place,
+                              },
+                            })
+                          }
+                        >
+                          View Details
+                        </button>
+                      </div>
+                    </div>
                   </div>
-
-                  <h3 className="mt-3 mb-4 ">
-                    <a href="#home" className="text-white fs-4">
-                      The Empanadas House
-                    </a>
-                  </h3>
-
-                  <button
-                    href="blog-single.html"
-                    className="btn-small btn-solid-border btn-round-full text-white"
-                  >
-                    View Details
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-lg-4 col-md-6 mb-5">
-              <div className="card border-0 bg-transparent">
-                <img
-                  src="https://bootstrapmade.com/demo/templates/Presento/assets/img/portfolio/portfolio-3.jpg"
-                  alt=""
-                  className="img-fluid rounded"
-                />
-
-                <div className="card-body mt-2">
-                  <div className="blog-item-meta">
-                    <a href="#home" className="text-white-50">
-                      Category / Hotels
-                    </a>
-                  </div>
-
-                  <h3 className="mt-3 mb-4">
-                    <a href="#home" className="text-white fs-4">
-                      Philthy Phillys
-                    </a>
-                  </h3>
-
-                  <button
-                    href="blog-single.html"
-                    className="btn-small btn-solid-border btn-round-full text-white"
-                  >
-                    View Details
-                  </button>
-                </div>
-              </div>
-            </div>
+                );
+              })}
           </div>
         </div>
       </div>

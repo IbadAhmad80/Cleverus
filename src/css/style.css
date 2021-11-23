@@ -1319,6 +1319,18 @@ h3.quote::before {
     text-align: center;
   }
 }
+.hotel_images {
+  width: 100% !important;
+  height: 200px !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+.place_name {
+  /* white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important; */
+}
 
 @media (max-width: 768px) {
   .navbar-toggler {

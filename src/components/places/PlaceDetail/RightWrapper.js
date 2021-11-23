@@ -9,8 +9,11 @@ const RightWrapper = ({ place }) => {
       <Info place={place} />
       <h5 className="my-5 pt-5">You Might Also Consider</h5>
       <div className="mt-5">
-        <SimilarPlaces />
-        <SimilarPlaces />
+        <SimilarPlaces
+          lat={place?.coordinates?.latitude}
+          lng={place?.coordinates?.longitude}
+          business={place?.type}
+        />
       </div>
     </div>
   );

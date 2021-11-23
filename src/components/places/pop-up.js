@@ -3,7 +3,11 @@ import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import SinglePlace from "./singlePlace";
 
-const PlacesModal = ({ setOpen, open, places }) => {
+const PlacesModal = ({ setOpen, open, places, category }) => {
+  places &&
+    places?.data?.map((place) => {
+      return (place.type = category);
+    });
   const styles = {
     modal: {
       minWidth: "80%",

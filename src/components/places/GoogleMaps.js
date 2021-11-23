@@ -77,6 +77,7 @@ function GoogleMaps(props) {
       props.setOpen(true);
 
       props.setPlaces(data);
+      props.setCategory(selectedCategory);
       data && setLoading(false);
       storeData(data);
     } catch (error) {
