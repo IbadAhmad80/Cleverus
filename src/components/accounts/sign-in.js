@@ -9,8 +9,10 @@ import {
   signInWithEmailAndPassword,
   signInWithGoogle,
   registerWithEmailAndPassword,
+  db,
 } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
+import cogoToast from "cogo-toast";
 
 export default function SignIn({ history: routeHistory }) {
   const history = useHistory();
@@ -23,26 +25,50 @@ export default function SignIn({ history: routeHistory }) {
     email: null,
     password: null,
   });
-  const [user, loading, error] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
+  const [currentUser, setCurrentUser] = React.useState(null);
+
+  const fetchUserName = async () => {};
 
   React.useEffect(() => {
     if (loading) {
       // maybe trigger a loading screen
-      return;
     }
+    const fetchUserName = async () => {
+      try {
+        const query = await db
+          .collection("users")
+          .where("uid", "==", user?.uid)
+          .get();
+
+        const data = await query.docs[0]?.data();
+        localStorage.setItem("user", JSON.stringify(data));
+
+        setCurrentUser(data);
+        if (data) {
+          if (!routeHistory?.location?.state?.place) {
+            data && data?.role === "admin"
+              ? history.replace("/admin-panel")
+              : history.replace("/dashboard");
+          } else {
+            history.replace({
+              pathname: "/places-details",
+              state: { place: routeHistory?.location?.state?.place },
+            });
+          }
+        }
+      } catch (err) {
+        console.error(err);
+        cogoToast.error("An error occured while fetching user data");
+      }
+    };
+
     if (user) {
       setSignInData({ email: null, password: null });
       setSignUpData({ username: null, email: null, password: null });
-      if (!routeHistory?.location?.state?.place) {
-        true ? history.replace("/admin-panel") : history.replace("/dashboard");
-      } else {
-        history.replace({
-          pathname: "/places-details",
-          state: { place: routeHistory?.location?.state?.place },
-        });
-      }
+      fetchUserName();
     }
-  }, [user, loading]);
+  }, [user, loading, currentUser]);
 
   const handleSignInTransition = (e) => {
     const container = document.querySelector(".account-container");

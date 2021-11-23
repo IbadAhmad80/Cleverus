@@ -3,8 +3,32 @@ import "../../css/style.css";
 import { FaEnvelope, FaFacebook, FaGithubAlt, FaTwitter } from "react-icons/fa";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { db, auth } from "../../firebase";
+import { useHistory } from "react-router";
+import cogoToast from "cogo-toast";
 
 export default function NavBar() {
+  const history = useHistory();
+  const [user, loading] = useAuthState(auth);
+
+  const handleProfileClick = async () => {
+    if (loading) {
+      // maybe trigger a loading screen
+    }
+    if (!user) {
+      history.push("/sign-in");
+    }
+    if (user) {
+      let data = localStorage.getItem("user");
+      data = JSON.parse(data);
+      data
+        ? data?.role === "admin"
+          ? history.replace("/admin-panel")
+          : history.replace("/dashboard")
+        : history.push("/sign-in");
+    }
+  };
   return (
     <header className="navigation .bg-dark ">
       <div className="header-top  ">
@@ -92,12 +116,13 @@ export default function NavBar() {
                   </Link>
                 </Nav.Link>
               </Nav>
-              <Nav className="text-center mt-2 mt-lg-0 ">
-                <Link to="/sign-in">
-                  <button className="text-white fs-6 px-4 py-2 btn-solid-border btn-round-full">
-                    My Profile
-                  </button>
-                </Link>
+              <Nav
+                className="text-center mt-2 mt-lg-0 "
+                onClick={handleProfileClick}
+              >
+                <button className="text-white fs-6 px-4 py-2 btn-solid-border btn-round-full">
+                  My Profile
+                </button>
               </Nav>
             </Navbar.Collapse>
           </Container>
