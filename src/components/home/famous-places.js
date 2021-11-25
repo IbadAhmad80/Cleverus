@@ -8,7 +8,7 @@ export default function FamousPlaces() {
   const history = useHistory();
   React.useEffect(() => {
     const getFamousPlaces = async () => {
-      const { data } = await axios.get("/reviews/Random");
+      const { data } = await axios.get("/api/randomBusiness");
       setPlaces(data);
     };
     getFamousPlaces();

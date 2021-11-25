@@ -40,7 +40,7 @@ Geocode.setLocationType("APPROXIMATE");
 
 function GoogleMaps(props) {
   const [initialCheck, setInitialCheck] = React.useState(false);
-  const [marker, setMarker] = useState({ lng: 0.1276, lat: 51.5072 });
+  const [marker, setMarker] = useState({ lng: 0.1276, lat: 51.5072178 });
   const [address, setAddress] = useState("Dubai");
   const [showingInfoWindow, setShowingInfoWindow] = useState(false);
   const [activeMarker, setActiveMarker] = useState(null);
@@ -65,10 +65,10 @@ function GoogleMaps(props) {
       setInitialCheck(true);
     }
   }, [marker]);
-
+  console.log(marker);
   const getData = async () => {
     try {
-      const { data } = await axios.post("/reviews/predictions", {
+      const { data } = await axios.post("/api/predictions", {
         longitude: marker.lng,
         latituide: marker.lat,
         category: selectedCategory,
@@ -105,7 +105,7 @@ function GoogleMaps(props) {
       locations[unselectedCategories[2]] =
         null;
     try {
-      const res = await axios.post("/reviews/store", locations);
+      const res = await axios.post("/api/store", locations);
       res && cogoToast.success("Data is been stored Successfully");
     } catch (error) {
       cogoToast.error("Looks like data might not be backed up successfully :(");

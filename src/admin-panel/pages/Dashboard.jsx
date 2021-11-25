@@ -10,7 +10,12 @@ import Table from "../components/table/Table";
 
 import Badge from "../components/badge/Badge";
 
-import statusCards from "../assets/JsonData/status-card-data.json";
+import { db } from "../../firebase";
+
+import ClipLoader from "react-spinners/ClipLoader";
+
+import axios from "axios";
+import cogoToast from "cogo-toast";
 
 const chartOptions = {
   series: [
@@ -99,99 +104,104 @@ const chartOptions1 = {
     },
   },
 };
-const adminUsers = {
-  head: ["Name", "Email"],
-  body: [
-    {
-      username: "john doe",
-      email: "john@gmail.com",
-    },
-    {
-      username: "frank iva",
-      email: "john@gmail.com",
-    },
-    {
-      username: "anthony baker",
-      email: "john@gmail.com",
-    },
-    {
-      username: "frank iva",
-      email: "john@gmail.com",
-    },
-    {
-      username: "anthony baker",
-      email: "john@gmail.com",
-    },
-  ],
-};
-
-const renderCusomerHead = (item, index) => <th key={index}>{item}</th>;
-
-const renderCusomerBody = (item, index) => (
-  <tr key={index}>
-    <td>{item.username}</td>
-    <td>{item.email}</td>
-  </tr>
-);
-
-const customUsers = {
-  header: ["ID", "Name", "Email", "Action"],
-  body: [
-    {
-      id: "#OD1711",
-      user: "john doe",
-      email: "john@gmail.com",
-      status: "delete",
-    },
-    {
-      id: "#OD1712",
-      user: "frank iva",
-      email: "john@gmail.com",
-      status: "delete",
-    },
-    {
-      id: "#OD1713",
-      user: "anthony baker",
-      email: "john@gmail.com",
-      status: "delete",
-    },
-    {
-      id: "#OD1712",
-      user: "frank iva",
-      email: "john@gmail.com",
-      status: "delete",
-    },
-    {
-      id: "#OD1713",
-      user: "anthony baker",
-      email: "john@gmail.com",
-      status: "delete",
-    },
-  ],
-};
-
-const orderStatus = {
-  delete: "danger",
-};
-
-const renderOrderHead = (item, index) => <th key={index}>{item}</th>;
-
-const renderOrderBody = (item, index) => (
-  <tr key={index}>
-    <td>{item.id}</td>
-    <td>{item.user}</td>
-    <td>{item.email}</td>
-    <td>
-      <Badge
-        type={orderStatus[item.status]}
-        content={item.status.toUpperCase()}
-      />
-    </td>
-  </tr>
-);
 
 const Dashboard = () => {
+  const [allUser, setAllUser] = React.useState([]);
+  const [customUser, setCustomUsers] = React.useState([]);
+  const [adminUser, setAdminUsers] = React.useState([]);
   const themeReducer = useSelector((state) => state.ThemeReducer.mode);
+  const [businessCount, setBusinessCounts] = React.useState(null);
+
+  const businessCounts = [
+    {
+      icon: "bx bx-hotel",
+      count: businessCount && businessCount?.hotels,
+      title: "Total Hotels",
+    },
+    {
+      icon: "bx bx-restaurant",
+      count: businessCount && businessCount?.resturants,
+      title: "Total Resturants",
+    },
+    {
+      icon: "bx bx-moon",
+      count: businessCount && businessCount?.hospitals,
+      title: "Total Hospitals",
+    },
+    {
+      icon: "bx bx-cart",
+      count: businessCount && businessCount?.barbers,
+      title: "Total Barbers",
+    },
+  ];
+
+  React.useEffect(() => {
+    axios
+      .get("/api/businessCounts")
+      .then(({ data }) => {
+        setBusinessCounts(data);
+      })
+      .catch((err) => {
+        cogoToast.error(err);
+      });
+  }, []);
+
+  const renderCusomerHead = (item, index) => <th key={index}>{item}</th>;
+
+  const renderCusomerBody = (item, index) => (
+    <tr key={index}>
+      <td>{item.username}</td>
+      <td>{item.email}</td>
+    </tr>
+  );
+
+  const renderOrderHead = (item, index) => <th key={index}>{item}</th>;
+
+  const renderOrderBody = (item, index) => (
+    <tr key={index}>
+      <td>{item.provider}</td>
+      <td>{item.username}</td>
+      <td>{item.email}</td>
+      <td>
+        <Badge type={"danger"} content="Delete" />
+      </td>
+    </tr>
+  );
+  React.useEffect(() => {
+    db.collection("users")
+      .get()
+      .then((querySnapshot) => {
+        const documents = querySnapshot.docs.map((doc) => doc.data());
+        setAllUser(documents);
+        documents.map((doc) => {
+          if (doc.role === "admin") {
+            setAdminUsers((prevUsers) => [
+              ...prevUsers,
+              { username: doc.name, email: doc.email },
+            ]);
+          } else {
+            setCustomUsers((prevUsers) => [
+              ...prevUsers,
+              {
+                username: doc.name,
+                email: doc.email,
+                provider: doc.authProvider,
+              },
+            ]);
+          }
+        });
+      });
+  }, []);
+
+  const customUsers = {
+    header: ["Provider", "Name", "Email", "Action"],
+    body: customUser,
+  };
+
+  const adminUsers = {
+    head: ["Name", "Email"],
+    body: adminUser,
+  };
 
   return (
     <div style={{ marginTop: "-20px" }}>
@@ -199,7 +209,7 @@ const Dashboard = () => {
       <div className="row mx-auto w-100">
         <div className="col-12">
           <div className="row">
-            {statusCards.map((item, index) => (
+            {businessCounts.map((item, index) => (
               <div className="col-6" key={index}>
                 <StatusCard
                   icon={item.icon}
@@ -267,8 +277,9 @@ const Dashboard = () => {
               <Table
                 headData={adminUsers.head}
                 renderHead={(item, index) => renderCusomerHead(item, index)}
-                bodyData={adminUsers.body}
+                bodyData={adminUser}
                 renderBody={(item, index) => renderCusomerBody(item, index)}
+                type={"admin"}
               />
             </div>
           </div>
@@ -282,8 +293,9 @@ const Dashboard = () => {
               <Table
                 headData={customUsers.header}
                 renderHead={(item, index) => renderOrderHead(item, index)}
-                bodyData={customUsers.body}
+                bodyData={customUser}
                 renderBody={(item, index) => renderOrderBody(item, index)}
+                type={"custom"}
               />
             </div>
           </div>

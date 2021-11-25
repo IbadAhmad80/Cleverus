@@ -12,7 +12,7 @@ const SimilarPlaces = ({ lat, lng, business }) => {
   React.useEffect(() => {
     const getFamousPlaces = async () => {
       const { data } = await axios.get(
-        `/reviews/similarBuisness?lat=${lat}&lng=${lng}&business=${business}`
+        `/api/similarBuisness?lat=${lat}&lng=${lng}&business=${business}`
       );
       setPlaces(data);
       console.log(data);

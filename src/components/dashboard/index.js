@@ -3,14 +3,17 @@ import "./styles/index.css";
 import { Link, useHistory } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db, logout, storage } from "../../firebase";
+import { ClipLoader } from "react-spinners";
 import cogoToast from "cogo-toast";
-import { AiOutlineStar, AiOutlineCloudUpload } from "react-icons/ai";
+import { AiOutlineCloudUpload } from "react-icons/ai";
 import firebase from "firebase/compat/app";
 import StarRatings from "react-star-ratings";
+import axios from "axios";
 
 export default function Dashboard() {
   const [user, loading] = useAuthState(auth);
   const [currentUser, setCurrentUser] = React.useState(null);
+  const [noOfReviews, setNoOfReviews] = React.useState(null);
   const history = useHistory();
   const [file, setFile] = React.useState(null);
   const [error, setError] = React.useState(null);
@@ -45,7 +48,6 @@ export default function Dashboard() {
                       photoURL: url,
                     })
                     .then(() => {
-                      console.log("in here", url);
                       cogoToast.info("Image has been updated successfully");
                       setUserImage(url);
                     });
@@ -71,7 +73,7 @@ export default function Dashboard() {
       const data = await query.docs[0]?.data();
 
       setCurrentUser(data);
-      console.log(data?.photoURL);
+      // console.log(data?.photoURL);
       setUserImage(data?.photoURL);
     } catch (err) {
       console.error(err);
@@ -88,6 +90,15 @@ export default function Dashboard() {
     fetchUserName();
     cogoToast.success(`Welcome ${currentUser?.name || ""}!`);
   }, [user, loading]);
+
+  React.useEffect(() => {
+    if (!currentUser) return;
+    axios.get(`/api/reviewsCount?userID=${currentUser?.uid}`).then((res) => {
+      if (res.status === 204) {
+        setNoOfReviews(0);
+      } else setNoOfReviews(res.data);
+    });
+  }, [currentUser]);
 
   return (
     <div className="wrapper">
@@ -170,16 +181,7 @@ export default function Dashboard() {
       <main className="main">
         <header className="header">
           <div className="header__wrapper">
-            <div className="profile">
-              <button className="profile__button">
-                <span className="profile__name">{currentUser?.name}</span>
-                <img
-                  className="profile__img"
-                  src="/images/img/julian-wan-WNoLnJo7tS8-unsplash.jpg"
-                  alt="Profile picture"
-                />
-              </button>
-            </div>
+            <div className="profile"></div>
           </div>
         </header>
         <section className="wrapper_section">
@@ -210,9 +212,13 @@ export default function Dashboard() {
                 </div>
                 <div className="team__inform">
                   <p className="team__name">No of Reviews Posted</p>
-                  <time className="date" datetime="2020-05-05T10:00:00">
-                    55
-                  </time>
+                  <p className="text-center fw-bolder">
+                    {noOfReviews !== 0 && !noOfReviews ? (
+                      <ClipLoader color="maroon" loading size={20} />
+                    ) : (
+                      noOfReviews
+                    )}
+                  </p>
                 </div>
               </a>
             </li>
@@ -239,9 +245,7 @@ export default function Dashboard() {
                 </div>
                 <div className="team__inform">
                   <p className="team__name">No of Favourite Places</p>
-                  <time className="date" datetime="2020-05-01T10:00:00">
-                    20
-                  </time>
+                  <p className="text-center fw-bolder">20</p>
                 </div>
               </a>
             </li>
@@ -288,6 +292,7 @@ export default function Dashboard() {
                 className="section__button section__button--painted focus--box-shadow"
                 type="button"
                 aria-label="Add New project"
+                onClick={() => history.replace("/search")}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -300,127 +305,9 @@ export default function Dashboard() {
             </div>
           </header>
           <ul className="project">
-            <li className="project__item">
-              <a href="#home" className="project__link focus--box-shadow">
-                <div className="project__wrapper">
-                  <div className="project__element project__icon">
-                    <div
-                      className="icon icon--viking"
-                      aria-label="Icon of the 'Showcase Design' project"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        role="presentation"
-                      >
-                        <path d="M7,10H9A1,1,0,0,0,9,8H7a1,1,0,0,0,0,2ZM21,4H13V3a1,1,0,0,0-2,0V4H3A1,1,0,0,0,2,5V15a3,3,0,0,0,3,3H9.59l-2.3,2.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0L11,19.41V21a1,1,0,0,0,2,0V19.41l2.29,2.3a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42L14.41,18H19a3,3,0,0,0,3-3V5A1,1,0,0,0,21,4ZM20,15a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V6H20ZM7,14h6a1,1,0,0,0,0-2H7a1,1,0,0,0,0,2Z" />
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="project__element project__inform">
-                    <h6 className="project__inform-name">
-                      Holins Mashroom Hut
-                    </h6>
-                    <h6
-                      className="project__inform-name"
-                      style={{ lineHeight: "1.2" }}
-                    >
-                      83-89 Fieldgate Street , London E1 1JU , United Kingdom{" "}
-                    </h6>
-
-                    <span>
-                      <StarRatings
-                        rating={3.5}
-                        starDimension="18px"
-                        starSpacing="0px"
-                        starRatedColor={"#F77575"}
-                        emptyRatedColor={"white"}
-                      />
-                    </span>
-                  </div>
-                </div>
-              </a>
-            </li>
-            <li className="project__item">
-              <a href="#home" className="project__link focus--box-shadow">
-                <div className="project__wrapper">
-                  <div className="project__element project__icon">
-                    <div
-                      className="icon icon--rajah"
-                      aria-label="Icon for the project 'Book cover design'"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        role="presentation"
-                      >
-                        <path d="M15,6H9A1,1,0,0,0,8,7v4a1,1,0,0,0,1,1h6a1,1,0,0,0,1-1V7A1,1,0,0,0,15,6Zm-1,4H10V8h4Zm3-8H5A1,1,0,0,0,4,3V21a1,1,0,0,0,1,1H17a3,3,0,0,0,3-3V5A3,3,0,0,0,17,2Zm1,17a1,1,0,0,1-1,1H6V4H17a1,1,0,0,1,1,1Z" />
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="project__element project__inform">
-                    <h6 className="project__inform-name">
-                      Holins Mashroom Hut
-                    </h6>
-                    <h6
-                      className="project__inform-name"
-                      style={{ lineHeight: "1.2" }}
-                    >
-                      83-89 Fieldgate Street , London E1 1JU , United Kingdom
-                    </h6>
-                    <span>
-                      <StarRatings
-                        rating={4.7}
-                        starDimension="18px"
-                        starSpacing="0px"
-                        starRatedColor={"#F77575"}
-                        emptyRatedColor={"white"}
-                      />
-                    </span>
-                  </div>
-                </div>
-              </a>
-            </li>
-            <li className="project__item">
-              <a href="#home" className="project__link focus--box-shadow">
-                <div className="project__wrapper">
-                  <div className="project__element project__icon">
-                    <div
-                      className="icon icon--viking"
-                      aria-label="Icon for the project 'Book cover design'"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        role="presentation"
-                      >
-                        <path d="M14,18a1,1,0,0,0,1-1V15a1,1,0,0,0-2,0v2A1,1,0,0,0,14,18Zm-4,0a1,1,0,0,0,1-1V15a1,1,0,0,0-2,0v2A1,1,0,0,0,10,18ZM19,6H17.62L15.89,2.55a1,1,0,1,0-1.78.9L15.38,6H8.62L9.89,3.45a1,1,0,0,0-1.78-.9L6.38,6H5a3,3,0,0,0-.92,5.84l.74,7.46a3,3,0,0,0,3,2.7h8.38a3,3,0,0,0,3-2.7l.74-7.46A3,3,0,0,0,19,6ZM17.19,19.1a1,1,0,0,1-1,.9H7.81a1,1,0,0,1-1-.9L6.1,12H17.9ZM19,10H5A1,1,0,0,1,5,8H19a1,1,0,0,1,0,2Z" />
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="project__element project__inform">
-                    <h6 className="project__inform-name">
-                      Holins Mashroom Hut
-                    </h6>
-                    <h6
-                      className="project__inform-name"
-                      style={{ lineHeight: "1.2" }}
-                    >
-                      83-89 Fieldgate Street , London E1 1JU , United Kingdom{" "}
-                    </h6>
-                    <span>
-                      <StarRatings
-                        rating={2.403}
-                        starDimension="18px"
-                        starSpacing="0px"
-                        starRatedColor={"#F77575"}
-                        emptyRatedColor={"white"}
-                      />
-                    </span>
-                  </div>
-                </div>
-              </a>
-            </li>
+            <SingleItem />
+            <SingleItem />
+            <SingleItem />
           </ul>
         </section>
       </main>
@@ -459,7 +346,9 @@ export default function Dashboard() {
                 />
               ) : (
                 <p className="generated_photo">
-                  {currentUser?.name.slice(0, 1).toUpperCase()}
+                  {currentUser?.name.slice(0, 1).toUpperCase() || (
+                    <ClipLoader color="maroon" loading size={20} />
+                  )}
                 </p>
               )}
               <div className="image-overlay">
@@ -475,7 +364,9 @@ export default function Dashboard() {
               </div>
             </button>
             <h1 className="profile-main__name">
-              {currentUser?.name?.split(" ")[0]}
+              {currentUser?.name?.split(" ")[0] || (
+                <ClipLoader color="maroon" loading size={20} />
+              )}
             </h1>
           </div>
           <ul className="statistics">
@@ -484,7 +375,9 @@ export default function Dashboard() {
                 Username
               </h6>
               <span className="statistics__entry-quantity">
-                {currentUser?.name}
+                {currentUser?.name || (
+                  <ClipLoader color="maroon" loading size={20} />
+                )}
               </span>
             </li>
             <li className="statistics__entry">
@@ -493,7 +386,9 @@ export default function Dashboard() {
               </h6>
               <span className="statistics__entry-quantity">
                 {" "}
-                {currentUser?.email}
+                {currentUser?.email || (
+                  <ClipLoader color="maroon" loading size={20} />
+                )}
               </span>
             </li>
             <li className="statistics__entry">
@@ -506,8 +401,63 @@ export default function Dashboard() {
               </span>
             </li>
           </ul>
+          <div className="banner-wrapper">
+            {" "}
+            <div className="banner">
+              <h3 className="banner__title">Want Us on Call?</h3>
+              <p className="banner__description">
+                Can Absolutely do it easy way
+              </p>
+              <button
+                className="banner__button"
+                type="button"
+                onClick={() => history.replace("/contact")}
+              >
+                Lets Go
+              </button>
+            </div>
+          </div>
         </section>
       </aside>
     </div>
+  );
+}
+
+function SingleItem({ place }) {
+  return (
+    <li className="project__item">
+      <a href="#home" className="project__link focus--box-shadow">
+        <div className="project__wrapper">
+          <div className="project__element project__icon">
+            <div>
+              <img
+                src={
+                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIbvfoL56UgXCKdY9ahv2SOSC-GqS7otaHSw&usqp=CAU"
+                }
+                alt="place image"
+              />
+            </div>
+          </div>
+          <div className="project__element project__inform">
+            <h6 className="project__inform-name">Holins Mashroom Hut</h6>
+            <h6
+              className="project__inform-desc pt-1"
+              style={{ lineHeight: "1.2" }}
+            >
+              83-89 Fieldgate Street , London E1 1JU , United Kingdom{" "}
+            </h6>
+            <span>
+              <StarRatings
+                rating={4.4}
+                starDimension="18px"
+                starSpacing="0px"
+                starRatedColor={"#F77575"}
+                emptyRatedColor={"white"}
+              />
+            </span>
+          </div>
+        </div>
+      </a>
+    </li>
   );
 }
