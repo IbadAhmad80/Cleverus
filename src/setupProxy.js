@@ -13,7 +13,7 @@ module.exports = function (app) {
   );
   app.use(
     createProxyMiddleware("/api", {
-      target: "http://e6ee-34-135-216-213.ngrok.io", // API endpoint 2
+      target: "http://8bf5-34-135-216-213.ngrok.io", // API endpoint 2
       changeOrigin: true,
 
       headers: {

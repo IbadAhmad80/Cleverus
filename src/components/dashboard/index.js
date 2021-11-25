@@ -20,14 +20,13 @@ export default function Dashboard() {
   const types = ["image/png", "image/jpeg", "image/jpg", "image/webp"];
   const [userImage, setUserImage] = React.useState(null);
 
-  const handleChange = (e) => {
+  const handleChange = async (e) => {
     let selected = e.target.files[0];
-    if (selected && types.includes(selected.type)) {
+    if (selected) {
       setFile(selected);
       setError("");
       const storageRef = storage.ref(selected.name);
-
-      storageRef.put(file).on(
+      storageRef.put(selected).on(
         "state_changed",
         (snap) => {},
         (err) => {
@@ -35,25 +34,27 @@ export default function Dashboard() {
         },
         async () => {
           const url = await storageRef.getDownloadURL();
-          db.collection("users")
-            .get()
-            .then((snapshot) => {
-              snapshot.docs.forEach((doc) => {
-                if (doc.data().email === currentUser?.email) {
-                  firebase
-                    .firestore()
-                    .collection("users")
-                    .doc(doc.id)
-                    .update({
-                      photoURL: url,
-                    })
-                    .then(() => {
-                      cogoToast.info("Image has been updated successfully");
-                      setUserImage(url);
-                    });
-                }
+          url &&
+            db
+              .collection("users")
+              .get()
+              .then((snapshot) => {
+                snapshot.docs.forEach((doc) => {
+                  if (doc.data().email === currentUser?.email) {
+                    firebase
+                      .firestore()
+                      .collection("users")
+                      .doc(doc.id)
+                      .update({
+                        photoURL: url,
+                      })
+                      .then(() => {
+                        cogoToast.info("Image has been updated successfully");
+                        setUserImage(url);
+                      });
+                  }
+                });
               });
-            });
         }
       );
 
@@ -213,7 +214,7 @@ export default function Dashboard() {
                 <div className="team__inform">
                   <p className="team__name">No of Reviews Posted</p>
                   <p className="text-center fw-bolder">
-                    {noOfReviews !== 0 && !noOfReviews ? (
+                    {noOfReviews === null ? (
                       <ClipLoader color="maroon" loading size={20} />
                     ) : (
                       noOfReviews
