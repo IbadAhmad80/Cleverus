@@ -33,6 +33,7 @@ import { AiOutlineHome } from "react-icons/ai";
 import { BiPhoneCall } from "react-icons/bi";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
+import { Link } from "react-router-dom";
 
 const mapStyles = {
   width: "100%",
@@ -428,18 +429,26 @@ function GoogleMaps(props) {
           />
 
           <div className="d-flex flex-column nav-flex">
-            <h5>
-              <AiOutlineHome />
-            </h5>
-            <h5>
-              <BiPhoneCall />
-            </h5>
-            <h5>
-              <AiOutlineInfoCircle />
-            </h5>
-            <h5>
-              <CgProfile />
-            </h5>
+            <Link to="/">
+              <h5>
+                <AiOutlineHome />
+              </h5>
+            </Link>
+            <Link to="/contact">
+              <h5>
+                <BiPhoneCall />
+              </h5>
+            </Link>
+            <Link to="/about">
+              <h5>
+                <AiOutlineInfoCircle />
+              </h5>
+            </Link>
+            <Link to="/sign-in">
+              <h5>
+                <CgProfile />
+              </h5>
+            </Link>
           </div>
 
           <InfoWindow
