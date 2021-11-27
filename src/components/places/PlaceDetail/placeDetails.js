@@ -6,14 +6,17 @@ import ButtonWrapper from "./ButtonWrapper";
 import LeftWrapper from "./LeftWrapper";
 import RightWrapper from "./RightWrapper";
 import NavBar from "../../navbar/index";
+import { useHistory } from "react-router";
 
 function PlaceDetails({
   history: {
     location: { state },
   },
 }) {
+  const history = useHistory();
   React.useEffect(() => {
     window.scrollTo(0, 0);
+    if (!state?.place) history.replace("/");
   }, []);
 
   return (

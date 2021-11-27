@@ -28,8 +28,8 @@ export default function Steps() {
               </i>
               <h4 className="mb-3">Data Scrapping.</h4>
               <p>
-                A digital agency isn't here to replace your internal team, we're
-                here to partner
+                Perfect Dataset will take you to near-perfect results as is the
+                case with our Balanced Highly Quality Dataset
               </p>
             </div>
           </div>
@@ -41,8 +41,9 @@ export default function Steps() {
               </i>
               <h4 className="mb-3">Data Processing.</h4>
               <p>
-                A digital agency isn't here to replace your internal team, we're
-                here to partner
+                In the Next step, the dataset is processed and any sort of
+                ambiguity is filtered out to make results efficient and
+                predictable
               </p>
             </div>
           </div>
@@ -54,8 +55,8 @@ export default function Steps() {
               </i>
               <h4 className="mb-3">BERT Fine Tuning.</h4>
               <p>
-                A digital agency isn't here to replace your internal team, we're
-                here to partner
+                Heart of the process you’ll say. THE MODEL. Fine-Tuned with best
+                parameters to meet our criteria for system rating
               </p>
             </div>
           </div>
@@ -67,8 +68,8 @@ export default function Steps() {
               </i>
               <h4 className="mb-3">Flask API Creation</h4>
               <p>
-                A digital agency isn't here to replace your internal team, we're
-                here to partner
+                The trained model is saved later on and been exposed for
+                consuming purposes in the form of flask API endpoints
               </p>
             </div>
           </div>
@@ -80,8 +81,9 @@ export default function Steps() {
               </i>
               <h4 className="mb-3">Firebase Hooking.</h4>
               <p>
-                A digital agency isn't here to replace your internal team, we're
-                here to partner
+                All the User side is maintained and refined with Google renowned
+                services like firestore, firebase authentication, and firebase
+                storage
               </p>
             </div>
           </div>
@@ -93,8 +95,8 @@ export default function Steps() {
               </i>
               <h4 className="mb-3">Apps Development.</h4>
               <p>
-                A digital agency isn't here to replace your internal team, we're
-                here to partner
+                UI’s are then compiled in the last stage to make user
+                interactions with perfect aesthetics and clean design
               </p>
             </div>
           </div>
