@@ -33,6 +33,12 @@ $primary-color: #28b4ca;
         padding-top: 2vh;
         color: white;
       }
+
+      .home_icon {
+        @extend .back_icon;
+        float: right;
+        font-size: 2rem;
+      }
       h2 {
         color: white;
         font-size: clamp(2rem, 4vw, 12rem);
@@ -214,6 +220,7 @@ $primary-color: #28b4ca;
 
 .review_wrapper {
   margin-top: 60px;
+
   .author_section {
     margin: 30px 60px;
 
@@ -265,6 +272,7 @@ $primary-color: #28b4ca;
     .review_content {
       background-color: rgb(246, 246, 246);
       padding: 2em 2em 2em 2em;
+      min-width: 90%;
       // clip-path: polygon(
       //   0% 0%,
       //   100% 0%,

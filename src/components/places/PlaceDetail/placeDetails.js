@@ -12,6 +12,10 @@ function PlaceDetails({
     location: { state },
   },
 }) {
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <div className={styles.main_wrapper}>

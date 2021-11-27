@@ -43,7 +43,7 @@ function SinglePlace({ place }) {
                   </h5>
                   <div class="mx-4" style={{ margin: "-5px 0 0 0" }}>
                     <StarRatings
-                      rating={place?.rating}
+                      rating={place?.system_rating || place?.rating}
                       starDimension="18px"
                       starSpacing="0px"
                       starRatedColor={"red"}

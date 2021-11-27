@@ -66,7 +66,12 @@ const Topnav = () => {
         </div>
         <button
           onClick={() => logout()}
-          className="mx-3 btn-danger p-1 px-3 rounded"
+          className="mx-3 p-1 px-3 text-white rounded"
+          style={{
+            backgroundColor: "#BF371F ",
+            color: "white",
+            cursor: "pointer",
+          }}
         >
           Log Out
         </button>

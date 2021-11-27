@@ -103,9 +103,12 @@ function GoogleMaps(props) {
     locations[unselectedCategories[0]] =
       locations[unselectedCategories[1]] =
       locations[unselectedCategories[2]] =
-        null;
+        [];
     try {
-      const res = await axios.post("/api/store", locations);
+      const res = await axios.post("/api/store", {
+        data: locations,
+        businessType: selectedCategory,
+      });
       res && cogoToast.success("Data is been stored Successfully");
     } catch (error) {
       cogoToast.error("Looks like data might not be backed up successfully :(");
