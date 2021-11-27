@@ -95,7 +95,7 @@ export default function Dashboard() {
 
   React.useEffect(() => {
     if (!currentUser) return;
-    axios.get(`/api/reviewsCount?userID=${currentUser?.uid}`).then((res) => {
+    axios.get(`/api/reviewsCount?userID=${currentUser?.email}`).then((res) => {
       if (res.status === 204) {
         setNoOfReviews(0);
       } else setNoOfReviews(res.data);
@@ -105,7 +105,7 @@ export default function Dashboard() {
   React.useEffect(() => {
     if (!currentUser) return;
     axios
-      .get(`/api/getFavPlace?userID=${currentUser?.uid}`)
+      .get(`/api/getFavPlace?userID=${currentUser?.email}`)
       .then(({ data, status }) => {
         if (status === 200) {
           setFavPlaces(data);

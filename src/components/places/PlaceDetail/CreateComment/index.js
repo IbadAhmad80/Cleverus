@@ -56,7 +56,7 @@ const CreateComments = ({ place }) => {
 
       axios
         .post("/api/addReview", {
-          userID: currentUser?.uid,
+          userID: currentUser?.email,
           longitude: place?.lng,
           latitude: place?.lat,
           category: place?.type,
@@ -140,10 +140,7 @@ const CreateComments = ({ place }) => {
                 <div class="row">
                   <div class="col-12 d-flex justify-content-center">
                     <div class="pull-left">
-                      <button
-                        class="btn btn-success btn-sm p-2 px-5"
-                        onClick={handleSubmit}
-                      >
+                      <button class="p-2 px-5" onClick={handleSubmit}>
                         Create
                       </button>
                     </div>

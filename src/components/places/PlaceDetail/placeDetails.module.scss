@@ -101,20 +101,34 @@ $primary-color: #28b4ca;
       }
     }
     .review_btn {
-      background-color: #f5402b;
-      border: 1px solid white;
+      background-color: transparent;
+      border: 1px solid black;
       padding: 10px 40px;
+      border-radius: 50px;
+      transition: 0.3s linear all;
+      color: black;
+      &:hover {
+        background-color: red;
+        color: white;
+        border: 1px solid red;
+        button {
+          color: white;
+        }
+        .icon {
+          color: white;
+        }
+      }
       .icon {
         font-size: 20px;
         margin-left: 10px;
-        color: white;
+        color: black;
       }
       button {
         outline: none;
         font-weight: bolder;
         background: transparent;
         border: none;
-        color: white;
+        color: black;
       }
     }
     .save_btn {

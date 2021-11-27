@@ -7,7 +7,7 @@ import CreateComments from "./CreateComment";
 const LeftWrapper = ({ place }) => {
   return (
     <div className={styles.left_wrapper}>
-      <Amenities />
+      <Amenities place={place} />
       <CreateComments place={place} />
       <div className={styles.review_wrapper}>
         <Reviews place={place} />

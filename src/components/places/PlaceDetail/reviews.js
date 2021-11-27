@@ -35,7 +35,7 @@ const Reviews = ({ place }) => {
                       name="rating"
                     />
                   </div>
-                  <p style={{ margin: "1em 0 0 0" }}>{text.slice(0, 500)}</p>
+                  <p style={{ margin: "1em 0 0 0" }}>{text.slice(0, 1000)}</p>
                 </div>
               </div>
             </div>

@@ -46,7 +46,7 @@ const ButtonWrapper = ({ place }) => {
     else {
       axios
         .post("/api/addFavPlace", {
-          userID: currentUser?.uid,
+          userID: currentUser?.email,
           favPlaces: [place],
         })
         .then((res) => {

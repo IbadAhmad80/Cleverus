@@ -40,7 +40,7 @@ Geocode.setLocationType("APPROXIMATE");
 
 function GoogleMaps(props) {
   const [initialCheck, setInitialCheck] = React.useState(false);
-  const [marker, setMarker] = useState({ lng: 0.1276, lat: 51.5072178 });
+  const [marker, setMarker] = useState({ lng: -0.118092, lat: 51.509865 });
   const [address, setAddress] = useState("Dubai");
   const [showingInfoWindow, setShowingInfoWindow] = useState(false);
   const [activeMarker, setActiveMarker] = useState(null);
@@ -65,7 +65,6 @@ function GoogleMaps(props) {
       setInitialCheck(true);
     }
   }, [marker]);
-  console.log(marker);
   const getData = async () => {
     try {
       const { data } = await axios.post("/api/predictions", {

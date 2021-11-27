@@ -15,7 +15,6 @@ const SimilarPlaces = ({ lat, lng, business }) => {
         `/api/similarBuisness?lat=${lat}&lng=${lng}&business=${business}`
       );
       setPlaces(data);
-      console.log(data);
     };
     getFamousPlaces();
   }, []);
