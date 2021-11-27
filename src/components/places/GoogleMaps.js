@@ -29,6 +29,10 @@ import { useTranslation } from "react-i18next";
 import Loader from "./loader";
 import cogoToast from "cogo-toast";
 import PlaceDetails from "./PlaceDetail/placeDetails";
+import { AiOutlineHome } from "react-icons/ai";
+import { BiPhoneCall } from "react-icons/bi";
+import { AiOutlineInfoCircle } from "react-icons/ai";
+import { CgProfile } from "react-icons/cg";
 
 const mapStyles = {
   width: "100%",
@@ -422,6 +426,22 @@ function GoogleMaps(props) {
             onClick={onMarkerClick}
             position={marker}
           />
+
+          <div className="d-flex flex-column nav-flex">
+            <h5>
+              <AiOutlineHome />
+            </h5>
+            <h5>
+              <BiPhoneCall />
+            </h5>
+            <h5>
+              <AiOutlineInfoCircle />
+            </h5>
+            <h5>
+              <CgProfile />
+            </h5>
+          </div>
+
           <InfoWindow
             marker={activeMarker}
             visible={showingInfoWindow}
