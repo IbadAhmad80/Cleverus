@@ -101,3 +101,18 @@ textarea {
 .rating:hover > input:checked ~ label:before {
   opacity: 0.4;
 }
+
+.pull-left button {
+  background-color: transparent;
+  border: 1px solid black;
+  padding: 10px 40px;
+  border-radius: 50px;
+  transition: 0.3s linear all;
+  color: black;
+}
+
+.pull-left button:hover {
+  background-color: red;
+  color: white;
+  border: 1px solid red;
+}

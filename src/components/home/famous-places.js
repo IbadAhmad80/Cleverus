@@ -23,7 +23,7 @@ export default function FamousPlaces() {
               <div className="section-title">
                 <span className="h6 text-color">Famous Places</span>
                 <h2 className="mt-3 content-title text-white">
-                  Famous Places to enrich yout knowledge
+                  Famous Places to enrich your knowledge
                 </h2>
               </div>
             </div>

@@ -29,6 +29,11 @@ import { useTranslation } from "react-i18next";
 import Loader from "./loader";
 import cogoToast from "cogo-toast";
 import PlaceDetails from "./PlaceDetail/placeDetails";
+import { AiOutlineHome } from "react-icons/ai";
+import { BiPhoneCall } from "react-icons/bi";
+import { AiOutlineInfoCircle } from "react-icons/ai";
+import { CgProfile } from "react-icons/cg";
+import { Link } from "react-router-dom";
 
 const mapStyles = {
   width: "100%",
@@ -40,7 +45,7 @@ Geocode.setLocationType("APPROXIMATE");
 
 function GoogleMaps(props) {
   const [initialCheck, setInitialCheck] = React.useState(false);
-  const [marker, setMarker] = useState({ lng: 0.1276, lat: 51.5072178 });
+  const [marker, setMarker] = useState({ lng: -0.118092, lat: 51.509865 });
   const [address, setAddress] = useState("Dubai");
   const [showingInfoWindow, setShowingInfoWindow] = useState(false);
   const [activeMarker, setActiveMarker] = useState(null);
@@ -65,25 +70,29 @@ function GoogleMaps(props) {
       setInitialCheck(true);
     }
   }, [marker]);
-  console.log(marker);
   const getData = async () => {
-    try {
-      const { data } = await axios.post("/api/predictions", {
+    axios
+      .post("/api/predictions", {
         longitude: marker.lng,
         latituide: marker.lat,
         category: selectedCategory,
+      })
+      .then(({ data, status }) => {
+        props.setOpen(true);
+        props.setPlaces(data);
+        props.setCategory(selectedCategory);
+        data && setLoading(false);
+        if (status === 201) {
+          cogoToast.success("Data fetched from Database succesfully");
+        }
+        if (status === 200) {
+          storeData(data);
+        }
+      })
+      .catch((error) => {
+        setLoading(false);
+        cogoToast.error("Cant You Try Again :(", error);
       });
-
-      props.setOpen(true);
-
-      props.setPlaces(data);
-      props.setCategory(selectedCategory);
-      data && setLoading(false);
-      storeData(data);
-    } catch (error) {
-      setLoading(false);
-      cogoToast.error("Cant You Try Again :(", error);
-    }
   };
 
   const storeData = async (data) => {
@@ -103,9 +112,12 @@ function GoogleMaps(props) {
     locations[unselectedCategories[0]] =
       locations[unselectedCategories[1]] =
       locations[unselectedCategories[2]] =
-        null;
+        [];
     try {
-      const res = await axios.post("/api/store", locations);
+      const res = await axios.post("/api/store", {
+        data: locations,
+        businessType: selectedCategory,
+      });
       res && cogoToast.success("Data is been stored Successfully");
     } catch (error) {
       cogoToast.error("Looks like data might not be backed up successfully :(");
@@ -420,6 +432,30 @@ function GoogleMaps(props) {
             onClick={onMarkerClick}
             position={marker}
           />
+
+          <div className="d-flex flex-column nav-flex">
+            <Link to="/">
+              <h5>
+                <AiOutlineHome />
+              </h5>
+            </Link>
+            <Link to="/contact">
+              <h5>
+                <BiPhoneCall />
+              </h5>
+            </Link>
+            <Link to="/about">
+              <h5>
+                <AiOutlineInfoCircle />
+              </h5>
+            </Link>
+            <Link to="/sign-in">
+              <h5>
+                <CgProfile />
+              </h5>
+            </Link>
+          </div>
+
           <InfoWindow
             marker={activeMarker}
             visible={showingInfoWindow}

@@ -9,7 +9,7 @@ export default function CallToContact() {
         <div className="cta-block-2 bg-gray p-5 rounded border-1">
           <div className="row justify-content-center align-items-center ">
             <div className="col-lg-7">
-              <span className="text-color">For Every type business</span>
+              <span className="text-color">For Every type Query</span>
               <h2 className="mt-2 mb-4 mb-lg-0">
                 Entrust Your Message to Our Best Team of Professionals
               </h2>

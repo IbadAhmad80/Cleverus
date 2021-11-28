@@ -33,6 +33,12 @@ $primary-color: #28b4ca;
         padding-top: 2vh;
         color: white;
       }
+
+      .home_icon {
+        @extend .back_icon;
+        float: right;
+        font-size: 2rem;
+      }
       h2 {
         color: white;
         font-size: clamp(2rem, 4vw, 12rem);
@@ -95,20 +101,34 @@ $primary-color: #28b4ca;
       }
     }
     .review_btn {
-      background-color: #f5402b;
-      border: 1px solid white;
+      background-color: transparent;
+      border: 1px solid black;
       padding: 10px 40px;
+      border-radius: 50px;
+      transition: 0.3s linear all;
+      color: black;
+      &:hover {
+        background-color: red;
+        color: white;
+        border: 1px solid red;
+        button {
+          color: white;
+        }
+        .icon {
+          color: white;
+        }
+      }
       .icon {
         font-size: 20px;
         margin-left: 10px;
-        color: white;
+        color: black;
       }
       button {
         outline: none;
         font-weight: bolder;
         background: transparent;
         border: none;
-        color: white;
+        color: black;
       }
     }
     .save_btn {
@@ -214,6 +234,7 @@ $primary-color: #28b4ca;
 
 .review_wrapper {
   margin-top: 60px;
+
   .author_section {
     margin: 30px 60px;
 
@@ -265,6 +286,7 @@ $primary-color: #28b4ca;
     .review_content {
       background-color: rgb(246, 246, 246);
       padding: 2em 2em 2em 2em;
+      min-width: 90%;
       // clip-path: polygon(
       //   0% 0%,
       //   100% 0%,

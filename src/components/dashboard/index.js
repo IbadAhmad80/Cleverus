@@ -19,6 +19,7 @@ export default function Dashboard() {
   const [error, setError] = React.useState(null);
   const types = ["image/png", "image/jpeg", "image/jpg", "image/webp"];
   const [userImage, setUserImage] = React.useState(null);
+  const [favPlaces, setFavPlaces] = React.useState(null);
 
   const handleChange = async (e) => {
     let selected = e.target.files[0];
@@ -94,11 +95,22 @@ export default function Dashboard() {
 
   React.useEffect(() => {
     if (!currentUser) return;
-    axios.get(`/api/reviewsCount?userID=${currentUser?.uid}`).then((res) => {
+    axios.get(`/api/reviewsCount?userID=${currentUser?.email}`).then((res) => {
       if (res.status === 204) {
         setNoOfReviews(0);
       } else setNoOfReviews(res.data);
     });
+  }, [currentUser]);
+
+  React.useEffect(() => {
+    if (!currentUser) return;
+    axios
+      .get(`/api/getFavPlace?userID=${currentUser?.email}`)
+      .then(({ data, status }) => {
+        if (status === 200) {
+          setFavPlaces(data);
+        }
+      });
   }, [currentUser]);
 
   return (
@@ -246,7 +258,7 @@ export default function Dashboard() {
                 </div>
                 <div className="team__inform">
                   <p className="team__name">No of Favourite Places</p>
-                  <p className="text-center fw-bolder">20</p>
+                  <p className="text-center fw-bolder">{favPlaces?.length}</p>
                 </div>
               </a>
             </li>
@@ -306,9 +318,10 @@ export default function Dashboard() {
             </div>
           </header>
           <ul className="project">
-            <SingleItem />
-            <SingleItem />
-            <SingleItem />
+            {favPlaces &&
+              favPlaces.map((place) => {
+                return <SingleItem place={place} />;
+              })}
           </ul>
         </section>
       </main>
@@ -425,31 +438,42 @@ export default function Dashboard() {
 }
 
 function SingleItem({ place }) {
+  const history = useHistory();
   return (
     <li className="project__item">
-      <a href="#home" className="project__link focus--box-shadow">
+      <a className="project__link focus--box-shadow">
         <div className="project__wrapper">
           <div className="project__element project__icon">
-            <div>
-              <img
-                src={
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIbvfoL56UgXCKdY9ahv2SOSC-GqS7otaHSw&usqp=CAU"
-                }
-                alt="place image"
-              />
-            </div>
+            <img
+              src={place?.image_url}
+              alt="place image"
+              className="place-image"
+            />
           </div>
           <div className="project__element project__inform">
-            <h6 className="project__inform-name">Holins Mashroom Hut</h6>
+            <h6
+              className="project__inform-name cursor-pointer"
+              onClick={() =>
+                history.push({
+                  pathname: "places-details",
+                  state: {
+                    place,
+                  },
+                })
+              }
+            >
+              {place?.name}
+            </h6>
             <h6
               className="project__inform-desc pt-1"
               style={{ lineHeight: "1.2" }}
             >
-              83-89 Fieldgate Street , London E1 1JU , United Kingdom{" "}
+              {place?.location?.address1},{place?.location?.city},
+              {place?.location?.country}
             </h6>
             <span>
               <StarRatings
-                rating={4.4}
+                rating={place?.system_rating || place?.rating}
                 starDimension="18px"
                 starSpacing="0px"
                 starRatedColor={"#F77575"}

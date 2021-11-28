@@ -1,5 +1,6 @@
 import React from "react";
 import "../../css/style.css";
+import { Link } from "react-router-dom";
 
 export default function HeroSection() {
   return (
@@ -16,9 +17,11 @@ export default function HeroSection() {
                   <h1 className=" mb-4">
                     We Will Find a perfect Place Just for you
                   </h1>
-                  <button className="text-white fs-5 px-5 py-3 btn-main btn-round-full border-0 ">
-                    Let's Begin
-                  </button>
+                  <Link to="/search">
+                    <button className="text-white fs-5 px-5 py-3 btn-main btn-round-full border-0 cursor-pointer ">
+                      Let's Begin
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>

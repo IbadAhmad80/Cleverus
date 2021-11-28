@@ -4,6 +4,7 @@ import { TiTick } from "react-icons/ti";
 import { BiArrowBack } from "react-icons/bi";
 import StarRatings from "react-star-ratings";
 import { Link } from "react-router-dom";
+import { AiOutlineHome } from "react-icons/ai";
 
 const PlaceHeroSection = ({ place }) => {
   return (
@@ -12,7 +13,12 @@ const PlaceHeroSection = ({ place }) => {
         <img src={place?.image_url} className={styles.image} alt="place-pic" />
 
         <div className={styles.image_content}>
-          <div style={{ paddingTop: "38vh" }}>
+          <Link to="/">
+            <i className={styles.home_icon}>
+              <AiOutlineHome />
+            </i>
+          </Link>
+          <div style={{ paddingTop: "32vh" }}>
             <Link to="/search">
               <i className={styles.back_icon}>
                 <BiArrowBack />
@@ -22,7 +28,7 @@ const PlaceHeroSection = ({ place }) => {
             <div className={styles.rating_flex}>
               <div style={{ margin: "-4px 0 0 0" }}>
                 <StarRatings
-                  rating={place?.rating}
+                  rating={place?.system_rating || place?.rating}
                   starDimension="18px"
                   starSpacing="0px"
                   starRatedColor={"#31B4BD"}

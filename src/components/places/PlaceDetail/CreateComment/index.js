@@ -6,6 +6,7 @@ import { auth } from "../../../../firebase";
 import cogoToast from "cogo-toast";
 import StarRatings from "react-star-ratings";
 import { useHistory } from "react-router";
+import axios from "axios";
 
 const CreateComments = ({ place }) => {
   const [review, setReview] = useState("");
@@ -28,7 +29,6 @@ const CreateComments = ({ place }) => {
 
       const data = await query.docs[0]?.data();
       setCurrentUser(data);
-      console.log(data?.photoURL);
       setUserImage(data?.photoURL);
     } catch (err) {
       console.error(err);
@@ -44,6 +44,42 @@ const CreateComments = ({ place }) => {
           place,
         },
       });
+    else {
+      if (rating === 0) {
+        cogoToast.error("Rating should be greater than 0");
+        return;
+      }
+      if (review.length < 30) {
+        cogoToast.error("Review length should be greater than 30");
+        return;
+      }
+
+      axios
+        .post("/api/addReview", {
+          userID: currentUser?.email,
+          longitude: place?.lng,
+          latitude: place?.lat,
+          category: place?.type,
+          id: place?.id,
+          review: {
+            id: currentUser?.id,
+            rating: rating,
+            text: review,
+            user: {
+              name: currentUser?.name,
+              image_url: currentUser?.photoURL || null,
+              id: currentUser?.uid,
+            },
+          },
+        })
+        .then((res) => {
+          if (res.status === 200) {
+            cogoToast.info("Review added successfully");
+          }
+          setReview("");
+          setRating(0);
+        });
+    }
   };
 
   React.useEffect(() => {
@@ -104,10 +140,7 @@ const CreateComments = ({ place }) => {
                 <div class="row">
                   <div class="col-12 d-flex justify-content-center">
                     <div class="pull-left">
-                      <button
-                        class="btn btn-success btn-sm p-2 px-5"
-                        onClick={handleSubmit}
-                      >
+                      <button class="p-2 px-5" onClick={handleSubmit}>
                         Create
                       </button>
                     </div>

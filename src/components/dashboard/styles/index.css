@@ -781,13 +781,22 @@
   padding: 0 0.8rem;
 }
 
-.wrapper .project__element .project__icon {
-  width: 30%;
-  max-width: 28%;
+.wrapper .project__icon .place-image {
+  width: 200px;
+  max-width: 200px;
+  height: 100px;
+  object-fit: cover;
+  object-position: center;
 }
 
-.wrapper .project__element .project__inform {
-  width: 48%;
+/* .wrapper .project__element .place-image {
+  max-width: 100%;
+
+  height: 60px;
+} */
+
+.wrapper .project__inform {
+  width: 65%;
   padding-left: 0;
 }
 
@@ -1122,19 +1131,19 @@
 }
 
 .wrapper .banner {
-  padding: 10rem 1rem;
+  padding: 5rem 1rem;
   background-color: rgba(0, 0, 0, 0.5) !important;
 }
 
 .wrapper .banner__title {
   color: white !important;
-  font-size: 2.3rem;
+  font-size: 2.1rem !important;
   margin-bottom: 2rem;
 }
 
 .wrapper .banner__description {
   color: white !important;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   margin-bottom: 0rem;
   display: none;
 }

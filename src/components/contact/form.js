@@ -77,19 +77,19 @@ export default function Form() {
                     <i className="mx-3 text-dark">
                       <AiFillHome />
                     </i>
-                    North Main Street,Australia
+                    Defence Road Raiwind, Lahore, Pakistan
                   </li>
                   <li>
                     <i className="mx-3 text-dark">
                       <AiFillMessage />
                     </i>
-                    Email: contact@mail.com
+                    Email: cleverus@gmail.com
                   </li>
                   <li>
                     <i className="mx-3 text-dark">
                       <AiFillPhone />
                     </i>
-                    Phone:+88 01672 506 744
+                    Phone:+933032182370
                   </li>
                 </ul>
 

@@ -5,6 +5,7 @@ import { useHistory } from "react-router";
 import cogoToast from "cogo-toast";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db } from "../../../firebase";
+import axios from "axios";
 
 const ButtonWrapper = ({ place }) => {
   const history = useHistory();
@@ -42,6 +43,20 @@ const ButtonWrapper = ({ place }) => {
           place,
         },
       });
+    else {
+      axios
+        .post("/api/addFavPlace", {
+          userID: currentUser?.email,
+          favPlaces: [place],
+        })
+        .then((res) => {
+          if (res.status === 200) {
+            cogoToast.info("Place added to Favourites");
+          } else if (res.status === 201) {
+            cogoToast.warn("Place already exist in your Favourite List");
+          }
+        });
+    }
   };
 
   return (

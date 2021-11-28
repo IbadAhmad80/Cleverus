@@ -12,7 +12,7 @@ import Badge from "../components/badge/Badge";
 
 import { db } from "../../firebase";
 
-import ClipLoader from "react-spinners/ClipLoader";
+import Swal from "sweetalert2";
 
 import axios from "axios";
 import cogoToast from "cogo-toast";
@@ -163,7 +163,11 @@ const Dashboard = () => {
       <td>{item.username}</td>
       <td>{item.email}</td>
       <td>
-        <Badge type={"danger"} content="Delete" />
+        <Badge
+          type={"danger"}
+          content="Delete"
+          onClick={() => handleDeletion()}
+        ></Badge>
       </td>
     </tr>
   );
@@ -192,6 +196,26 @@ const Dashboard = () => {
         });
       });
   }, []);
+
+  const handleDeletion = () => {
+    alert("Hello");
+    Swal.fire({
+      title: "<strong>Do you want to delete this user?</strong>",
+      icon: "warning",
+      html: "Changes cant be reveretd <b>bold text</b>",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Save",
+      denyButtonText: `Don't save`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        Swal.fire("Saved!", "", "success");
+      } else if (result.isDenied) {
+        Swal.fire("Changes are not saved", "", "info");
+      }
+    });
+  };
 
   const customUsers = {
     header: ["Provider", "Name", "Email", "Action"],
