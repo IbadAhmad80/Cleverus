@@ -52,6 +52,11 @@ const ButtonWrapper = ({ place }) => {
         .then((res) => {
           if (res.status === 200) {
             cogoToast.info("Place added to Favourites");
+<<<<<<< HEAD
+          } else if (res.status === 201) {
+            cogoToast.warn("Place already exist in your Favourite List");
+=======
+>>>>>>> d070edd3215cd0a64fd3ade9838a8466aec8078f
           }
         });
     }
