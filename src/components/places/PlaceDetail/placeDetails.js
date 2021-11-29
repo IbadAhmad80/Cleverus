@@ -15,13 +15,9 @@ function PlaceDetails({
 }) {
   const history = useHistory();
   React.useEffect(() => {
-<<<<<<< HEAD
-    console.log(state?.place);
-=======
->>>>>>> d070edd3215cd0a64fd3ade9838a8466aec8078f
     window.scrollTo(0, 0);
     if (!state?.place) history.replace("/");
-  }, []);
+  }, [history?.location?.key]);
 
   return (
     <>

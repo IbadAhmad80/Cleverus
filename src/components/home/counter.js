@@ -1,11 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../../css/style.css";
 import { RiHospitalFill } from "react-icons/ri";
 import { RiHotelLine, RiScissors2Line } from "react-icons/ri";
 import { GiKnifeFork } from "react-icons/gi";
 import CountUp from "react-countup";
+import axios from "axios";
+import cogoToast from "cogo-toast";
 
 export default function Counter() {
+  const [businessCounts, setBusinessCounts] = useState([]);
+  React.useEffect(() => {
+    axios
+      .get("/api/businessCounts")
+      .then(({ data }) => {
+        setBusinessCounts(data);
+      })
+      .catch((err) => {
+        cogoToast.error(err);
+      });
+  }, []);
+
   return (
     <section className=" counter bg-counter">
       <div>
@@ -18,7 +32,10 @@ export default function Counter() {
                 </i>
                 <h3 className="mt-2 mb-0 text-white">
                   <span className="counter-stat font-weight-bold">
-                    <CountUp end={200} duration={10} />
+                    <CountUp
+                      end={businessCounts && businessCounts?.hotels}
+                      duration={5}
+                    />
                   </span>{" "}
                   +
                 </h3>
@@ -33,7 +50,10 @@ export default function Counter() {
                 <h3 className="mt-2 mb-0 text-white">
                   <span className="counter-stat font-weight-bold">
                     {" "}
-                    <CountUp end={100} duration={8} />{" "}
+                    <CountUp
+                      end={businessCounts && businessCounts?.barbers}
+                      duration={5}
+                    />
                   </span>
                   +
                 </h3>
@@ -48,7 +68,10 @@ export default function Counter() {
                 <h3 className="mt-2 mb-0 text-white">
                   <span className="counter-stat font-weight-bold">
                     {" "}
-                    <CountUp end={200} duration={10} />{" "}
+                    <CountUp
+                      end={businessCounts && businessCounts?.resturants}
+                      duration={5}
+                    />
                   </span>
                   +
                 </h3>
@@ -63,7 +86,10 @@ export default function Counter() {
                 <h3 className="mt-2 mb-0 text-white">
                   <span className="counter-stat font-weight-bold">
                     {" "}
-                    <CountUp end={120} duration={10} />{" "}
+                    <CountUp
+                      end={businessCounts && businessCounts?.hospitals}
+                      duration={5}
+                    />
                   </span>
                   +
                 </h3>

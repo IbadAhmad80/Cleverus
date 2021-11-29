@@ -10,13 +10,18 @@ const Info = ({ place }) => {
       <div className={styles.single_info}>
         <p>Visit Website</p>
         <i>
-          <BsBoxArrowUpRight />
+          <a href={place?.url} target="_blank" style={{ color: "inherit" }}>
+            <BsBoxArrowUpRight />
+          </a>
         </i>
       </div>
       <div className={styles.single_info}>
         <p>{place?.display_phone}</p>
+
         <i>
-          <FiPhoneCall />
+          <a target="_blank" style={{ color: "inherit" }}>
+            <FiPhoneCall />
+          </a>
         </i>
       </div>
       <div className={styles.single_info}>
