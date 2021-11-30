@@ -56,13 +56,16 @@ const registerWithEmailAndPassword = async (name, email, password) => {
   try {
     const res = await auth.createUserWithEmailAndPassword(email, password);
     const user = res.user;
-    await db.collection("users").add({
-      uid: user.uid,
-      name,
-      authProvider: "local",
-      email,
-      createdAt: Date.now(),
-    });
+    db.collection("users").doc(user.uid).set(
+      {
+        uid: user.uid,
+        name,
+        authProvider: "local",
+        email: user.email,
+        createdAt: Date.now(),
+      },
+      { merge: true }
+    );
   } catch (err) {
     console.error(err);
     cogoToast.error(err.message);
