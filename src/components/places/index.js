@@ -13,7 +13,6 @@ axios.defaults.headers.common = {
 const Places = () => {
   const [places, setPlaces] = React.useState([]);
   const [category, setCategory] = React.useState(null);
-
   const [open, setOpen] = React.useState(false);
 
   return (
