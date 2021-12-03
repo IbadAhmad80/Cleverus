@@ -71,28 +71,23 @@ function GoogleMaps(props) {
     }
   }, [marker]);
   const getData = async () => {
-    axios
-      .post("/api/predictions", {
+    try {
+      const { data } = await axios.post("/api/predictions", {
         longitude: marker.lng,
         latituide: marker.lat,
         category: selectedCategory,
-      })
-      .then(({ data, status }) => {
-        props.setOpen(true);
-        props.setPlaces(data);
-        props.setCategory(selectedCategory);
-        data && setLoading(false);
-        if (status === 201) {
-          cogoToast.success("Data fetched from Database succesfully");
-        }
-        if (status === 200) {
-          storeData(data);
-        }
-      })
-      .catch((error) => {
-        setLoading(false);
-        cogoToast.error("Cant You Try Again :(", error);
       });
+
+      props.setOpen(true);
+
+      props.setPlaces(data);
+      props.setCategory(selectedCategory);
+      data && setLoading(false);
+      storeData(data);
+    } catch (error) {
+      setLoading(false);
+      cogoToast.error("Cant You Try Again :(", error);
+    }
   };
 
   const storeData = async (data) => {
@@ -118,7 +113,9 @@ function GoogleMaps(props) {
         data: locations,
         businessType: selectedCategory,
       });
-      res && cogoToast.success("Data is been stored Successfully");
+      if (res) {
+        cogoToast.success("Data is been stored Successfully");
+      }
     } catch (error) {
       cogoToast.error("Looks like data might not be backed up successfully :(");
     }

@@ -12,6 +12,8 @@ import Badge from "../components/badge/Badge";
 
 import { db } from "../../firebase";
 
+import "./styles.scss";
+
 import Swal from "sweetalert2";
 
 import axios from "axios";
@@ -107,6 +109,7 @@ const chartOptions1 = {
 
 const Dashboard = () => {
   const [allUser, setAllUser] = React.useState([]);
+  const [delCheck, setDelCheck] = React.useState(true);
   const [customUser, setCustomUsers] = React.useState([]);
   const [adminUser, setAdminUsers] = React.useState([]);
   const themeReducer = useSelector((state) => state.ThemeReducer.mode);
@@ -155,22 +158,6 @@ const Dashboard = () => {
     </tr>
   );
 
-  const renderOrderHead = (item, index) => <th key={index}>{item}</th>;
-
-  const renderOrderBody = (item, index) => (
-    <tr key={index}>
-      <td>{item.provider}</td>
-      <td>{item.username}</td>
-      <td>{item.email}</td>
-      <td>
-        <Badge
-          type={"danger"}
-          content="Delete"
-          onClick={() => handleDeletion()}
-        ></Badge>
-      </td>
-    </tr>
-  );
   React.useEffect(() => {
     db.collection("users")
       .get()
@@ -187,6 +174,7 @@ const Dashboard = () => {
             setCustomUsers((prevUsers) => [
               ...prevUsers,
               {
+                uid: doc.uid,
                 username: doc.name,
                 email: doc.email,
                 provider: doc.authProvider,
@@ -195,22 +183,32 @@ const Dashboard = () => {
           }
         });
       });
-  }, []);
+  }, [delCheck]);
 
-  const handleDeletion = () => {
-    alert("Hello");
+  const handleDeletion = (id, email) => {
     Swal.fire({
-      title: "<strong>Do you want to delete this user?</strong>",
+      title: `<strong>Do you want to delete ${id} with email ${email} ?</strong>`,
       icon: "warning",
       html: "Changes cant be reveretd <b>bold text</b>",
       showDenyButton: true,
       showCancelButton: true,
-      confirmButtonText: "Save",
-      denyButtonText: `Don't save`,
-    }).then((result) => {
+      confirmButtonText: "Delete",
+      denyButtonText: `Don't Delete`,
+    }).then(async (result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        Swal.fire("Saved!", "", "success");
+        db.collection("users")
+          .doc(id)
+          .delete()
+          .then((res) => {
+            console.log(res);
+            axios.delete(`/api/deleteUser?userID=${email}`).then(() => {
+              Swal.fire("Deleted!", "", "success");
+              setAdminUsers([]);
+              setCustomUsers([]);
+              setDelCheck(!delCheck);
+            });
+          });
       } else if (result.isDenied) {
         Swal.fire("Changes are not saved", "", "info");
       }
@@ -218,7 +216,7 @@ const Dashboard = () => {
   };
 
   const customUsers = {
-    header: ["Provider", "Name", "Email", "Action"],
+    header: ["Name", "Email", "Action"],
     body: customUser,
   };
 
@@ -308,19 +306,42 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-        <div className="col-8">
+        <div className="col-8 ">
           <div className="card">
             <div className="card__header">
               <h3>Custom Users</h3>
             </div>
             <div className="card__body">
-              <Table
-                headData={customUsers.header}
-                renderHead={(item, index) => renderOrderHead(item, index)}
-                bodyData={customUser}
-                renderBody={(item, index) => renderOrderBody(item, index)}
-                type={"custom"}
-              />
+              <div className="table custom-user-table">
+                <thead>
+                  <tr>
+                    {customUsers.header.map((head) => {
+                      return (
+                        <th className="w-50" scope="col">
+                          {head}
+                        </th>
+                      );
+                    })}
+                  </tr>
+                </thead>
+                <tbody>
+                  {customUser &&
+                    customUser.map(({ provider, username, email, uid }) => {
+                      return (
+                        <tr>
+                          <td>{username}</td>
+                          <td>{email}</td>
+                          <button
+                            className="p-1 px-2 del-button"
+                            onClick={() => handleDeletion(uid, email)}
+                          >
+                            Delete
+                          </button>
+                        </tr>
+                      );
+                    })}
+                </tbody>
+              </div>
             </div>
           </div>
         </div>
